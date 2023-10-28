@@ -1,0 +1,2583 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.449">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Edy888 - Руководство по работе с QUARTO</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Поиск не дал результатов",
+    "search-matching-documents-text": "Результаты поиска",
+    "search-copy-link-title": "Скопировать ссылку",
+    "search-hide-matches-text": "Скрыть дополнительные результаты",
+    "search-more-match-text": "дополнительный результат в этом документе",
+    "search-more-matches-text": "дополнительных результата(-ов) в этом документе",
+    "search-clear-button-title": "Очистить",
+    "search-detached-cancel-button-title": "Отменить",
+    "search-submit-button-title": "Найти",
+    "search-label": "Поиск"
+  }
+}</script>
+
+
+<meta property="og:title" content="Edy888 - Руководство по работе с QUARTO">
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Edy888">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Edy888</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Поиск"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Переключить навигацию" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./home.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-data-base" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Data Base</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-data-base">    
+        <li>
+    <a class="dropdown-item" href="./hematology.html">
+ <span class="dropdown-text">Гематология. Август 2023</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Моё обучение</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./1.R_basic.html">
+ <span class="dropdown-text">PART 1 : R Basic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./2.Visualization.html">
+ <span class="dropdown-text">PART 2 : Visualization</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./shiny.html"> 
+<span class="menu-text">Shiny</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gpt" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">GPT</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gpt">    
+        <li>
+    <a class="dropdown-item" href="./gpt.html">
+ <span class="dropdown-text">GPT</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/Edy888">
+            Source Code
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Руководство по работе с QUARTO</li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Data Base</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hematology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mindray BC-6800</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Моё обучение</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1.R_basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PART 1 : Data Science R_basic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2.Visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PART 2 Visualization</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#создание-веб-сайта" id="toc-создание-веб-сайта" class="nav-link active" data-scroll-target="#создание-веб-сайта">1. Создание веб-сайта</a>
+  <ul class="collapse">
+  <li><a href="#обзор" id="toc-обзор" class="nav-link" data-scroll-target="#обзор">Обзор</a></li>
+  <li><a href="#создание-ссылок" id="toc-создание-ссылок" class="nav-link" data-scroll-target="#создание-ссылок">Создание ссылок</a></li>
+  <li><a href="#узнать-больше" id="toc-узнать-больше" class="nav-link" data-scroll-target="#узнать-больше">Узнать больше</a></li>
+  </ul></li>
+  <li><a href="#навигация-по-web-сайту" id="toc-навигация-по-web-сайту" class="nav-link" data-scroll-target="#навигация-по-web-сайту">2. Навигация по web-сайту</a>
+  <ul class="collapse">
+  <li><a href="#обзор-1" id="toc-обзор-1" class="nav-link" data-scroll-target="#обзор-1">Обзор</a></li>
+  <li><a href="#лучшая-навигация" id="toc-лучшая-навигация" class="nav-link" data-scroll-target="#лучшая-навигация">Лучшая навигация</a></li>
+  <li><a href="#инструменты-навигационной-панели" id="toc-инструменты-навигационной-панели" class="nav-link" data-scroll-target="#инструменты-навигационной-панели">Инструменты навигационной панели</a></li>
+  <li><a href="#боковая-навигация" id="toc-боковая-навигация" class="nav-link" data-scroll-target="#боковая-навигация">Боковая навигация</a></li>
+  <li><a href="#гибридная-навигация" id="toc-гибридная-навигация" class="nav-link" data-scroll-target="#гибридная-навигация">Гибридная навигация</a></li>
+  <li><a href="#навигация-по-страницам" id="toc-навигация-по-страницам" class="nav-link" data-scroll-target="#навигация-по-страницам">Навигация по страницам</a>
+  <ul class="collapse">
+  <li><a href="#разделители" id="toc-разделители" class="nav-link" data-scroll-target="#разделители">Разделители</a></li>
+  </ul></li>
+  <li><a href="#кнопка-наверх" id="toc-кнопка-наверх" class="nav-link" data-scroll-target="#кнопка-наверх">Кнопка наверх</a></li>
+  <li><a href="#нижний-колонтитул-страницы" id="toc-нижний-колонтитул-страницы" class="nav-link" data-scroll-target="#нижний-колонтитул-страницы">Нижний колонтитул страницы</a></li>
+  <li><a href="#скрытие-навигации" id="toc-скрытие-навигации" class="nav-link" data-scroll-target="#скрытие-навигации">Скрытие навигации</a></li>
+  <li><a href="#режим-чтения" id="toc-режим-чтения" class="nav-link" data-scroll-target="#режим-чтения">Режим чтения</a></li>
+  <li><a href="#поиск-по-сайту" id="toc-поиск-по-сайту" class="nav-link" data-scroll-target="#поиск-по-сайту">Поиск по сайту</a></li>
+  <li><a href="#ссылки-на-github" id="toc-ссылки-на-github" class="nav-link" data-scroll-target="#ссылки-на-github">Ссылки на GitHub</a></li>
+  <li><a href="#перенаправления" id="toc-перенаправления" class="nav-link" data-scroll-target="#перенаправления">Перенаправления</a></li>
+  <li><a href="#страницы" id="toc-страницы" class="nav-link" data-scroll-target="#страницы">404 Страницы</a></li>
+  </ul></li>
+  <li><a href="#создание-блога" id="toc-создание-блога" class="nav-link" data-scroll-target="#создание-блога">3. Создание блога</a>
+  <ul class="collapse">
+  <li><a href="#обзор-2" id="toc-обзор-2" class="nav-link" data-scroll-target="#обзор-2">Обзор</a></li>
+  <li><a href="#краткое-начало" id="toc-краткое-начало" class="nav-link" data-scroll-target="#краткое-начало">Краткое начало</a></li>
+  <li><a href="#домашняя-страница" id="toc-домашняя-страница" class="nav-link" data-scroll-target="#домашняя-страница">Домашняя страница</a>
+  <ul class="collapse">
+  <li><a href="#категории" id="toc-категории" class="nav-link" data-scroll-target="#категории">Категории</a></li>
+  </ul></li>
+  <li><a href="#о-странице-about" id="toc-о-странице-about" class="nav-link" data-scroll-target="#о-странице-about">О странице (About)</a></li>
+  <li><a href="#каталог-записей" id="toc-каталог-записей" class="nav-link" data-scroll-target="#каталог-записей">Каталог записей</a>
+  <ul class="collapse">
+  <li><a href="#черновики" id="toc-черновики" class="nav-link" data-scroll-target="#черновики">Черновики</a></li>
+  <li><a href="#последнее-обновление" id="toc-последнее-обновление" class="nav-link" data-scroll-target="#последнее-обновление">Последнее обновление</a></li>
+  <li><a href="#замораживание-сообщений" id="toc-замораживание-сообщений" class="nav-link" data-scroll-target="#замораживание-сообщений">Замораживание сообщений</a></li>
+  </ul></li>
+  <li><a href="#rss-канал" id="toc-rss-канал" class="nav-link" data-scroll-target="#rss-канал">RSS-канал</a>
+  <ul class="collapse">
+  <li><a href="#каналы-категорий" id="toc-каналы-категорий" class="nav-link" data-scroll-target="#каналы-категорий">Каналы категорий</a></li>
+  </ul></li>
+  <li><a href="#публикация" id="toc-публикация" class="nav-link" data-scroll-target="#публикация">Публикация</a></li>
+  <li><a href="#подписки" id="toc-подписки" class="nav-link" data-scroll-target="#подписки">Подписки</a></li>
+  </ul></li>
+  <li><a href="#поиск-по-веб-сайту" id="toc-поиск-по-веб-сайту" class="nav-link" data-scroll-target="#поиск-по-веб-сайту">4 .Поиск по веб-сайту</a>
+  <ul class="collapse">
+  <li><a href="#обзор-3" id="toc-обзор-3" class="nav-link" data-scroll-target="#обзор-3">Обзор</a></li>
+  <li><a href="#внешний-вид-поиска" id="toc-внешний-вид-поиска" class="nav-link" data-scroll-target="#внешний-вид-поиска">Внешний вид поиска</a></li>
+  <li><a href="#настройка-результатов" id="toc-настройка-результатов" class="nav-link" data-scroll-target="#настройка-результатов">Настройка результатов</a></li>
+  <li><a href="#настройка-результатов-1" id="toc-настройка-результатов-1" class="nav-link" data-scroll-target="#настройка-результатов-1">Настройка результатов</a></li>
+  <li><a href="#использование-algolia" id="toc-использование-algolia" class="nav-link" data-scroll-target="#использование-algolia">Использование Algolia</a>
+  <ul class="collapse">
+  <li><a href="#базовая-конфигурация" id="toc-базовая-конфигурация" class="nav-link" data-scroll-target="#базовая-конфигурация">Базовая конфигурация</a></li>
+  <li><a href="#пользовательская-схема-индекса" id="toc-пользовательская-схема-индекса" class="nav-link" data-scroll-target="#пользовательская-схема-индекса">Пользовательская схема индекса</a></li>
+  <li><a href="#algolia-insights" id="toc-algolia-insights" class="nav-link" data-scroll-target="#algolia-insights">Algolia Insights</a></li>
+  <li><a href="#расширенная-настройка" id="toc-расширенная-настройка" class="nav-link" data-scroll-target="#расширенная-настройка">Расширенная настройка</a></li>
+  </ul></li>
+  <li><a href="#отключение-поиска" id="toc-отключение-поиска" class="nav-link" data-scroll-target="#отключение-поиска">Отключение поиска</a></li>
+  </ul></li>
+  <li><a href="#инструменты-для-веб-сайта" id="toc-инструменты-для-веб-сайта" class="nav-link" data-scroll-target="#инструменты-для-веб-сайта">5. Инструменты для веб-сайта</a>
+  <ul class="collapse">
+  <li><a href="#верхние-и-нижние-колонтитулы" id="toc-верхние-и-нижние-колонтитулы" class="nav-link" data-scroll-target="#верхние-и-нижние-колонтитулы">Верхние и нижние колонтитулы</a></li>
+  <li><a href="#социальные-метаданные" id="toc-социальные-метаданные" class="nav-link" data-scroll-target="#социальные-метаданные">Социальные метаданные</a>
+  <ul class="collapse">
+  <li><a href="#значок" id="toc-значок" class="nav-link" data-scroll-target="#значок">Значок</a></li>
+  <li><a href="#карточки-twitter" id="toc-карточки-twitter" class="nav-link" data-scroll-target="#карточки-twitter">Карточки Twitter</a></li>
+  <li><a href="#открыть-график" id="toc-открыть-график" class="nav-link" data-scroll-target="#открыть-график">Открыть график</a></li>
+  <li><a href="#предварительный-просмотр-изображений" id="toc-предварительный-просмотр-изображений" class="nav-link" data-scroll-target="#предварительный-просмотр-изображений">Предварительный просмотр изображений</a></li>
+  </ul></li>
+  <li><a href="#google-analytics" id="toc-google-analytics" class="nav-link" data-scroll-target="#google-analytics">Google Analytics</a>
+  <ul class="collapse">
+  <li><a href="#хранение" id="toc-хранение" class="nav-link" data-scroll-target="#хранение">Хранение</a></li>
+  </ul></li>
+  <li><a href="#согласие-на-использование-файлов-cookie" id="toc-согласие-на-использование-файлов-cookie" class="nav-link" data-scroll-target="#согласие-на-использование-файлов-cookie">Согласие на использование файлов cookie</a>
+  <ul class="collapse">
+  <li><a href="#настройки-файлов-cookie" id="toc-настройки-файлов-cookie" class="nav-link" data-scroll-target="#настройки-файлов-cookie">Настройки файлов cookie</a></li>
+  <li><a href="#пользовательские-скрипты-и-согласие-на-использование-файлов-cookie" id="toc-пользовательские-скрипты-и-согласие-на-использование-файлов-cookie" class="nav-link" data-scroll-target="#пользовательские-скрипты-и-согласие-на-использование-файлов-cookie">Пользовательские скрипты и согласие на использование файлов cookie</a></li>
+  </ul></li>
+  <li><a href="#ресурсы-сайта" id="toc-ресурсы-сайта" class="nav-link" data-scroll-target="#ресурсы-сайта">Ресурсы сайта</a></li>
+  <li><a href="#темный-режим" id="toc-темный-режим" class="nav-link" data-scroll-target="#темный-режим">Темный режим</a></li>
+  </ul></li>
+  <li><a href="#о-страницах" id="toc-о-страницах" class="nav-link" data-scroll-target="#о-страницах">6. О страницах</a>
+  <ul class="collapse">
+  <li><a href="#обзор-4" id="toc-обзор-4" class="nav-link" data-scroll-target="#обзор-4">Обзор</a>
+  <ul class="collapse">
+  <li><a href="#основные-параметры" id="toc-основные-параметры" class="nav-link" data-scroll-target="#основные-параметры">Основные параметры</a></li>
+  </ul></li>
+  <li><a href="#шаблоны" id="toc-шаблоны" class="nav-link" data-scroll-target="#шаблоны">Шаблоны</a>
+  <ul class="collapse">
+  <li><a href="#изображение" id="toc-изображение" class="nav-link" data-scroll-target="#изображение">Изображение</a></li>
+  <li><a href="#ссылки" id="toc-ссылки" class="nav-link" data-scroll-target="#ссылки">Ссылки</a></li>
+  </ul></li>
+  <li><a href="#частичное-содержимое-страницы" id="toc-частичное-содержимое-страницы" class="nav-link" data-scroll-target="#частичное-содержимое-страницы">Частичное содержимое страницы</a></li>
+  </ul></li>
+  <li><a href="#списки-документов" id="toc-списки-документов" class="nav-link" data-scroll-target="#списки-документов">Списки документов</a>
+  <ul class="collapse">
+  <li><a href="#обзор-5" id="toc-обзор-5" class="nav-link" data-scroll-target="#обзор-5">Обзор</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Руководство по работе с QUARTO</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="создание-веб-сайта" class="level1">
+<h1>1. Создание веб-сайта</h1>
+<p>Руководство QUARTO: <a href="https://quarto.org/docs/guide/" class="uri">https://quarto.org/docs/guide/</a></p>
+<p><a href="https://quarto.org/docs/websites/">Веб-сайты</a></p>
+<ul>
+<li><a href="">Создание веб-сайта</a></li>
+<li><a href="https://quarto.org/docs/websites/website-navigation.html">Навигация по сайту</a></li>
+<li><a href="https://quarto.org/docs/websites/website-blog.html">Создание блога</a></li>
+<li><a href="https://quarto.org/docs/websites/website-search.html">Поиск по веб-сайту</a></li>
+<li><a href="https://quarto.org/docs/websites/website-tools.html">Инструменты для создания веб-сайта</a></li>
+<li><a href="https://quarto.org/docs/websites/website-about.html">О страницах</a></li>
+<li><a href="https://quarto.org/docs/websites/website-listings.html">Список страниц</a></li>
+</ul>
+<section id="обзор" class="level2">
+<h2 class="anchored" data-anchor-id="обзор">Обзор</h2>
+<p>Веб-сайты Кварто - это удобный способ публикации групп документов. Документы, публикуемые как часть веб-сайта, имеют общие элементы навигации, параметры отображения и визуальный стиль.</p>
+<p>Навигация по веб-сайту может осуществляться с помощью глобальной панели навигации, боковой панели со ссылками или комбинации того и другого для сайтов с несколькими уровнями контента. Вы также можете включить полнотекстовый поиск по веб-сайтам.</p>
+<p>Веб-сайты Quarto могут публиковаться в самых разных местах назначения, включая страницы GitHub, Netlify, Posit Connect или любую другую службу статического хостинга или веб-сервер интрасети. Смотрите документацию по <a href="https://quarto.org/docs/publishing/">публикации веб-сайтов</a> для получения дополнительной информации.</p>
+</section>
+<section id="создание-ссылок" class="level2">
+<h2 class="anchored" data-anchor-id="создание-ссылок">Создание ссылок</h2>
+<p>При создании ссылок между страницами вашего сайта вы можете указать исходный файл в качестве целевой ссылки (а не <code>.html</code> файл). Вы также можете добавить хэш-идентификаторы (<code>#)</code> в исходный файл, если хотите создать ссылку на определенный раздел документа. Например:</p>
+<pre><code>[about](about.qmd) [about](about.qmd#section)</code></pre>
+<p>Одним из преимуществ использования этого стиля ссылок в отличие от прямого таргетинга на <code>.html</code> файлы является то, что если вы в какой-то момент преобразуете свой сайт в формат <a href="https://quarto.org/docs/books/">книги</a>, ссылки на файлы автоматически преобразуются в ссылки на разделы для форматов, которые создают отдельный файл (например, PDF или MS Word).</p>
+</section>
+<section id="узнать-больше" class="level2">
+<h2 class="anchored" data-anchor-id="узнать-больше">Узнать больше</h2>
+<p>После того, как у вас будет запущен базовый веб-сайт, ознакомьтесь с этими статьями о различных способах улучшения вашего сайта:</p>
+<ul>
+<li><p><a href="https://quarto.org/docs/websites/website-navigation.html">Навигация по веб-сайту</a> описывает различные способы добавления навигации на веб-сайт, включая панели навигации верхнего уровня, боковые панели или гибридные конструкции, использующие и то, и другое. В этой статье также рассматривается добавление полнотекстового поиска, а также нижнего колонтитула по всему сайту.</p></li>
+<li><p><a href="https://quarto.org/docs/websites/website-tools.html">Инструменты для веб-сайта</a> включают добавление метаданных социальных сетей (например, для карточек Twitter) и Google Analytics на ваш сайт, а также предоставление пользователям возможности переключаться между темной и светлой цветовыми схемами.</p></li>
+<li><p><a href="https://quarto.org/docs/reference/projects/websites.html">Параметры веб-сайта</a> предоставляют исчерпывающую ссылку на все доступные параметры веб-сайта.</p></li>
+<li><p><a href="https://quarto.org/docs/projects/code-execution.html">Выполнение кода</a> содержит советы по оптимизации рендеринга сайтов с большим количеством документов или дорогостоящих вычислений.</p></li>
+<li><p><a href="https://quarto.org/docs/publishing/">Публикация веб-сайтов</a> перечисляет различные варианты публикации веб-сайтов, включая GitHub Pages, Netlify и Posit Connect.</p></li>
+</ul>
+</section>
+</section>
+<section id="навигация-по-web-сайту" class="level1">
+<h1>2. Навигация по web-сайту</h1>
+<section id="обзор-1" class="level2">
+<h2 class="anchored" data-anchor-id="обзор-1">Обзор</h2>
+<p>Для обеспечения навигации по веб-сайту доступно множество опций, в том числе:</p>
+<ul>
+<li><p>Использование верхней навигации (навигационной панели) с дополнительными подменю.</p></li>
+<li><p>Использование боковой навигации с иерархией страниц.</p></li>
+<li><p>Сочетание верхней и боковой навигации (где верхняя навигация ссылается на разные разделы сайта с их собственной боковой навигацией).</p></li>
+</ul>
+<p>Кроме того, вы можете добавить полнотекстовый поиск в верхний или боковой интерфейс навигации.</p>
+</section>
+<section id="лучшая-навигация" class="level2">
+<h2 class="anchored" data-anchor-id="лучшая-навигация">Лучшая навигация</h2>
+<p>Чтобы добавить верхнюю навигацию на веб-сайт, добавьте <code>navbar</code> запись в <code>website</code> конфигурацию в <code>_quarto.yml</code>. Например, следующий YAML:</p>
+<pre><code>website:
+  navbar:
+    background: primary
+    foreground: success
+    pinned: true
+    search: true
+    menu:
+      - text: "Quarto Web Learning"
+    icon: "upload"
+    text: "Conspect"
+    left:
+      - text: "Home"
+        file: index.qmd
+      - talks.qmd
+      - about.qmd </code></pre>
+<p>Выше мы использовали <code>left</code> опцию, чтобы указать элементы для левой части панели навигации. Вы также можете использовать <code>right</code> опцию, чтобы указать элементы для правой части.</p>
+<p>Текст для элементов панели навигации будет взят из заголовка базового целевого документа. Обратите внимание, что в приведенном выше примере мы предоставляем пользовательское <code>text: "Home"</code> значение для <code>index.qmd</code>.</p>
+<p>Вы также можете создать меню панели навигации, включив в него a <code>menu</code> (который представляет собой список элементов, очень похожих на <code>left</code> и <code>right)</code>. Например:</p>
+<pre><code>left:
+  - text: "More"
+    menu:
+      - talks.qmd
+      - about.qmd </code></pre>
+<p>Вот все опции, доступные для навигации сверху:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title</code></td>
+<td>Заголовок навигационной панели (используется, <code>site: title</code> если ничего не указано). Используется <code>title: false</code> для подавления отображения заголовка на навигационной панели.</td>
+</tr>
+<tr class="even">
+<td><code>logo</code></td>
+<td>Изображение логотипа будет отображаться слева от заголовка.</td>
+</tr>
+<tr class="odd">
+<td><code>logo-alt</code></td>
+<td>Альтернативный текст для изображения логотипа.</td>
+</tr>
+<tr class="even">
+<td><code>logo-href</code></td>
+<td>Используйте href-ссылку на логотип / заголовок навигационной панели. По умолчанию логотип и заголовок ссылаются на корневую страницу сайта (<code>/index.html</code>).</td>
+</tr>
+<tr class="odd">
+<td><code>background</code></td>
+<td>Foreground color (“primary”, “secondary”, “success”, “danger”, “warning”, “info”, “light”, “dark”, or hex color).</td>
+</tr>
+<tr class="even">
+<td><code>foreground</code></td>
+<td><p>Цвет переднего плана</p>
+<p>Foreground color (“primary”, “secondary”, “success”, “danger”, “warning”, “info”, “light”, “dark”, or hex color).</p>
+<p>Предложить перевод</p></td>
+</tr>
+<tr class="odd">
+<td><code>search</code></td>
+<td>Включите окно поиска (true или false).</td>
+</tr>
+<tr class="even">
+<td><code>tools</code></td>
+<td>Список инструментов навигационной панели (например, ссылка на github или Twitter и т.д.). Подробнее см. в разделе <a href="https://quarto.org/docs/websites/website-navigation.html#navbar-tools">Инструменты навигационной панели</a>.</td>
+</tr>
+<tr class="odd">
+<td><code>left</code> / <code>right</code></td>
+<td>Списки элементов навигации для левой и правой частей панели навигации.</td>
+</tr>
+<tr class="even">
+<td><code>pinned</code></td>
+<td>Всегда показывайте панель навигации (true или false). По умолчанию используется значение false, которое используется <a href="https://wicky.nillia.ms/headroom.js/">headroom.js</a> для автоматического отображения панели навигации при прокрутке страницы вверх.</td>
+</tr>
+<tr class="odd">
+<td><code>collapse</code></td>
+<td>Сворачивайте элементы навигационной панели в меню “гамбургер”, когда экран становится узким (по умолчанию установлено значение true).</td>
+</tr>
+<tr class="even">
+<td><code>collapse-below</code></td>
+<td>Адаптивная точка останова, с которой элементы навигационной панели сворачиваются в меню для гамбургеров (“sm”, “md”, “lg”, “xl” или “xxl”, по умолчанию “lg”).</td>
+</tr>
+</tbody>
+</table>
+<p>Вот параметры, доступные для отдельных элементов навигации:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>href</code></td>
+<td>Ссылка на файл, содержащийся в проекте, или внешний URL.</td>
+</tr>
+<tr class="even">
+<td><code>text</code></td>
+<td>Текст для отображения элемента навигации (по умолчанию используется документ<code>title</code>, если он не указан).</td>
+</tr>
+<tr class="odd">
+<td><code>icon</code></td>
+<td>Название одного из стандартных значков <a href="https://icons.getbootstrap.com/">Bootstrap 5</a> (например, “github”, “twitter”, “поделиться” и т.д.).</td>
+</tr>
+<tr class="even">
+<td><code>aria-label</code></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label">Доступная метка</a> для элемента навигации.</td>
+</tr>
+<tr class="odd">
+<td><code>rel</code></td>
+<td>Значение атрибута <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel">rel</a>. Допускается использование нескольких значений, разделенных пробелами.</td>
+</tr>
+<tr class="even">
+<td><code>menu</code></td>
+<td>Список элементов навигации для заполнения выпадающего меню.</td>
+</tr>
+</tbody>
+</table>
+<p>Для получения дополнительной информации об управлении внешним видом панели навигации с помощью HTML-тем см.&nbsp; <a href="https://quarto.org/docs/output-formats/html-themes.html#navigation">HTML-темы - Навигация</a>.</p>
+</section>
+<section id="инструменты-навигационной-панели" class="level2">
+<h2 class="anchored" data-anchor-id="инструменты-навигационной-панели">Инструменты навигационной панели</h2>
+<div class="callout callout-style-default callout-note callout-titled" data-apparance="simple">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Уведомление
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Функция Quarto 1.3 - 1.4</p>
+<p>Эта функция является новой в Quarto 1.3, которую вы можете скачать по адресу: <a href="https://quarto.org/docs/download/">https://quarto.org/docs/download /</a></p>
+<p><strong>Основные моменты</strong></p>
+<p>Quarto 1.4 включает в себя следующие новые функции:</p>
+<ul>
+<li><p><a href="https://quarto.org/docs/manuscripts/">Рукописи Quarto</a> - новый тип проектов для научных статей, где записные книжки являются как источником статьи, так и частью опубликованной записи.</p></li>
+<li><p><a href="https://quarto.org/docs/dashboards/">Панели мониторинга Quarto</a> - Новый формат для создания интерактивных панелей мониторинга.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/typst.html">Typst Format</a>— Поддержка <code>typst</code> выходного формата. <a href="https://github.com/typst/typst">Typst</a> - это новая система набора текста с открытым исходным кодом на основе разметки, которая должна быть такой же мощной, как LaTeX, но при этом намного проще в освоении и использовании.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/shiny/">Shiny для Python</a> — Поддержка использования Shiny для Python в документах Quarto.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/inline.html">Встроенное выполнение для Jupyter</a> — поддержка выполнения встроенных выражений при использовании ядер Jupyter.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/script.html">Рендеринг скриптов для Jupyter</a> — поддержка рендеринга файлов скриптов (например, <code>.py</code>, <code>.jl</code> или <code>.r</code>), которые <a href="https://jupytext.readthedocs.io/en/latest/formats-scripts.html">специально отформатированы</a> как записные книжки.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/binder.html">Простая настройка Binder для проектов Quarto</a> - Поддержка генерации файлов, необходимых для развертывания проекта Quarto с использованием Binder.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/lightbox.html">Обработка изображений и рисунков лайтбоксом</a> — поддержка масштабирования изображений и рисунков с помощью <code>lightbox</code>. Включает поддержку группировки нескольких изображений в галерею.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/lua_changes.html">Изменения в Lua</a>—Quarto v1.4 добавляет новые возможности для разработчиков фильтров Lua.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/crossref.html">Изменения в перекрестных ссылках</a>—версия Quarto v1.4 делает элементы с перекрестными ссылками более мощными и общими.</p></li>
+<li><p><a href="https://quarto.org/docs/prerelease/1.4/tables.html">Изменения в обработке таблиц</a>—Quarto v1.4 улучшает обработку таблиц HTML, добавленную в версии v1.3.</p></li>
+</ul>
+</div>
+</div>
+<p>В дополнение к традиционной навигации, панель навигации также может отображать набор инструментов (например, действия в социальных сетях, действия по просмотру или редактированию GitHub и т.д.)&nbsp;Определение инструмента состоит из названия значка и <code>href</code>, по которым нужно переходить при нажатии.&nbsp; Для обозначения значка используйте название любого из более чем 1300 значков начальной загрузки.</p>
+<p>Например:</p>
+<pre><code>website:
+  navbar:
+    tools:
+      - icon: twitter
+        href: https://twitter.com
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://code.com
+          - text: Report a Bug
+            url:  https://bugs.com</code></pre>
+<p><img src="https://quarto.org/docs/websites/images/navbar-tools.png" class="img-fluid"></p>
+<p>Инструменты, указанные для панели навигации, появятся в правой части панели навигации. Если вы укажете темную тему или режим чтения для вашего веб-сайта, элементы управления для этих параметров появятся с любыми указанными инструментами.</p>
+<p>Когда панель навигации сворачивается в меню на экранах меньшего размера, инструменты будут размещены в нижней части меню.</p>
+</section>
+<section id="боковая-навигация" class="level2">
+<h2 class="anchored" data-anchor-id="боковая-навигация">Боковая навигация</h2>
+<p>Если ваш сайт состоит из более чем нескольких документов, вы можете предпочесть использовать боковую навигацию, которая позволяет отображать произвольно глубокую иерархию статей.</p>
+<p>Если вы читаете эту страницу на настольном устройстве, то слева вы увидите боковой навигационный дисплей по умолчанию (в противном случае вверху вы увидите строку заголовка, на которую вы можете нажать, чтобы открыть навигацию).</p>
+<p>Чтобы добавить боковую навигацию на веб-сайт, добавьте <code>sidebar</code> запись в <code>website</code> раздел <code>_quarto.yml</code>. Например:</p>
+<pre><code>website:
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "Basics"
+        contents:
+          - index.qmd
+          - basics-knitr.qmd
+          - basics-jupyter.qmd
+      - section: "Layout"
+        contents:
+          - layout.qmd
+          - layout-knitr.qmd
+          - layout-jupyter.qmd</code></pre>
+<p>Доступно два стиля боковой навигации: “docked”, при котором навигация отображается на боковой панели с особым цветом фона, и “floating”, при котором навигация располагается ближе к основному тексту. Вот как выглядят “закрепленный” и “плавающий” стили (соответственно):</p>
+<p>Вот все опции, доступные для боковой навигации:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>id</code></td>
+<td>Необязательный идентификатор (используется только для гибридной навигации, описанной ниже).</td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td>Заголовок боковой панели (используется название проекта, если оно не указано).</td>
+</tr>
+<tr class="odd">
+<td><code>subtitle</code></td>
+<td>Дополнительный субтитр.</td>
+</tr>
+<tr class="even">
+<td><code>logo</code></td>
+<td>Необязательное изображение логотипа.</td>
+</tr>
+<tr class="odd">
+<td><code>search</code></td>
+<td>Включите окно поиска (true или false). Обратите внимание, что если на верхней панели навигации уже есть окно поиска, оно не будет отображаться на боковой панели.</td>
+</tr>
+<tr class="even">
+<td><code>tools</code></td>
+<td>Список инструментов боковой панели (например, ссылка на github или Twitter и т.д.). Подробности смотрите в следующем разделе.</td>
+</tr>
+<tr class="odd">
+<td><code>items</code></td>
+<td>Список элементов навигации для отображения (обычно элементы верхнего уровня, в свою очередь, имеют список подпунктов).</td>
+</tr>
+<tr class="even">
+<td><code>style</code></td>
+<td>“закрепленный” или “плавающий”.</td>
+</tr>
+<tr class="odd">
+<td><code>type</code></td>
+<td>“темный” или “светлый” (подсказка, чтобы убедиться, что цвет текста противоположен цвету фона).</td>
+</tr>
+<tr class="even">
+<td><code>background</code></td>
+<td>Цвет фона (“отсутствует”, “основной”, “вторичный”, “успех”, “опасность”, “предупреждение”, “информация”, “светлый”, “темный” или “белый”). По умолчанию используется значение “light”.</td>
+</tr>
+<tr class="odd">
+<td><code>foreground</code></td>
+<td>Цвет переднего плана (“основной”, “вторичный”, “успех”, “опасность”, “предупреждение”, “информация”, “светлый”, “темный” или шестнадцатеричный цвет). Цвет переднего плана будет использоваться для раскрашивания элементов навигации, текста и ссылок, которые появляются на боковой панели.</td>
+</tr>
+<tr class="even">
+<td><code>border</code></td>
+<td>Показывать ли границу на боковой панели. “true” или “false”.</td>
+</tr>
+<tr class="odd">
+<td><code>alignment</code></td>
+<td>Выравнивание (“по левому”, “по правому” или “по центру”).</td>
+</tr>
+<tr class="even">
+<td><code>collapse-level</code></td>
+<td>Показывать ли навигацию по боковой панели свернутой по умолчанию. Значение по умолчанию равно 2, которое показывает верхний и следующий уровни полностью развернутыми (но оставляет 3-й и последующие уровни свернутыми).</td>
+</tr>
+<tr class="odd">
+<td><code>pinned</code></td>
+<td>Всегда показывайте строку заголовка, которая расширяется, чтобы отобразить боковую панель при меньшей ширине экрана (true или false). По умолчанию используется значение false, и используется <a href="https://wicky.nillia.ms/headroom.js/">headroom.js</a> для автоматического отображения панели навигации, когда пользователь прокручивает страницу вверх.</td>
+</tr>
+</tbody>
+</table>
+<p>Для получения дополнительной информации об управлении внешним видом боковой навигации с помощью HTML-тем см.&nbsp; <a href="https://quarto.org/docs/output-formats/html-themes.html#navigation">HTML-темы - Навигация</a>.&nbsp; Если вам нужно настроить ширину боковой панели, см. раздел&nbsp;<a href="https://quarto.org/docs/output-formats/page-layout.html#grid-customization">Макет страницы - настройка сетки</a>.</p>
+<p><strong>Автоматическое создание</strong></p>
+<p>Выше мы описали, как явно заполнить <code>contents</code> вашу боковую панель элементами навигации. Вы также можете автоматически создавать боковую навигацию из файловой системы. Самый простой способ сделать это - указать <code>contents</code> опцию следующим образом</p>
+<pre><code>sidebar:
+  contents: auto</code></pre>
+<p>Использование <code>contents: auto</code> на корневом уровне приведет к включению в навигацию всех документов вашего веб-сайта (за исключением домашней страницы, на которую можно перейти по ссылке заголовок). Навигация построена с использованием следующих правил:</p>
+<ol type="1">
+<li><p>Названия элементов навигации будут считываться из <code>title</code> поля документов.</p></li>
+<li><p>Подкаталоги создадут разделы, названия которых будут автоматически определяться на основе названия каталога (включая добавление заглавных букв и замену пробелов тире и подчеркивания). Используйте <code>index.qmd</code> в каталоге, чтобы указать явный <code>title</code> параметр, если вам не нравится автоматический.</p></li>
+<li><p>Порядок в алфавитном порядке (по имени файла), если в метаданных документа не указано числовое <code>order</code> поле.</p></li>
+</ol>
+<p>Автоматическая навигация автоматически включает элементы в подкаталоги. Если вы предпочитаете этого не делать, используйте явный <code>/*</code> для указания только документов в корневом каталоге:</p>
+<pre><code>sidebar:
+  contents: /*</code></pre>
+<p>Вместо указания того, что должны быть включены все документы, вы также можете указать имя каталога или шаблон глобуса.&nbsp; Например, все следующие значения для&nbsp;<code>contents</code>&nbsp;являются допустимыми (обратите внимание, что вторая форма для&nbsp;<code>reports</code>&nbsp;нерекурсивна):</p>
+<pre><code>sidebar:
+  contents: reports
+  
+sidebar:
+  contents: reports/*
+  
+sidebar:
+  contents: "*.ipynb"</code></pre>
+<p>Обратите внимание, что в YAML нам нужно заключать в кавычки любые строки, начинающиеся с <code>*</code> (как мы делаем выше для <code>*.ipynb</code>).</p>
+<p>Вы можете автоматически создавать боковую панель <code>contents</code> в любом месте иерархии боковых панелей. Например, здесь мы добавляем раздел, который автоматически создается из каталога:</p>
+<pre><code>sidebar:
+  contents:
+    - about.qmd
+    - contributing.qmd
+    - section: Reports
+      contents: reports</code></pre>
+<p>Вы также можете включить автоматически созданные элементы в середину списка обычных элементов, включив элемент с&nbsp;<code>auto</code>&nbsp;свойством.&nbsp; Здесь мы добавляем&nbsp;<code>auto</code>&nbsp;запись в середину списка элементов:</p>
+<pre><code>sidebar:
+  contents:
+    - about.qmd
+    - contributing.qmd
+    - auto: "*-report.qmd"</code></pre>
+<p>Еще раз обратите внимание, что мы цитируем&nbsp;<code>auto</code>&nbsp;запись с&nbsp;<code>*</code>&nbsp;в ней, чтобы она была правильно проанализирована.</p>
+<p><strong>Инструменты боковой панели</strong></p>
+<p>В дополнение к традиционной навигации, боковая панель также может отображать набор инструментов (например, действия в социальных сетях, действия по просмотру или редактированию GitHub и т.д.) Определение инструмента состоит из названия значка и href, по которым нужно переходить при нажатии. Для <code>icon</code> используйте название любого из более чем 1300 <a href="https://icons.getbootstrap.com/">значков начальной загрузки</a>.</p>
+<p>Например:</p>
+<pre><code>website:
+  sidebar:
+    tools:
+      - icon: twitter
+        href: https://twitter.com
+      - icon: github
+        menu:
+          - text: Source Code
+            url:  https://code.com
+          - text: Report a Bug
+            url:  https://bugs.com</code></pre>
+<p><img src="https://quarto.org/docs/websites/images/tools.png" class="img-fluid quarto-figure-center" width="183"></p>
+</section>
+<section id="гибридная-навигация" class="level2">
+<h2 class="anchored" data-anchor-id="гибридная-навигация">Гибридная навигация</h2>
+<p>Если у вас веб-сайт с десятками или даже сотнями страниц, вы, вероятно, захотите использовать верхнюю и боковую навигацию вместе, где верхняя навигация ссылается на различные разделы, каждый со своей собственной боковой навигацией.</p>
+<p>Для этого укажите группу <code>sidebar</code> записей и свяжите каждую группу <code>sidebar</code> записей с <code>navbar</code> записью, сопоставив их <code>title</code> имена и указав страницу, на которую дана ссылка, <code>navbar</code> в качестве первого контента в <code>sidebar</code> группе. Например, если вы используете <a href="https://diataxis.fr/">Diátaxis Framework</a> для документации, у вас могут быть отдельные разделы для руководств, практических руководств, пояснений и справочных документов, ваша страница может выглядеть следующим образом.</p>
+<p><img src="https://quarto.org/docs/websites/images/nav-bar-hybrid.png" class="img-fluid"></p>
+<p>При гибридной навигации, если затем вы нажмете, скажем, на учебные пособия, вы можете попасть на страницу, подобную следующей.</p>
+<p><img src="https://quarto.org/docs/websites/images/nav-bar-hybrid-sidebar.png" class="img-fluid"></p>
+<p>Для достижения такого макета конфигурация вашего сайта должна выглядеть примерно так:</p>
+<pre><code>website:
+  title: ProjectX
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Tutorials"
+        file: tutorials.qmd
+      - text: "How-To"
+        file: howto.qmd
+      - text: "Fundamentals"
+        file: fundamentals.qmd
+      - text: "Reference"
+        file: reference.qmd
+
+  sidebar:
+    - title: "Tutorials"
+      style: "docked"
+      background: light
+      contents:
+        - tutorials.qmd
+        - tutorial-1.qmd
+        - tutorial-2.qmd
+
+    - title: "How-To"
+      contents:
+        - howto.qmd
+        # navigation items
+
+    - title: "Fundamentals"
+      contents:
+        - fundamentals.qmd
+        # navigation items
+
+    - title: "Reference"
+      contents:
+        - reference.qmd
+        # navigation items
+    </code></pre>
+</section>
+<section id="навигация-по-страницам" class="level2">
+<h2 class="anchored" data-anchor-id="навигация-по-страницам">Навигация по страницам</h2>
+<p>Если у вас есть веб-сайт с несколькими страницами в разделе или подразделе, часто бывает удобно предложить пользователю возможность перейти к следующей странице (или предыдущей странице) внизу страницы, которую он только что закончил читать. Вы можете включить это с помощью:</p>
+<pre><code>website:
+  page-navigation: true</code></pre>
+<p>При включении навигация по страницам будет отображаться внизу страницы всякий раз, когда есть следующая или предыдущая страница (в том числе в следующем или предыдущем разделе). Эта опция включена по умолчанию для книг, но не для веб-сайтов.</p>
+<section id="разделители" class="level3">
+<h3 class="anchored" data-anchor-id="разделители">Разделители</h3>
+<p>Если вы добавите разделитель страниц на боковой панели (либо между разделами, либо между элементами), элементы управления навигацией по страницам не будут отображаться для продолжения разбивки по страницам через разделитель. Например, на следующей боковой панели:</p>
+<pre><code>website:
+  sidebar:
+    contents:
+      - section: "First Section"
+        contents:
+          - href: document1.qmd
+          - href: document2.qmd
+          - href: document3.qmd
+      - text: "---"
+      - section: "Second Section"
+        contents:
+          - href: document4.qmd
+          - href: document5.qmd
+          - href: document6.qmd</code></pre>
+<p>Когда пользователь дойдет до конца document3.qmd, он увидит предыдущую навигацию, чтобы вернуться к document2.qmd, но он не увидит следующую навигацию для перехода к документу 4. Такое поведение полезно, когда у вас есть разделы содержимого, которые естественным образом не располагаются друг за другом в последовательном порядке. Используйте разделитель, чтобы обозначить это на боковой панели горизонтальной линией и разбить разбивку на страницы.</p>
+</section>
+</section>
+<section id="кнопка-наверх" class="level2">
+<h2 class="anchored" data-anchor-id="кнопка-наверх">Кнопка наверх</h2>
+<p>Вы можете включить ссылку “Назад к началу” в нижней части документов на веб-сайте, используя <code>back-to-top-navigation</code> опцию. Например:</p>
+<pre><code>website:
+  back-to-top-navigation: true</code></pre>
+<p>Обратите внимание, что вы можете отключить постраничную навигацию назад к началу, указав&nbsp;<code>back-to-top-navigation: false</code>.</p>
+</section>
+<section id="нижний-колонтитул-страницы" class="level2">
+<h2 class="anchored" data-anchor-id="нижний-колонтитул-страницы">Нижний колонтитул страницы</h2>
+<p>Используйте <code>page-footer</code> опцию для создания общего нижнего колонтитула для всех страниц веб-сайта. Самый простой нижний колонтитул содержит текст, который будет располагаться по центру и отображаться более легким шрифтом:</p>
+<pre><code>website:
+  page-footer: "Copyright 2023, Eduard Soldatkin" </code></pre>
+<p>В качестве альтернативы вы можете настроить таргетинг на <code>left</code>, <code>right</code> и <code>center</code> области нижнего колонтитула по отдельности:</p>
+<pre><code>website:
+  page-footer: 
+    left: "Copyright 2021, Norah Jones" 
+    right: 
+      - icon: github
+        href: https://github.com/
+      - icon: twitter 
+        href: https://twitter.com/ </code></pre>
+<p>Примечание для <code>right</code> области нижнего колонтитула мы включили элементы навигации для GitHub и Twitter, а не текст. Вы можете включить элементы навигации в любую область нижнего колонтитула.</p>
+<p>Вы можете использовать опции <code>background</code>, <code>foreground</code> и <code>border</code> для дальнейшего управления внешним видом нижнего колонтитула. По умолчанию нижний колонтитул не имеет цвета фона и верхней границы. Чтобы устранить границу, вы должны сделать это:</p>
+<pre><code>website:
+  page-footer:
+    border: false</code></pre>
+<p>Чтобы использовать светлый фон (например, в тон панели навигации), вам следует сделать следующее:</p>
+<pre><code>website:
+  page-footer:
+    background: light</code></pre>
+<p>Если не указано иное, цвет (<code>foreground</code>), используемый для элементов, отображаемых в нижнем колонтитуле, будет определяться автоматически с использованием цвета, контрастирующего с фоном нижнего колонтитула.</p>
+</section>
+<section id="скрытие-навигации" class="level2">
+<h2 class="anchored" data-anchor-id="скрытие-навигации">Скрытие навигации</h2>
+<p>Для некоторых страниц (особенно с полностью настраиваемым макетом) вы можете полностью скрыть навигацию (<code>navbar</code>, <code>sidebar</code> или и то, и другое). В этом случае добавьте следующее в начало страницы:</p>
+<pre><code># Hides the sidebar on this page
+sidebar: false
+
+# Hides the navbar on this page
+navbar: false</code></pre>
+</section>
+<section id="режим-чтения" class="level2">
+<h2 class="anchored" data-anchor-id="режим-чтения">Режим чтения</h2>
+<p>Если вы хотите, чтобы пользователи могли скрывать боковую навигацию и оглавление и более сосредоточенно читать, вы можете включить эту функцию <code>reader-mode</code>. При включении <code>reader-mode</code> переключатель появится на панели навигации, если таковая имеется, или на боковой панели. При нажатии переключатель ‘свернет’ боковую панель и оглавление.</p>
+<p><img src="https://quarto.org/docs/websites/images/reader-mode.png" class="img-fluid"></p>
+<p>Чтобы включить <code>reader-mode</code>, используйте следующее в своем проекте:</p>
+<pre><code>website:
+  reader-mode: true</code></pre>
+</section>
+<section id="поиск-по-сайту" class="level2">
+<h2 class="anchored" data-anchor-id="поиск-по-сайту">Поиск по сайту</h2>
+<p>Вы можете добавить поиск по сайту, включив его <code>search: true</code> в свою <code>site-navbar</code> или <code>site-sidebar</code> конфигурацию. Например:</p>
+<pre><code>website:
+  sidebar:
+    style: "docked"
+    search: true
+    items:
+      - text: "Basics"
+        contents:
+          - index.qmd
+          - basics-jupyter.md
+        # etc</code></pre>
+</section>
+<section id="ссылки-на-github" class="level2">
+<h2 class="anchored" data-anchor-id="ссылки-на-github">Ссылки на GitHub</h2>
+<p>Вы можете добавлять различные ссылки (например, на редактирование страниц, сообщать о проблемах и т.д.) В репозиторий GitHub, где размещен исходный код вашего сайта. Для этого добавьте <code>repo-url</code> вместе с одним или несколькими действиями в <code>repo-actions</code>. Например:</p>
+<pre><code>website:
+  repo-url: https://github.com/quarto-dev/quarto-demo
+  repo-actions: [edit, issue]</code></pre>
+<p><img src="https://quarto.org/docs/websites/images/repo-actions.png" class="img-fluid" width="484"></p>
+<p>Существует несколько дополнительных опций, которые позволяют настроить поведение ссылок на репозитории:</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>repo-subdir</code></td>
+<td>Подкаталог репозитория, содержащий исходные файлы (по умолчанию используется корневой каталог).</td>
+</tr>
+<tr class="even">
+<td><code>repo-branch</code></td>
+<td>Ветка репозитория, содержащая исходные файлы (по умолчанию - <code>main</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>issue-url</code></td>
+<td>Укажите явный URL-адрес для действия ‘Сообщить о проблеме’.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="перенаправления" class="level2">
+<h2 class="anchored" data-anchor-id="перенаправления">Перенаправления</h2>
+<p>Если вы переименовываете или перемещаете страницу на своем сайте, вам может потребоваться создать перенаправления со старых URL-адресов, чтобы существующие ссылки не прерывались. Вы можете сделать это, добавив <code>aliases</code> со старых страниц на переименованные страницы.</p>
+<p>Допустим, вы переименовали <code>page.qmd</code> в <code>renamed-page.qmd</code>. Для создания перенаправления вам следует добавить следующую <code>aliases</code> запись в <code>renamed-page.qmd</code>:</p>
+<pre><code>---
+title: "Renamed Page"
+aliases:
+  - page.html
+---</code></pre>
+<p>Это также может быть полезно в ситуациях, когда вы реорганизуете контент на своем сайте в другую иерархию каталогов или разбиваете одну большую статью на более мелкие. В этом случае вы можете захотеть добавить хэш URL-адреса раздела, который вы взломали, на новую страницу. Например:</p>
+<pre><code>---
+title: "Learning More"
+aliases:
+  - overview.html#learning-more
+---</code></pre>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Совет</strong></p>
+<p>В зависимости от того, где вы развертываете свой сайт, могут быть доступны более мощные инструменты для определения перенаправлений на основе шаблонов. Например, Netlify <a href="https://docs.netlify.com/routing/redirects/"><code>_redirects</code></a> files или <a href="https://www.danielmorell.com/guides/htaccess-seo/redirects/introduction-to-redirects"><code>.htaccess</code></a> файлы. Найдите “перенаправления” в документации вашего веб-хостинга, чтобы узнать, доступен ли какой-либо из этих инструментов.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="страницы" class="level2">
+<h2 class="anchored" data-anchor-id="страницы">404 Страницы</h2>
+<p>Когда браузер не может найти запрошенную веб-страницу, он выдает <a href="https://en.wikipedia.org/wiki/HTTP_404">ошибку 404</a>, указывающую на то, что файл не может быть найден. 404 страницы по умолчанию в браузере могут быть довольно простыми, поэтому вы можете захотеть создать пользовательскую страницу с более дружественным сообщением и, возможно, указателями на то, как пользователи могут найти то, что они ищут.</p>
+<p>Большинство веб-платформ (например, Netlify, GitHub Pages и т.д.) Будут использовать файл с именем <code>404.html</code> в корневом каталоге вашего веб-сайта в качестве пользовательской страницы с ошибкой, если вы ее предоставите. Вы можете включить пользовательскую страницу 404 на веб-сайт Quarto, создав файл markdown с именем <code>404.qmd</code> в корневом каталоге вашего проекта. Например:</p>
+<pre><code>---
+title: Page Not Found
+---
+
+The page you requested cannot be found (perhaps it was moved or renamed).
+
+You may want to try searching to find the page's new location.</code></pre>
+<p>Обратите внимание, что вы можете использовать HTML наряду с markdown в вашем <code>404.qmd</code> файле, чтобы получить именно тот внешний вид и компоновку, которые вы хотите.</p>
+<p>Ваша страница 404 появится в Chrome вашего сайта (например, шрифты, css, макет, навигация и т.д.). Это сделано для того, чтобы пользователи не чувствовали, что они безвозвратно “ушли” с вашего сайта, когда получают сообщение об ошибке 404. Если вы не хотите такого поведения, то укажите <code>404.html</code> вместо <code>404.qmd</code>.</p>
+<p>Вот несколько примеров того, как различные популярные веб-сайты обрабатывают пользовательские страницы 404: <a href="https://blog.fluidui.com/top-404-error-page-examples/">https://blog.fluidui.com/top-404-error-page-examples /</a>.</p>
+<pre><code>website:
+  title: "My Site"
+  site-path: "/mysite/"</code></pre>
+<p>Обратите внимание, что если вы уже предоставляете <code>site-url</code> (который необходим для создания карт сайта и изображений предварительного просмотра&nbsp;<a href="#0">социальных метаданных</a>), то достаточно просто указать путь в <code>site-url</code>:</p>
+<pre><code>website:
+  title: "My Site"
+  site-url: "https://example.com/mysite/"</code></pre>
+<section id="пути-к-некорневым-сайтам" class="level4">
+<h4 class="anchored" data-anchor-id="пути-к-некорневым-сайтам">Пути к некорневым сайтам</h4>
+<p>Если ваш веб-сайт обслуживается из корневого каталога домена (например, <a href="https://example.com/" class="uri">https://example.com/</a>), то для создания пользовательской страницы 404 достаточно просто предоставить <code>404.qmd</code> файл, как описано выше.</p>
+<p>Однако, если ваш веб-сайт <strong>не</strong> обслуживается из корневого каталога домена, вам необходимо выполнить одну дополнительную настройку, чтобы убедиться, что ресурсы (например, CSS вашего сайта) правильно разрешены на 404 страницах.</p>
+<p>Например, если ваш сайт обслуживается из <a href="https://example.com/mysite/">https://example.com/mysite /</a>, то вам следует добавить следующее в <code>website</code> конфигурацию вашего проекта внутри <code>_quarto.yml</code>:</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="создание-блога" class="level1">
+<h1>3. Создание блога</h1>
+<hr>
+<section id="обзор-2" class="level2">
+<h2 class="anchored" data-anchor-id="обзор-2">Обзор</h2>
+<p>Веб-сайты Quarto включают интегрированную поддержку ведения блогов. Блоги состоят из набора сообщений вместе с навигационной страницей, на которой они перечислены в обратном хронологическом порядке. Блоги могут включать пользовательскую страницу “О компании”, публиковать RSS-канал и использовать самые разнообразные темы.</p>
+<p>Вы можете создавать веб-сайты, полностью состоящие из одного блога, веб-сайты с несколькими блогами, или вы можете добавить блог на веб-сайт, содержащий другой контент.</p>
+</section>
+<section id="краткое-начало" class="level2">
+<h2 class="anchored" data-anchor-id="краткое-начало">Краткое начало</h2>
+<p>Следуйте инструкциям Быстрого запуска выбранного вами инструмента, чтобы запустить простой блог. После ознакомления с основами читайте дальше, чтобы узнать о более продвинутых функциях блога.</p>
+<p>Вот краткое описание ключевых файлов, созданных в рамках проекта starter blog:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Файл</th>
+<th style="text-align: left;">Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>_quarto.yml</code></td>
+<td style="text-align: left;">Файл проекта Quarto.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>index.qmd</code></td>
+<td style="text-align: left;">Домашняя страница блога.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>about.qmd</code></td>
+<td style="text-align: left;">Страница о блоге.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>posts/</code></td>
+<td style="text-align: left;">Каталог, содержащий записи</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>posts/_metadata.yml</code></td>
+<td style="text-align: left;">Общие параметры для <code>posts</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>styles.css</code></td>
+<td style="text-align: left;">Пользовательский CSS для веб-сайта</td>
+</tr>
+</tbody>
+</table>
+<p>В следующих разделах мы подробнее рассмотрим различные компоненты проекта.</p>
+</section>
+<section id="домашняя-страница" class="level2">
+<h2 class="anchored" data-anchor-id="домашняя-страница">Домашняя страница</h2>
+<p>Домашняя страница - это <a href="https://quarto.org/docs/websites/website-listings.html">страница со списком</a> всех документов в <code>posts</code> каталоге:</p>
+<p><img src="https://quarto.org/docs/websites/images/myblog.png" class="img-fluid" width="556"></p>
+<p>Вот исходный код для домашней страницы:</p>
+<pre><code>---
+title: "myblog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+---</code></pre>
+<p>Когда вы размещаете новую запись, страница со списком автоматически обновляется, добавляя самую последнюю запись в начало списка.</p>
+<div class="callout callout-style-simple callout-caution">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Не рекомендуется использовать динамические даты (например, <code>today</code> или <code>last-modified</code>) в своих публикациях в блоге. Это приведет к тому, что порядок вашего блога и ленты будет меняться каждый раз при визуализации или модификации документа.</p>
+</div>
+</div>
+</div>
+<p>Смотрите статью о <a href="https://quarto.org/docs/websites/website-listings.html">страницах со списками</a>, чтобы узнать больше о настройке списков, в том числе об использовании макета сетки, а не макета по умолчанию, показанного выше.</p>
+<section id="категории" class="level3">
+<h3 class="anchored" data-anchor-id="категории">Категории</h3>
+<p>Страница со списком настроена так, чтобы включать категории, которые отображаются на правом поле страницы:</p>
+<pre><code>---
+title: "myblog"
+listing:
+  # (additional metadata excluded for brevity)
+  categories: true
+---</code></pre>
+<p>Категории считываются с первой страницы документов, включенных в список.&nbsp; Например, вот пример метаданных публикации, которые включают категории:</p>
+<pre><code>---
+title: "Post With Code"
+description: "Post description"
+author: "Fizz McPhee"
+date: "5/22/2021"
+categories:
+  - news
+  - code
+  - analysis
+---</code></pre>
+<p>Смотрите статью о <a href="#0">категориях</a>, чтобы узнать больше.</p>
+</section>
+</section>
+<section id="о-странице-about" class="level2">
+<h2 class="anchored" data-anchor-id="о-странице-about">О странице (About)</h2>
+<p><code>about.qmd</code> Документ содержит дополнительную информацию о блоге и его авторе. Например:</p>
+<p><img src="https://quarto.org/docs/websites/images/about-jolla.png" class="img-fluid" width="551"></p>
+<p>Вот как может выглядеть исходный код <code>about.qmd</code>:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"About"</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> profile.jpg</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">about</span><span class="kw">:</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">template</span><span class="kw">:</span><span class="at"> jolla</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> twitter</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">text</span><span class="kw">:</span><span class="at"> Twitter</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://twitter.com</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">    # (additional links excluded for brevity)</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co">## About this blog</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="at">This is the contents of the about page for my blog.</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Смотрите статью о&nbsp;<a href="https://quarto.org/docs/websites/website-about.html">о страницах</a>, чтобы узнать о различных доступных параметрах настройки вывода страницы.</p>
+</section>
+<section id="каталог-записей" class="level2">
+<h2 class="anchored" data-anchor-id="каталог-записей">Каталог записей</h2>
+<p>Записи, составляющие содержимое блога, расположены в <code>posts</code> каталоге.</p>
+<p>Добавьте новую запись в свой блог, создав в нем подкаталог <code>posts</code> и добавив <code>index.qmd</code> файл в этот каталог. Этот <code>qmd</code> файл является новой записью в блоге, и когда вы ее отобразите, домашняя страница блога автоматически обновится, чтобы включить самую новую запись в начало списка.</p>
+<section id="черновики" class="level3">
+<h3 class="anchored" data-anchor-id="черновики">Черновики</h3>
+<p>Добавьте <code>draft: true</code> в параметры документа, если вы хотите, чтобы запись не была включена в список, карту сайта или поиск по сайту. Например:</p>
+<pre><code>---
+title: "My Post"
+description: "Post description"
+author: "Fizz McPhee"
+date: "5/22/2021"
+draft: true
+---</code></pre>
+<p>Чтобы опубликовать запись, когда она будет завершена, просто удалите <code>draft: true</code> из параметров документа, а затем отобразите ее.</p>
+</section>
+<section id="последнее-обновление" class="level3">
+<h3 class="anchored" data-anchor-id="последнее-обновление">Последнее обновление</h3>
+<p>Чтобы указать дату последнего изменения, но сохранить первоначальную дату публикации, вы можете добавить <code>date-modified</code> поле в параметры документа. Например:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Post"</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"Post description"</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Fizz McPhee"</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"5/22/2021"</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">date-modified</span><span class="kw">:</span><span class="at"> </span><span class="st">"5/23/2021"</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="замораживание-сообщений" class="level3">
+<h3 class="anchored" data-anchor-id="замораживание-сообщений">Замораживание сообщений</h3>
+<p>Записи в блогах, содержащие исполняемый код, часто сталкиваются с проблемой, заключающейся в том, что записи, созданные в прошлом году, не могут быть отображены в этом году (например, из-за изменения пакетов, используемых в публикации). Аналогичная проблема также может возникнуть, когда в блоге участвуют несколько участников и не у всех есть подходящее программное обеспечение (или нужные версии) для отображения всех постов. Наконец, для отображения сообщений, содержащих вычисления, часто может потребоваться некоторое время, и вы не хотите, чтобы совокупное время, необходимое для отображения сайта, становилось слишком большим.</p>
+<p>Решение этих проблем заключается в <em>замораживании</em> выходных данных вычислительных записей в блоге. При рендеринге публикации с помощью <code>freeze: true</code> сохраняются выходные данные markdown из базового движка (например, Jupyter или Knitr). Когда визуализируется весь сайт, эти вычисления не выполняются повторно, а скорее считываются из ранее замороженных результатов.</p>
+<p>Статья с <code>freeze: true</code> отображается только тогда, когда вы явно повторно отображаете ее. Указав этот параметр для записей в блоге, вы можете гарантировать, что записи, отображаемые сейчас, всегда будут хорошо отображаться повторно на остальной части сайта, даже если программное обеспечение, необходимое для их первоначального отображения, недоступно.</p>
+<p>В блог по умолчанию мы включаем файл (<code>_metadata.yml</code>), который устанавливает <a href="https://quarto.org/docs/projects/quarto-projects.html#shared-metadata">общие метаданные</a> для всех документов в <code>posts</code> каталоге. В этом файле мы указываем, что мы хотим <code>freeze: true</code> установить по умолчанию для всех записей:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># options apply to all posts in this folder</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># freeze computational output</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">freeze</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Смотрите статью о&nbsp;<a href="https://quarto.org/docs/projects/code-execution.html#freeze"><code>freeze</code></a>&nbsp;опции, чтобы узнать больше о замораживании результатов вычислений на веб-сайтах.</p>
+</section>
+</section>
+<section id="rss-канал" class="level2">
+<h2 class="anchored" data-anchor-id="rss-канал">RSS-канал</h2>
+<p>Блоги обычно включают RSS-канал, который позволяет легко распространять их контент среди читателей и на других веб-сайтах. Вы можете включить RSS для блога, выполнив следующие действия:</p>
+<ol type="1">
+<li>В <code>quarto.yml</code> файле добавьте <code>site-url</code> и <code>description</code> к <code>website</code> ключу (без установки этих параметров в файле проекта Quarto не сможет сгенерировать ленту). Например:</li>
+</ol>
+<div class="sourceCode" id="cb36"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"myblog"</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">site-url</span><span class="kw">:</span><span class="at"> https://www.myblogexample.io</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"A great sample blog"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>На домашней странице вашего блога&nbsp;<code>index.qmd</code>&nbsp;добавьте&nbsp;<code>feed: true</code>&nbsp;опцию в список.&nbsp;Например:</li>
+</ol>
+<div class="sourceCode" id="cb37"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"myblog"</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">listing</span><span class="kw">:</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> posts</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort</span><span class="kw">:</span><span class="at"> </span><span class="st">"date desc"</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">feed</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Теперь при рендеринге вашего сайта также будет генерироваться RSS-канал.&nbsp; Чтобы узнать больше, смотрите статью о <a href="#0">RSS-каналах</a>.</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Включение RSS-ссылки на панель навигации</strong></p>
+<p>Вы можете добавить RSS-ссылку на панель навигации, включив следующее в <code>_quarto.yml</code> файл проекта. Например:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"myblog"</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">site-url</span><span class="kw">:</span><span class="at"> https://www.myblogexample.io</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">description</span><span class="kw">:</span><span class="at"> </span><span class="st">"A great sample blog"</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">right</span><span class="kw">:</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> rss</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> index.xml</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<section id="каналы-категорий" class="level3">
+<h3 class="anchored" data-anchor-id="каналы-категорий">Каналы категорий</h3>
+<p>Вы также можете создавать RSS-каналы для определенных категорий в своем блоге. Например, чтобы создать каналы для категорий <code>news</code> и <code>posts</code> в блоге, вы могли бы написать следующее:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"myblog"</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">listing</span><span class="kw">:</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> posts</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sort</span><span class="kw">:</span><span class="at"> </span><span class="st">"date desc"</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> default</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">feed</span><span class="kw">:</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">categories</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">news</span><span class="kw">,</span><span class="at"> posts</span><span class="kw">]</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Это создаст&nbsp;<code>index.xml</code>&nbsp;файл с RSS-каналом для листинга, а также&nbsp;<code>index-news.xml</code>&nbsp;и&nbsp;<code>index-posts.xml</code>&nbsp;файл с RSS-каналами для соответствующих категорий.</p>
+</section>
+</section>
+<section id="публикация" class="level2">
+<h2 class="anchored" data-anchor-id="публикация">Публикация</h2>
+<p>Существует множество способов публикации блогов в формате Quarto. Содержимое блога по умолчанию записывается в <code>_site</code> подкаталог. Публикация - это просто копирование этого каталога на веб-сервер или веб-хостинг.</p>
+<p>В статье о <a href="https://quarto.org/docs/publishing/">веб-сайтах для публикации</a> более подробно описывается, как публиковать в следующих сервисах:</p>
+<ul>
+<li><p><a href="https://quarto.org/docs/publishing/quarto-pub.html">Quarto Pub</a></p></li>
+<li><p><a href="https://quarto.org/docs/publishing/github-pages.html">Страницы на GitHub</a></p></li>
+<li><p><a href="https://quarto.org/docs/publishing/netlify.html">Netlify</a></p></li>
+<li><p><a href="https://quarto.org/docs/publishing/rstudio-connect.html">Posit Connect</a></p></li>
+<li><p><a href="https://quarto.org/docs/publishing/other.html#google-firebase">Firebase</a></p></li>
+<li><p><a href="https://quarto.org/docs/publishing/other.html#site44">Site44</a></p></li>
+<li><p><a href="https://quarto.org/docs/publishing/other.html#amazon-s3">Amazon S3</a></p></li>
+</ul>
+</section>
+<section id="подписки" class="level2">
+<h2 class="anchored" data-anchor-id="подписки">Подписки</h2>
+<p>Возможно, вы захотите разрешить читателям вашего блога подписываться на обновления по электронной почте. Вы можете использовать стороннюю почтовую службу для управления этими электронными письмами и их отправки.</p>
+<p>Сторонние почтовые сервисы, как правило, принимают ваш RSS-канал в качестве входных данных (например, <code>https://www.myblogexample.io/index.xml</code>) и предоставляют HTML-код для виджета подписки, который вы можете разместить в своем блоге. Хорошим местом для размещения этого виджета часто является правое поле вашего блога.</p>
+<p>Вот шаги, необходимые для добавления виджета подписки:</p>
+<ol type="1">
+<li>Используйте возможности своего почтового сервиса для создания HTML-кода для виджета подписки. MailChimp, например, предоставляет подобный HTML-код для виджета минимальной подписки.</li>
+</ol>
+<div class="sourceCode" id="cb40"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"font-weight: 600;"</span><span class="dt">&gt;</span>Subscribe<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Begin Mailchimp Signup Form --&gt;</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> href</span><span class="op">=</span><span class="st">"http://cdn-images.mailchimp.com/embedcode/slim-10_7_dtp.css"</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text/css"</span><span class="dt">&gt;</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">style</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text/css"</span><span class="dt">&gt;</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">#mc_embed_signup</span>{<span class="kw">background</span>:<span class="cn">#fff</span><span class="op">;</span> <span class="kw">clear</span>:<span class="dv">left</span><span class="op">;</span> <span class="kw">font</span>:<span class="dv">14</span><span class="dt">px</span> Helvetica<span class="op">,</span>Arial<span class="op">,</span><span class="dv">sans-serif</span><span class="op">;</span>  <span class="kw">width</span>:<span class="dv">170</span><span class="dt">px</span><span class="op">;</span>}</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="co">       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */</span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="pp">#mc-embedded-subscribe-form</span>{<span class="kw">margin-left</span>:<span class="dv">-5</span><span class="dt">px</span><span class="op">;</span>}</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">style</span><span class="dt">&gt;</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"mc_embed_signup"</span><span class="dt">&gt;</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">form</span><span class="ot"> action</span><span class="op">=</span><span class="st">"</span><span class="er">&lt;</span><span class="st">site_url&gt;"</span><span class="ot"> method</span><span class="op">=</span><span class="st">"post"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"mc-embedded-subscribe-form"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"mc-embedded-subscribe-form"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"validate"</span><span class="ot"> target</span><span class="op">=</span><span class="st">"_blank"</span><span class="ot"> novalidate</span><span class="dt">&gt;</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">"mc_embed_signup_scroll"</span><span class="dt">&gt;</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"email"</span><span class="ot"> value</span><span class="op">=</span><span class="st">""</span><span class="ot"> name</span><span class="op">=</span><span class="st">"EMAIL"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"email"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"mce-EMAIL"</span><span class="ot"> placeholder</span><span class="op">=</span><span class="st">"email address"</span><span class="ot"> required</span><span class="dt">&gt;</span></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--&gt;</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> style</span><span class="op">=</span><span class="st">"position: absolute; left: -5000px;"</span><span class="ot"> aria-hidden</span><span class="op">=</span><span class="st">"true"</span><span class="dt">&gt;&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"b_f718424fc5df77c22533bdaa6_a3c37fb57b"</span><span class="ot"> tabindex</span><span class="op">=</span><span class="st">"-1"</span><span class="ot"> value</span><span class="op">=</span><span class="st">""</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"optionalParent"</span><span class="dt">&gt;</span></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"clear foot"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"margin-top: 10px;"</span><span class="dt">&gt;</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> type</span><span class="op">=</span><span class="st">"submit"</span><span class="ot"> value</span><span class="op">=</span><span class="st">"Subscribe"</span><span class="ot"> name</span><span class="op">=</span><span class="st">"subscribe"</span><span class="ot"> id</span><span class="op">=</span><span class="st">"mc-embedded-subscribe"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"button"</span><span class="dt">&gt;</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&lt;</span><span class="kw">p</span><span class="ot"> class</span><span class="op">=</span><span class="st">"brandingLogo"</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">form</span><span class="dt">&gt;</span></span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--End mc_embed_signup--&gt;</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-caution">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Предупреждение</p>
+<p>Приведенный выше HTML-виджет не будет работать в вашем блоге, поскольку HTML-код подписки должен содержать значение, специфичное для вашего блога. Ознакомьтесь с инструкциями поставщика услуг электронной почты по созданию виджета подписки.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Создайте файл <code>subscribe.html</code> в корневом каталоге вашего проекта.</li>
+<li>Вставьте HTML для вашего виджета подписки в <code>subscribe.html</code> и сохраните файл.</li>
+<li>Добавить <code>subscribe.html</code> в <code>margin-header</code> свой <code>_quarto.yml</code> файл:</li>
+</ol>
+<div class="sourceCode" id="cb41"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">  # (additional metadata excluded for brevity)</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">margin-header</span><span class="kw">:</span><span class="at"> subscribe.html</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Результат выглядит примерно так:</p>
+<p><img src="https://quarto.org/docs/websites/images/myblog-subscribe.png" class="img-fluid" width="514"></p>
+</section>
+</section>
+<section id="поиск-по-веб-сайту" class="level1">
+<h1>4 .Поиск по веб-сайту</h1>
+<section id="обзор-3" class="level2">
+<h2 class="anchored" data-anchor-id="обзор-3">Обзор</h2>
+<p>Quarto включает поддержку полнотекстового поиска веб-сайтов и книг. По умолчанию Quarto автоматически проиндексирует содержимое вашего сайта и сделает его доступным для поиска с помощью локального индекса. Вы также можете настроить поиск по Quarto для использования размещенного индекса <a href="https://www.algolia.com/products/search-and-discovery/hosted-search-api/">Algolia</a>.</p>
+</section>
+<section id="внешний-вид-поиска" class="level2">
+<h2 class="anchored" data-anchor-id="внешний-вид-поиска">Внешний вид поиска</h2>
+<p>Поиск по умолчанию включен для веб-сайтов и книг. Если на сайте есть панель навигации, пользовательский интерфейс поиска будет отображаться на панели навигации, в противном случае он будет отображаться на боковой панели. Вы можете управлять местоположением поиска с помощью следующих опций:</p>
+<table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 92%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>location</code></td>
+<td><code>navbar</code> или <code>sidebar</code> (по умолчанию используется <code>navbar</code>, если таковой присутствует на странице).</td>
+</tr>
+<tr class="even">
+<td><code>type</code></td>
+<td><code>overlay</code> или <code>textbox</code> (<code>overlay</code> предоставляет кнопку, которая открывает пользовательский интерфейс поиска, <code>textbox</code> выполняет встроенный поиск).</td>
+</tr>
+</tbody>
+</table>
+<p>Например:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">location</span><span class="kw">:</span><span class="at"> navbar</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> overlay</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Обратите внимание, что приведенный выше пример отражает поведение по умолчанию, поэтому его не нужно указывать явно. Обратите также внимание, что поиск по веб-сайтам включен по умолчанию (вы можете отключить его с помощью <code>search: false</code>).</p>
+<p><code>overlay</code>Опция отображает пользовательский интерфейс поиска следующим образом:</p>
+<p><img src="https://quarto.org/docs/websites/images/navbar-overlay.png" class="img-fluid" width="421"></p>
+<p><code>textbox</code>Опция отображает поиск следующим образом:</p>
+<p><img src="https://quarto.org/docs/websites/images/navbar-textbox.png" class="img-fluid" width="421"></p>
+</section>
+<section id="настройка-результатов" class="level2">
+<h2 class="anchored" data-anchor-id="настройка-результатов">Настройка результатов</h2>
+<p>Вы можете использовать следующие <code>search</code> параметры для настройки отображения результатов поиска:</p>
+<table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 87%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th></th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>limit</code></td>
+<td>Количество результатов, отображаемых в результатах поиска. По умолчанию равно 20.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>collapse-after</code></td>
+<td><p>Количество разделов, соответствующих документу, которое нужно отобразить,</p>
+<p>прежде чем скрывать дополнительные разделы за ссылкой ‘больше совпадений’.</p>
+<p>По умолчанию равно 2.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://quarto.org/docs/websites/images/collapse-after.png" class="img-fluid figure-img"></p>
+<figcaption>Часть результата поиска, которая показывает совпадающий результат для поискового запроса, а внизу написано “еще 3 совпадения в этом документе”</figcaption>
+</figure>
+</div></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>copy-button</code></td>
+<td><p>Если значение true, текстовое поле поиска будет содержать небольшой значок,</p>
+<p>при нажатии на который URL-адрес результатов поиска будет скопирован в буфер</p>
+<p>обмена (это полезно, если пользователи хотят поделиться результатами</p>
+<p>определенного поиска). По умолчанию используется значение false.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://quarto.org/docs/websites/images/copy-button.png" class="img-fluid figure-img"></p>
+<figcaption>окно поиска с кликабельным значком буфера обмена справа, при нажатии на который будет скопирован результирующий URL.</figcaption>
+</figure>
+</div></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="настройка-результатов-1" class="level2">
+<h2 class="anchored" data-anchor-id="настройка-результатов-1">Настройка результатов</h2>
+<p>Вы можете использовать следующие <code>search</code> параметры для настройки отображения результатов поиска:</p>
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 91%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>limit</code></td>
+<td><p>Количество результатов, отображаемых в результатах поиска. По умолчанию</p>
+<p>равно 20.</p></td>
+</tr>
+<tr class="even">
+<td><code>collapse-after</code></td>
+<td><p>Количество разделов, соответствующих документу, которое нужно</p>
+<p>отобразить, прежде чем скрывать дополнительные разделы за ссылкой</p>
+<p>‘больше совпадений’. По умолчанию равно 2.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://quarto.org/docs/websites/images/collapse-after.png" class="img-fluid figure-img"></p>
+<figcaption>Часть результата поиска, которая показывает совпадающий результат для поискового запроса, а внизу написано “еще 3 совпадения в этом документе”</figcaption>
+</figure>
+</div></td>
+</tr>
+<tr class="odd">
+<td><code>copy-button</code></td>
+<td><p>Если значение true, текстовое поле поиска будет содержать небольшой</p>
+<p>значок, при нажатии на который URL-адрес результатов поиска будет</p>
+<p>скопирован в буфер обмена (это полезно, если пользователи хотят</p>
+<p>поделиться результатами определенного поиска). По умолчанию используется значение false.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://quarto.org/docs/websites/images/copy-button.png" class="img-fluid figure-img"></p>
+<figcaption>окно поиска с кликабельным значком буфера обмена справа, при нажатии на который будет скопирован результирующий URL.</figcaption>
+</figure>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="использование-algolia" class="level2">
+<h2 class="anchored" data-anchor-id="использование-algolia">Использование Algolia</h2>
+<p>В дополнение к встроенной функции поиска, веб-сайты Quarto также могут быть настроены на использование внешнего поискового индекса Algolia. При рендеринге веб-сайта Quarto создаст файл JSON (<code>search.json</code> в выходном каталоге сайта), который можно использовать для обновления индекса Algolia. Подробнее о создании индексов с помощью Algolia см. в разделе <a href="https://www.algolia.com/doc/guides/sending-and-managing-data/send-and-update-your-data/">Отправка и обновление ваших данных</a> с помощью Algolia.</p>
+<section id="базовая-конфигурация" class="level3">
+<h3 class="anchored" data-anchor-id="базовая-конфигурация">Базовая конфигурация</h3>
+<p>Для того, чтобы Quarto подключился к вашему индексу Algolia, вам необходимо предоставить основную информацию о подключении в вашем файле проекта Quarto. Вы можете найти эту информацию о подключении для вашего индекса Algolia на панели мониторинга в разделе “Ключи <a href="https://www.algolia.com/api-keys">API</a>”. Требуется следующая основная информация о подключении:</p>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>index-name</code></td>
+<td>Название индекса, которое будет использоваться при выполнении поиска.</td>
+</tr>
+<tr class="even">
+<td><code>application-id</code></td>
+<td>Уникальный идентификатор, используемый Algolia для идентификации вашего приложения.</td>
+</tr>
+<tr class="odd">
+<td><code>search-only-api-key</code></td>
+<td>API-ключ только для поиска, используемый для подключения к Algolia.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Важно</strong></p>
+<p>Обязательно используйте ключ API “Только для <strong>поиска</strong>”, который предоставляет доступ к вашему индексу только для чтения и безопасен для включения в файлы проекта. Никогда не используйте свой ключ API администратора в документе или проекте Quarto.</p>
+</div>
+</div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 85%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>show-logo</code></td>
+<td>Отображает логотип ‘search by Algolia’ в нижнем колонтитуле результатов поиска.</td>
+</tr>
+</tbody>
+</table>
+<p>Например:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">search</span><span class="kw">:</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">algolia</span><span class="kw">:</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">index-name</span><span class="kw">:</span><span class="at"> &lt;my-index-name&gt;</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">application-id</span><span class="kw">:</span><span class="at"> &lt;my-application-id&gt;</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">search-only-api-key</span><span class="kw">:</span><span class="at"> &lt;my-search-only-api-key&gt;</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="пользовательская-схема-индекса" class="level3">
+<h3 class="anchored" data-anchor-id="пользовательская-схема-индекса">Пользовательская схема индекса</h3>
+<p>Если вы просто используете <code>search.json</code> файл, созданный Quarto, в качестве индекса Algolia, приведенная выше информация о конфигурации - это все, что требуется для настройки поиска с помощью Algolia.</p>
+<p>Однако, если вы создаете индекс каким-либо другим способом, вам может потребоваться предоставить дополнительную информацию, чтобы указать, какие поля Quarto следует использовать при поиске. Вы делаете это, добавляя <code>index-fields</code> ключ под <code>algolia</code>, который указывает названия определенных полей в вашем индексе.</p>
+<table class="table">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 95%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>href</code></td>
+<td><p>Поле, используемое для чтения URL-адреса этой записи индекса. Пользователь перейдет по этому URL-адресу, когда выберет соответствующий результат поиска. Обратите внимание, что Quarto группирует результаты по URL (не включая привязку при группировке).</p>
+<p>Это поле обязательно для заполнения (либо как существующее поле в вашем индексе, либо с отображенным именем поля).</p></td>
+</tr>
+<tr class="even">
+<td><code>title</code></td>
+<td><p>Поле, используемое для чтения заголовка индексной записи.</p>
+<p>Это поле обязательно для заполнения (либо как существующее поле в вашем индексе, либо с отображенным именем поля).</p></td>
+</tr>
+<tr class="odd">
+<td><code>text</code></td>
+<td><p>Поле, используемое для чтения текста индексной записи.</p>
+<p>Это поле обязательно для заполнения (либо как существующее поле в вашем индексе, либо с отображенным именем поля).</p></td>
+</tr>
+<tr class="even">
+<td><code>section</code></td>
+<td><p>Поле, используемое для чтения раздела индексной записи. Quarto группирует результаты по URL и использует информацию о разделе (если таковая имеется) для отображения соответствующих подразделов одного и того же документа.</p>
+<p>Это поле является необязательным.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Любое из вышеперечисленных действий может быть указано в вашем файле проекта Quarto. Например:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">search</span><span class="kw">:</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">algolia</span><span class="kw">:</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">index-name</span><span class="kw">:</span><span class="at"> &lt;my-index-name&gt;</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">application-id</span><span class="kw">:</span><span class="at"> &lt;my-application-id&gt;</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">search-only-api-key</span><span class="kw">:</span><span class="at"> &lt;my-search-only-api-key&gt;</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">index-fields</span><span class="kw">:</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> url</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">section</span><span class="kw">:</span><span class="at"> sec</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">text</span><span class="kw">:</span><span class="at"> body</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="algolia-insights" class="level3">
+<h3 class="anchored" data-anchor-id="algolia-insights">Algolia Insights</h3>
+<p>По умолчанию Algolia предоставляет ряд аналитических данных, основанных на производительности вашего поиска в Algolia. Кроме того, может оказаться полезным более подробное отслеживание результатов, которые просматриваются и на которые нажимаются. Вы можете включить отслеживание кликов и конверсий с помощью Algolia, установив для <code>analytics-events</code> значение true:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">search</span><span class="kw">:</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">algolia</span><span class="kw">:</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">index-name</span><span class="kw">:</span><span class="at"> &lt;my-index-name&gt;</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">application-id</span><span class="kw">:</span><span class="at"> &lt;my-application-id&gt;</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">search-only-api-key</span><span class="kw">:</span><span class="at"> &lt;my-search-only-api-key&gt;</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">analytics-events</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Вы можете подтвердить правильность отправки событий в Algolia с помощью <a href="https://www.algolia.com/events/debugger">отладчика событий</a>. Обратите внимание, что клик и конверсии используем файлы cookie, чтобы поддерживать анонимный идентификатор пользователя—если <a href="https://quarto.org/docs/websites/website-tools.html#cookie-consent">печенье согласие</a> включена, поиск по событиям, будет активна, только если печенье согласие не было дано.</p>
+</section>
+<section id="расширенная-настройка" class="level3">
+<h3 class="anchored" data-anchor-id="расширенная-настройка">Расширенная настройка</h3>
+<p>В дополнение к приведенной выше конфигурации вы также можете передавать специальные параметры Algolia при выполнении поиска. Например, вы можете захотеть ограничить результаты определенным аспектом или набором тегов. Чтобы указать параметры, добавьте <code>params</code> ключ в свой <code>algolia</code> yaml и укажите параметры. Для получения информации о доступных параметрах см. в разделе <a href="https://www.algolia.com/doc/api-reference/search-api-parameters/">Параметры API</a>поиска Algolia.</p>
+<p>Например:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">search</span><span class="kw">:</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">algolia</span><span class="kw">:</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">index-name</span><span class="kw">:</span><span class="at"> &lt;my-index-name&gt;</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">application-id</span><span class="kw">:</span><span class="at"> &lt;my-application-id&gt;</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">search-only-api-key</span><span class="kw">:</span><span class="at"> &lt;my-search-only-api-key&gt;</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">index-fields</span><span class="kw">:</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> url</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">section</span><span class="kw">:</span><span class="at"> sec</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">text</span><span class="kw">:</span><span class="at"> body</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">tagFilters</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'tag1'</span><span class="kw">,</span><span class="st">'tag2'</span><span class="kw">]</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="отключение-поиска" class="level2">
+<h2 class="anchored" data-anchor-id="отключение-поиска">Отключение поиска</h2>
+<p>Вы можете отключить поиск по отдельному документу, добавив <code>search: false</code> к документу метаданные. Например:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Если вы хотите отключить поддержку поиска для всего веб-сайта, вы можете сделать это, включив в свой&nbsp;<code>_quarto.yml</code>&nbsp;файл следующее:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">search</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="инструменты-для-веб-сайта" class="level1">
+<h1>5. Инструменты для веб-сайта</h1>
+<section id="верхние-и-нижние-колонтитулы" class="level2">
+<h2 class="anchored" data-anchor-id="верхние-и-нижние-колонтитулы">Верхние и нижние колонтитулы</h2>
+<p>Вы можете предоставить стандартные верхние и нижние колонтитулы для страниц вашего сайта. Они могут применяться к основному тексту документа или к боковой панели. Доступные опции включают:</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 82%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ценность</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>body-header</code></td>
+<td>Уценка для вставки в начале текста каждой страницы (под заголовком и блоком автора).</td>
+</tr>
+<tr class="even">
+<td><code>body-footer</code></td>
+<td>Уценка для вставки под текстом каждой страницы.</td>
+</tr>
+<tr class="odd">
+<td><code>margin-header</code></td>
+<td>Уценка для вставки содержимого над правым полем (т.е. оглавления).</td>
+</tr>
+<tr class="even">
+<td><code>margin-footer</code></td>
+<td>Уценка для вставки содержимого на правом поле.</td>
+</tr>
+</tbody>
+</table>
+<p>Например (включены в _quarto.yml) :</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">body-header</span><span class="kw">: </span><span class="ch">|</span><span class="at"> </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  This page brought to you by &lt;https://example.com&gt;</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">margin-header</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  ![Logo image](/img/logo.png)</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Обратите внимание, что ссылки на рисунки должны начинаться с&nbsp;<code>/</code>, чтобы работать на каждом уровне веб-сайта.</p>
+</section>
+<section id="социальные-метаданные" class="level2">
+<h2 class="anchored" data-anchor-id="социальные-метаданные">Социальные метаданные</h2>
+<p>Вы можете улучшить свой веб-сайт и публикуемый на нем контент, включив дополнительные типы метаданных, в том числе:</p>
+<ul>
+<li><p>Значок</p></li>
+<li><p>Карточки Twitter</p></li>
+<li><p>Открыть график</p></li>
+</ul>
+<p>Одна важная вещь, которую следует отметить при использовании инструментов для веб-сайтов, заключается в том, что, хотя эти инструменты добавляются на веб-сайты в <code>website</code> ключе, в книге вы должны включать те же опции в <code>book</code> ключе. Например, на веб-сайте вы должны включить значок и карточку twitter следующим образом:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">favicon</span><span class="kw">:</span><span class="at"> logo.png</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">twitter-card</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">site-url</span><span class="kw">:</span><span class="at"> https://example.com</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>В книге вместо этого вы бы использовали&nbsp;<code>book</code>&nbsp;ключ:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">book</span><span class="kw">:</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">favicon</span><span class="kw">:</span><span class="at"> logo.png</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">twitter-card</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">site-url</span><span class="kw">:</span><span class="at"> https://example.com</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Читая документацию ниже, не забывайте заменять <code>book</code> на <code>website</code>, если вы являетесь автором книги.</p>
+<section id="значок" class="level3">
+<h3 class="anchored" data-anchor-id="значок">Значок</h3>
+<p>Значок значка для вашего сайта предоставляет значок для вкладок браузера и других сайтов, которые ссылаются на ваш. Используйте <code>favicon</code> опцию, чтобы указать путь к изображению значка. Например:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">favicon</span><span class="kw">:</span><span class="at"> logo.png</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="карточки-twitter" class="level3">
+<h3 class="anchored" data-anchor-id="карточки-twitter">Карточки Twitter</h3>
+<p><a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards">Карточки Twitter</a> обеспечивают улучшенный внешний вид, когда кто-то ссылается на ваш сайт в Twitter. Когда ссылка на ваш сайт включена в твит, Twitter автоматически сканирует ваш сайт и извлекает любые метаданные Twitter Card. Чтобы включить автоматическую генерацию метаданных Twitter Card для вашего сайта, вы можете добавить следующее в свой <code>_quarto.yml</code> файл конфигурации:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">twitter-card</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>В этом случае Quarto автоматически сгенерирует заголовок, описание и изображение для предварительного просмотра содержимого. Дополнительные сведения о том, как Quarto находит изображения для предварительного просмотра, см. в разделе <a href="https://quarto.org/docs/websites/website-tools.html#preview-images">Предварительный просмотр изображений</a>.</p>
+<p>Вы также можете предоставить дополнительные метаданные, которые будут использоваться при создании карточки Twitter, в том числе:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Клавиша</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title</code></td>
+<td>Заголовок страницы. Quarto автоматически использует <code>title</code> метаданные из метаданных страницы. При желании вы можете переопределить это только для карточки Twitter, включив a <code>title</code> в <code>twitter-card</code> метаданные.</td>
+</tr>
+<tr class="even">
+<td><code>description</code></td>
+<td>Краткое описание содержимого. Quarto автоматически использует <code>description</code> метаданные из метаданных страницы. При желании вы можете переопределить это только для карточки Twitter, включив a <code>description</code> в <code>twitter-card</code> метаданные.</td>
+</tr>
+<tr class="odd">
+<td><code>image</code></td>
+<td><p>Путь к изображению предварительного просмотра для этого контента. По умолчанию Quarto будет использовать <code>image</code> значение из метаданных документа. Если вы предоставляете изображение, вы также можете при необходимости предоставить <code>image-width</code> и <code>image-height</code> для улучшения внешнего вида вашей карточки в Twitter.</p>
+<p>Если <code>image</code> этот параметр не указан, Quarto автоматически попытается найти изображение для предварительного просмотра. Для получения дополнительной информации см. раздел <a href="https://quarto.org/docs/websites/website-tools.html#preview-images">Предварительный просмотр изображений</a>.</p></td>
+</tr>
+<tr class="even">
+<td><code>card-style</code></td>
+<td>Либо<code>summary</code>, либо <code>summary_large_image</code>. Если это не указано, лучший стиль будет выбран автоматически на основе других метаданных. Вы можете узнать больше о стилях открыток Twitter <a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards">здесь</a>.</td>
+</tr>
+<tr class="odd">
+<td><code>creator</code></td>
+<td><code>@username</code> создателя контента. Обратите внимание, что строки со специальными символами, такими как <code>@</code>, должны заключаться в кавычки в yaml.</td>
+</tr>
+<tr class="even">
+<td><code>site</code></td>
+<td><code>@username</code> о веб-сайте. Обратите внимание, что строки со специальными символами, такими как <code>@</code>, должны заключаться в кавычки в yaml.</td>
+</tr>
+</tbody>
+</table>
+<p>Вот более полный пример указания метаданных Twitter Card в <code>quarto.yml</code> файле:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">twitter-card</span><span class="kw">:</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">creator</span><span class="kw">:</span><span class="at"> </span><span class="st">"@dragonstyle"</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">site</span><span class="kw">:</span><span class="at"> </span><span class="st">"@rstudio"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Quarto автоматически объединит глобальные метаданные, найденные в <code>website: twitter-card</code> ключе, с любыми метаданными, предоставленными в самом документе в <code>twitter-card</code> ключе. Это полезно, когда вам нужно указать сочетание глобальных параметров (например, <code>site</code>) с параметрами для каждого документа, такими как <code>title</code> или <code>image</code>.</p>
+</section>
+<section id="открыть-график" class="level3">
+<h3 class="anchored" data-anchor-id="открыть-график">Открыть график</h3>
+<p><a href="http://ogp.me/">Open Graph protocol</a> - это спецификация, которая обеспечивает более широкий обмен ссылками на статьи в Интернете. Это улучшит предварительный просмотр вашего контента, когда ссылка на него будет вставлена в такие приложения, как Slack, Discord, Facebook, Linkedin и другие. Чтобы включить автоматическую генерацию метаданных Open Graph для вашего контента, включите следующее в свой <code>_quarto.yml</code> файл конфигурации:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">open-graph</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>В этом случае Quarto автоматически сгенерирует заголовок, описание и изображение для предварительного просмотра содержимого. Дополнительные сведения о том, как Quarto находит изображения для предварительного просмотра, см. в разделе <a href="https://quarto.org/docs/websites/website-tools.html#preview-images">Предварительный просмотр изображений</a>.</p>
+<p>Вы также можете предоставить дополнительные метаданные, которые будут использоваться при создании метаданных Open Graph, в том числе:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Клавиша</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>title</code></td>
+<td>Заголовок страницы. Quarto автоматически использует <code>title</code> метаданные из метаданных страницы. При желании вы можете переопределить это только для метаданных Open Graph, включив a <code>title</code> в <code>open-graph</code> метаданные.</td>
+</tr>
+<tr class="even">
+<td><code>description</code></td>
+<td>Краткое описание содержимого. Quarto автоматически использует <code>description</code> метаданные из метаданных страницы. При желании вы можете переопределить это только для метаданных Open Graph, включив a <code>description</code> в <code>open-graph</code> метаданные.</td>
+</tr>
+<tr class="odd">
+<td><code>image</code></td>
+<td><p>Путь к изображению предварительного просмотра для этого контента. По умолчанию Quarto будет использовать <code>image</code> значение из <code>site:</code> метаданных. Если вы предоставляете изображение, вы также можете дополнительно предоставить <code>image-width</code> и <code>image-height</code>.</p>
+<p>Если <code>image</code> этот параметр не указан, Quarto автоматически попытается найти изображение для предварительного просмотра. Для получения дополнительной информации см. раздел <a href="https://quarto.org/docs/websites/website-tools.html#preview-images">Предварительный просмотр изображений</a>.</p></td>
+</tr>
+<tr class="even">
+<td><code>locale</code></td>
+<td>Язык, в котором помечены метаданные Open Graph.</td>
+</tr>
+<tr class="odd">
+<td><code>site-name</code></td>
+<td>Имя, которое должно отображаться для всего сайта. Если это явно не указано в <code>open-graph</code> метаданных, Quarto будет использовать <code>site:title</code> значение.</td>
+</tr>
+</tbody>
+</table>
+<p>Вот более полный пример указания метаданных Open Graph в <code>quarto.yml</code> файле:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">open-graph</span><span class="kw">:</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">locale</span><span class="kw">:</span><span class="at"> es_ES</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">site-name</span><span class="kw">:</span><span class="at"> Quarto</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Quarto автоматически объединит глобальные метаданные, найденные в <code>website: open-graph</code> ключе, с любыми метаданными, предоставленными в самом документе в <code>open-graph</code> ключе. Это полезно, когда вам нужно указать сочетание глобальных параметров (например, <code>site</code>) с параметрами для каждого документа, такими как <code>title</code> или <code>image</code>.</p>
+</section>
+<section id="предварительный-просмотр-изображений" class="level3">
+<h3 class="anchored" data-anchor-id="предварительный-просмотр-изображений">Предварительный просмотр изображений</h3>
+<p>Вы можете указать изображение предварительного просмотра для своей статьи несколькими различными способами:</p>
+<ol type="1">
+<li>Вы можете явно указать полный URL-адрес изображения для предварительного просмотра, используя <code>image</code> поле в соответствующих метаданных. Например:</li>
+</ol>
+<div class="sourceCode" id="cb57"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">twitter-card</span><span class="kw">:</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://quarto.org/docs/websites/images/tools.png"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Вы можете указать относительный путь документа к изображению (например,&nbsp;<code>images/preview-code.png</code>) или относительный путь проекта к изображению (например,&nbsp;<code>/images/preview-code.png</code>).&nbsp;Если вы указываете относительный путь, подобный этому, вы также должны указать&nbsp;<code>site-url</code>&nbsp;в метаданных вашего сайта.&nbsp;Например, в вашем&nbsp;<code>_quarto.yml</code>&nbsp;файле конфигурации:</li>
+</ol>
+<div class="sourceCode" id="cb58"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">site-url</span><span class="kw">:</span><span class="at"> </span><span class="st">"https://www.quarto.org"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>и в вашем документе главное значение:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">twitter-card</span><span class="kw">:</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">image</span><span class="kw">:</span><span class="at"> </span><span class="st">"/docs/websites/images/tools.png"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Любое изображение, отображаемое на странице, также можно использовать в качестве предварительного просмотра, присвоив ему имя класса <code>preview-image</code>. Quarto выберет первое найденное изображение с этим классом.&nbsp;Например, следующее изображение будет использоваться в качестве предварительного просмотра при размещении на странице:</li>
+</ol>
+<pre><code>![](images/tools.png){.preview-image}</code></pre>
+<p>Если вы помечаете изображение этим классом, вы также должны указать <code>site-url</code> в метаданных вашего сайта.</p>
+<ol start="4" type="1">
+<li>Если ни один из вышеперечисленных способов указания изображения предварительного просмотра не использовался, Quarto попытается найти изображение предварительного просмотра, выполнив поиск изображения, включенного в отрисованный документ, с одним из следующих имен: <code>preview.png</code>, <code>feature.png</code>, <code>cover.png</code> или <code>thumbnail.png</code>.</li>
+</ol>
+</section>
+</section>
+<section id="google-analytics" class="level2">
+<h2 class="anchored" data-anchor-id="google-analytics">Google Analytics</h2>
+<p>Вы можете добавить <a href="https://analytics.google.com/">Google Analytics</a> на свой веб-сайт, добавив <code>google-analytics</code> ключ в свой <code>_quarto.yml</code> файл. В простейшей форме вы можете просто передать свой идентификатор отслеживания Google Analytics (например, <code>UA-xxxxxxx</code>) или идентификатор измерения тегов Google (например, <code>G-xxxxxxx</code>) следующим образом:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">google-analytics</span><span class="kw">:</span><span class="at"> </span><span class="st">"UA-XXXXXXXX"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Кварто будет использовать сам ключ, чтобы определить, следует ли код Google аналитики (analytics.js) или тегов Google (gtag) по мере необходимости.</p>
+<p>В дополнение к этой базовой конфигурации вы можете осуществлять более детальное управление аналитикой вашего сайта, используя следующие клавиши.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Клавиша</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tracking-id</code></td>
+<td>Идентификатор отслеживания Google или идентификатор измерения этого веб-сайта.</td>
+</tr>
+<tr class="even">
+<td><code>storage</code></td>
+<td><p><strong>файлы cookie -</strong> Используют файлы cookie для хранения уникальной идентификации пользователя и сеанса (по умолчанию).</p>
+<p><strong>нет -</strong> Не используйте файлы cookie для хранения уникальной идентификации пользователя и сеанса.</p>
+<p>Подробнее о выборе вариантов хранения см. в разделе <a href="https://quarto.org/docs/websites/website-tools.html#storage">Хранилище</a>.</p></td>
+</tr>
+<tr class="odd">
+<td><code>anonymize-ip</code></td>
+<td>Анонимизируйте IP-адрес пользователя. Подробнее об этой функции см. в разделе <a href="https://support.google.com/analytics/answer/2763052?hl=en">Анонимизация IP-адресов (или маскирование IP-адресов) в Google Analytics</a>.</td>
+</tr>
+<tr class="even">
+<td><code>version</code></td>
+<td>Номер версии Google Analytics для использования. В настоящее время поддерживается либо 3 (для analytics.js), либо 4 (для gtag). Это определяется автоматически на основе <code>tracking-id</code>, но вы можете указать его.</td>
+</tr>
+</tbody>
+</table>
+<section id="хранение" class="level3">
+<h3 class="anchored" data-anchor-id="хранение">Хранение</h3>
+<p>Google Analytics использует файлы cookie для распознавания уникальных пользователей и сеансов. Если вы решите использовать идентификационные файлы cookies для хранения этих данных пользователя, вы должны рассмотреть, действительно ли вам необходимо включить <a href="https://quarto.org/docs/websites/website-tools.html#cookie-consent">куки согласия</a> для того, чтобы позволить зрителю управлять любым отслеживания, который можно включить.</p>
+<p>Если вы выберете <code>none</code> для хранения, это приведет к следующим последствиям:</p>
+<ul>
+<li><p>Для Гугл Аналитика В3 (analytics.js)<br>
+нет отслеживания куки будут использоваться. Индивидуальный просмотров страницы будет правильно отслеживается, что позволяет вам увидеть, какие страницы просматриваются и как часто они рассматриваются. Отслеживание уникальных пользователей и сеансов не будет корректно сообщать данные, поскольку файлы cookie отслеживания, на которые они полагаются, не установлены.</p></li>
+<li><p>Для тегов Google (gtag)<br>
+Согласие пользователя на использование файлов cookie для отслеживания рекламы и аналитики будет сохранено. В этом режиме Google Analytics по-прежнему будет собирать пользовательские данные без идентификации пользователя, но в настоящее время эти данные не отображаются в отчетах Google Analytics.</p></li>
+</ul>
+</section>
+</section>
+<section id="согласие-на-использование-файлов-cookie" class="level2">
+<h2 class="anchored" data-anchor-id="согласие-на-использование-файлов-cookie">Согласие на использование файлов cookie</h2>
+<p>Quarto включает в себя возможность запрашивать согласие на использование файлов cookie перед включением скриптов, которые устанавливают файлы cookie, используя <a href="https://www.cookieconsent.com/">согласие на использование файлов cookie</a>.</p>
+<p>Настройки файлов cookie пользователя автоматически контролируют <a href="https://quarto.org/docs/websites/website-tools.html#google-analytics">Google Analytics</a> (если они включены), а также могут использоваться для управления добавляемыми вами пользовательскими скриптами (см. <a href="https://quarto.org/docs/websites/website-tools.html#custom-scripts-and-cookie-consent">Пользовательские скрипты и согласие на использование файлов cookie</a>. Вы можете включить запрос согласия на использование файлов cookie по умолчанию, используя следующее:</p>
+<pre><code>website:   cookie-consent: true</code></pre>
+<p>Вы можете дополнительно настроить внешний вид и поведение согласия, используя следующее:</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 93%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Клавиша</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>type</code></td>
+<td><p>Тип согласия, которое следует запросить, используя одно из этих двух значений:</p>
+<p><strong>подразумеваемый -</strong> (по умолчанию) Это уведомит пользователя о том, что сайт использует файлы cookie, и позволит им изменять настройки, но не заблокирует файлы cookie, если пользователь не изменит свои настройки.</p>
+<p><strong>express -</strong> Это блокирует файлы cookie до тех пор, пока пользователь явно не согласится разрешить их (или продолжит блокировать, если пользователь не согласен).</p></td>
+</tr>
+<tr class="even">
+<td><code>style</code></td>
+<td><p>Стиль отображаемого баннера согласия:</p>
+<p><strong>простой -</strong> (по умолчанию) Простое диалоговое окно в правом нижнем углу веб-сайта.</p>
+<p><strong>заголовок -</strong> баннер во всю ширину в верхней части веб-сайта.</p>
+<p><strong>интерстициальный -</strong> полупрозрачный оверлей всего веб-сайта.</p>
+<p><strong>standalone -</strong> непрозрачное наложение на весь веб-сайт.</p></td>
+</tr>
+<tr class="odd">
+<td><code>palette</code></td>
+<td><p>Следует ли использовать темный или светлый внешний вид баннера согласия:</p>
+<p><strong>light -</strong> баннер светлого цвета.</p>
+<p><strong>темный -</strong> баннер темного цвета.</p></td>
+</tr>
+<tr class="even">
+<td><code>policy-url</code></td>
+<td>Ссылка на файлы cookie веб-сайта или политику конфиденциальности.</td>
+</tr>
+<tr class="odd">
+<td><code>prefs-text</code></td>
+<td>Текст для отображения ссылки на настройки файлов cookie в нижнем колонтитуле веб-сайта.</td>
+</tr>
+</tbody>
+</table>
+<p>Пользовательский пример может выглядеть скорее как:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">cookie-consent</span><span class="kw">:</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> express</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">style</span><span class="kw">:</span><span class="at"> headline</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">palette</span><span class="kw">:</span><span class="at"> dark</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">google-analytics</span><span class="kw">:</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">tracking-id</span><span class="kw">:</span><span class="at"> </span><span class="st">"G-XXXXXXX"</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">anonymize-ip</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="настройки-файлов-cookie" class="level3">
+<h3 class="anchored" data-anchor-id="настройки-файлов-cookie">Настройки файлов cookie</h3>
+<p>В дополнение к запросу согласия, когда новый пользователь посещает ваш веб-сайт, согласие на использование файлов cookie также добавит ссылку на настройки файлов cookie в нижний колонтитул веб-сайта. Вы можете управлять текстом этой ссылки с помощью <code>prefs-text</code>. Если вы предпочитаете разместить эту ссылку самостоятельно, просто добавьте ссылку с идентификатором <code>#open_preferences_center</code> на веб-сайт, и согласие на использование файлов cookie не добавит ссылку “Настройки” в нижний колонтитул. Например:</p>
+<pre><code>Change [cookie preferences]{#open_preferences_center}</code></pre>
+</section>
+<section id="пользовательские-скрипты-и-согласие-на-использование-файлов-cookie" class="level3">
+<h3 class="anchored" data-anchor-id="пользовательские-скрипты-и-согласие-на-использование-файлов-cookie">Пользовательские скрипты и согласие на использование файлов cookie</h3>
+<p>Согласие на использование файлов cookie предотвращает выполнение скриптов, если пользователь не выразил своего согласия. Для управления вашими пользовательскими скриптами используется согласие на использование файлов cookie:</p>
+<ol type="1">
+<li>Вставьте теги скрипта как <code>type='text/plain'</code> (когда пользователь даст согласие, тип будет изменен на <code>text/javascript</code> и скрипт будет выполнен).</li>
+</ol>
+<!-- -->
+<ol start="2" type="1">
+<li><p>Добавьте <code>cookie-consent</code> атрибут к своему тегу script, установив для него один из следующих 4 уровней:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Уровень</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>strictly-necessary</code></td>
+<td>Строго говоря, скрипты загружаются автоматически и не могут быть отключены пользователем.</td>
+</tr>
+<tr class="even">
+<td><code>functionality</code></td>
+<td>Скрипты, необходимые для базовой функциональности веб-сайта, например, запоминания языковых предпочтений пользователя.</td>
+</tr>
+<tr class="odd">
+<td><code>tracking</code></td>
+<td>Скрипты, которые используются для отслеживания пользователей, например, <a href="https://quarto.org/docs/websites/website-tools.html#google-analytics">Google Analytics</a>.</td>
+</tr>
+<tr class="even">
+<td><code>targeting</code></td>
+<td>Скрипты, которые используются для таргетинга рекламы, например ремаркетинга Google AdSense.</td>
+</tr>
+</tbody>
+</table></li>
+</ol>
+<p>Пример скрипта, который используется для отслеживания пользователей, будет выглядеть следующим образом:</p>
+<pre><code>&lt;script type="text/plain" cookie-consent="tracking"&gt;
+
+// My tracking JS code here
+
+&lt;/script&gt;</code></pre>
+</section>
+</section>
+<section id="ресурсы-сайта" class="level2">
+<h2 class="anchored" data-anchor-id="ресурсы-сайта">Ресурсы сайта</h2>
+<p>Помимо файлов ввода и конфигурации, ваш сайт, вероятно, также включает в себя различные ресурсы (например, изображения), которые вы захотите опубликовать вместе со своим сайтом. Quarto автоматически обнаружит все файлы, на которые вы ссылаетесь на вашем сайте, и скопирует их в выходной каталог (например, <code>_site</code>).</p>
+<p>Если это автоматическое определение по какой-либо причине не выполняется, или если вы хотите опубликовать файл, на который нет явной ссылки на вашем сайте, вы можете добавить <code>resources</code> запись в свою конфигурацию. Например, здесь мы указываем, что хотим включить все электронные таблицы Excel в каталог проекта как часть веб-сайта:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">resources</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="st">"*.xlsx"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Обратите внимание, что <code>*.xslx</code> значение заключено в кавычки: это потому, что YAML требует, чтобы строки, начинающиеся не с буквенно-цифровых символов, были заключены в кавычки.</p>
+<p>Вы также можете добавить <code>resources</code> значение метаданных к отдельным файлам. Например:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Page"</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">"sheet.xlsx"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Изображения являются наиболее часто используемым типом файлов ресурсов.&nbsp; Если у вас есть глобальные изображения (например, логотип), на которые вы хотите ссылаться с различных страниц вашего сайта, вы можете использовать абсолютный путь сайта для ссылки на изображения, и он будет автоматически преобразован в относительный путь во время публикации.&nbsp; Например:</p>
+<pre><code>![](/images/logo.png)</code></pre>
+</section>
+<section id="темный-режим" class="level2">
+<h2 class="anchored" data-anchor-id="темный-режим">Темный режим</h2>
+<p>Веб-сайты Quarto могут поддерживать как светлый, так и темный режим. Например, вы можете использовать темы <code>flatly</code> и <code>darkly</code> (которые предназначены для использования в сочетании темного и светлого оформления) в качестве:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">light</span><span class="kw">:</span><span class="at"> flatly</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dark</span><span class="kw">:</span><span class="at"> darkly</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Подробнее о выборе темной и светлой тем для вашего веб-сайта см. в разделе&nbsp;<a href="https://quarto.org/docs/output-formats/html-themes.html#dark-mode">Темный режим</a>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 49%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Легкий</th>
+<th>Темный</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://quarto.org/docs/websites/images/site-light.png" class="img-fluid figure-img"></p>
+<figcaption>Боковая панель в Кварто, отображающая светлую тему. Переключатель “Темный режим” выключен.</figcaption>
+</figure>
+</div></td>
+<td><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://quarto.org/docs/websites/images/site-dark.png" class="img-fluid figure-img"></p>
+<figcaption>Боковая панель Quarto, отображающая темную тему. Включен переключатель “Темный режим”.</figcaption>
+</figure>
+</div></td>
+</tr>
+</tbody>
+</table>
+<p>При включении появится переключатель, который позволяет вашему читателю управлять внешним видом веб-сайта. Переключатель будет автоматически добавлен к навигации по веб-сайту следующим образом:</p>
+<ol type="1">
+<li><p>Если была указана панель навигации, переключатель появится в правом верхнем углу панели навигации.</p></li>
+<li><p>Если навигационная панель отсутствует, но указана боковая панель, переключатель появится в том же месте, что и инструменты боковой панели (рядом с названием или логотипом на боковой панели).</p></li>
+<li><p>Если отсутствует панель навигации или боковая панель, переключатель появится в правом верхнем углу страницы.</p></li>
+</ol>
+</section>
+</section>
+<section id="о-страницах" class="level1">
+<h1>6. О страницах</h1>
+<section id="обзор-4" class="level2">
+<h2 class="anchored" data-anchor-id="обзор-4">Обзор</h2>
+<p>Quarto позволяет легко создать простую страницу о программе для отдельного человека или организации. Когда для документа предусмотрена <code>about</code> опция, для оформления содержимого текущей страницы будет использоваться специальный шаблон с пользовательским оформлением, предназначенным для представления личности или организации.</p>
+<p>Например:</p>
+<section id="основные-параметры" class="level3">
+<h3 class="anchored" data-anchor-id="основные-параметры">Основные параметры</h3>
+<p>Если вы используете тему Bootstrap или тему Pandoc, в метаданных документа можно указать набор параметров для настройки его внешнего вида. К ним относятся:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Finley Malloc"</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="fu">about</span><span class="kw">:</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">template</span><span class="kw">:</span><span class="at"> jolla</span></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">image</span><span class="kw">:</span><span class="at"> profile.jpg</span></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> twitter</span></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">text</span><span class="kw">:</span><span class="at"> twitter</span></span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://twitter.com</span></span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">text</span><span class="kw">:</span><span class="at"> Github</span></span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://github.com</span></span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a><span class="at">Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.</span></span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a><span class="co">## Education</span></span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a><span class="at">University of California, San Diego | San Diego, CA</span></span>
+<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a><span class="at">PhD in Mathematics | Sept 2011 - June 2015</span></span>
+<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a><span class="at">Macalester College | St. Paul MA</span></span>
+<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a><span class="at">B.A in Economics | Sept 2007 - June 2011</span></span>
+<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-25"><a href="#cb70-25" aria-hidden="true" tabindex="-1"></a><span class="co">## Experience</span></span>
+<span id="cb70-26"><a href="#cb70-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-27"><a href="#cb70-27" aria-hidden="true" tabindex="-1"></a><span class="at">Wengo Analytics | Head Data Scientist | April 2018 - present</span></span>
+<span id="cb70-28"><a href="#cb70-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-29"><a href="#cb70-29" aria-hidden="true" tabindex="-1"></a><span class="at">GeoScynce | Chief Analyst | Spet 2012 - April 2018</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Содержимое этой страницы будет размещено с использованием <code>jolla</code> шаблона с <code>profile.jpg</code> изображением и сгенерирует набор ссылок для элементов, указанных в <code>links</code>.</p>
+<p>Вы можете написать и отформатировать содержимое страницы так, как вам хочется - когда страница будет отрисована, Quarto будет использовать содержимое и параметры, предоставленные в <code>about</code> опции, для создания страницы о программе, упорядочивая содержимое <code>about</code> опции с содержимым самой страницы.</p>
+</section>
+</section>
+<section id="шаблоны" class="level2">
+<h2 class="anchored" data-anchor-id="шаблоны">Шаблоны</h2>
+<p>Quarto включает в себя 5 встроенных шаблонов, вдохновленных <a href="https://cran.r-project.org/web/packages/postcards/readme/README.html">пакетом Postcards R</a>. Встроенные шаблоны включают:</p>
+<ul>
+<li><p><code>jolla</code></p></li>
+<li><p><code>trestles</code></p></li>
+<li><p><code>solana</code></p></li>
+<li><p><code>marquee</code></p></li>
+<li><p><code>broadside</code></p></li>
+</ul>
+<p>Каждый шаблон будет размещать элементы about с содержимым в другом макете. Выберите шаблон с помощью <code>template</code> опции:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">about</span><span class="kw">:</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">template</span><span class="kw">:</span><span class="at"> trestles</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Вот предварительный просмотр каждого из шаблонов:</p>
+<p><img src="https://quarto.org/docs/websites/images/about-jolla.png" class="img-fluid" width="380"></p>
+<section id="изображение" class="level3">
+<h3 class="anchored" data-anchor-id="изображение">Изображение</h3>
+<p>Изображение для страницы о программе будет считано из опции на уровне документа <code>image</code>:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Finley Malloc</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> profile.jpg</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">about</span><span class="kw">:</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">template</span><span class="kw">:</span><span class="at"> jolla</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Кроме того, вы можете настроить способ отображения изображения на странице в соответствии с вашими потребностями, установив следующие параметры.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 64%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>опция</th>
+<th>Описание</th>
+<th>шаблоны</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>image-width</code></td>
+<td>Допустимая ширина CSS для вашего изображения.</td>
+<td>ВСЕ</td>
+</tr>
+<tr class="even">
+<td><code>image-shape</code></td>
+<td>Форма изображения на странице о программе. Выберите из:<code>rectangle</code>, <code>round</code>, <code>rounded</code></td>
+<td><code>jolla</code>, <code>solana</code>, <code>trestles</code></td>
+</tr>
+<tr class="odd">
+<td><code>image-alt</code></td>
+<td>Альтернативный текст для изображения</td>
+<td>ВСЕ</td>
+</tr>
+<tr class="even">
+<td><code>image-title</code></td>
+<td>Заголовок для изображения</td>
+<td>ВСЕ</td>
+</tr>
+</tbody>
+</table>
+<p>Например:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Finley Malloc</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span><span class="kw">:</span><span class="at"> profile.png</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">about</span><span class="kw">:</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">template</span><span class="kw">:</span><span class="at"> trestles</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">image-width</span><span class="kw">:</span><span class="at"> 10em</span></span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">image-shape</span><span class="kw">:</span><span class="at"> round</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ссылки" class="level3">
+<h3 class="anchored" data-anchor-id="ссылки">Ссылки</h3>
+<p>Ваша страница о программе также может содержать набор ссылок на другие ресурсы о вас или вашей организации. Каждый шаблон будет отображать эти ссылки немного по-другому. Вот параметры, которые вы можете указать для каждой ссылки:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Опция</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>href</code></td>
+<td>Ссылка на файл, содержащийся в проекте, или внешний URL-адрес.</td>
+</tr>
+<tr class="even">
+<td><code>text</code></td>
+<td>Текст для отображения элемента навигации (по умолчанию используется документ<code>title</code>, если он не указан).</td>
+</tr>
+<tr class="odd">
+<td><code>icon</code></td>
+<td>Название одного из стандартных значков <a href="https://icons.getbootstrap.com/">Bootstrap 5</a> (например, “github”, “twitter”, “поделиться” и т.д.).</td>
+</tr>
+<tr class="even">
+<td><code>aria-label</code></td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label">Доступная метка</a> для элемента навигации.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="частичное-содержимое-страницы" class="level2">
+<h2 class="anchored" data-anchor-id="частичное-содержимое-страницы">Частичное содержимое страницы</h2>
+<p>По умолчанию страница о программе будет сгенерирована с использованием всего содержимого страницы. Однако, если вы хотите, вы также можете использовать только часть содержимого страницы для заполнения шаблона о программе. В этом случае вы можете указать <code>id</code> для страницы о программе в начале документа. При рендеринге страницы Quarto найдет любую, <code>div</code> содержащую это <code>id</code>, и использует содержимое этой страницы <code>div</code> для заполнения шаблона about. <code>div</code>, предоставляющие содержимое, будут заменены форматированным содержимым ‘о программе’. Например, вы могли бы написать:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Finley Malloc"</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="fu">about</span><span class="kw">:</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">id</span><span class="kw">:</span><span class="at"> hero-heading</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">template</span><span class="kw">:</span><span class="at"> jolla</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">image</span><span class="kw">:</span><span class="at"> profile.jpg</span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">links</span><span class="kw">:</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> twitter</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">text</span><span class="kw">:</span><span class="at"> twitter</span></span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://twitter.com</span></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">icon</span><span class="kw">:</span><span class="at"> github</span></span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">text</span><span class="kw">:</span><span class="at"> Github</span></span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">href</span><span class="kw">:</span><span class="at"> https://github.com</span></span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-16"><a href="#cb74-16" aria-hidden="true" tabindex="-1"></a><span class="co">### This content appears above the formatted about page content.</span></span>
+<span id="cb74-17"><a href="#cb74-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-18"><a href="#cb74-18" aria-hidden="true" tabindex="-1"></a><span class="at">:::{</span><span class="co">#hero-heading}</span></span>
+<span id="cb74-19"><a href="#cb74-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-20"><a href="#cb74-20" aria-hidden="true" tabindex="-1"></a><span class="at">Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending time unicycling and playing with her pet iguana.</span></span>
+<span id="cb74-21"><a href="#cb74-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-22"><a href="#cb74-22" aria-hidden="true" tabindex="-1"></a><span class="co">## Education</span></span>
+<span id="cb74-23"><a href="#cb74-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-24"><a href="#cb74-24" aria-hidden="true" tabindex="-1"></a><span class="at">University of California, San Diego | San Diego, CA</span></span>
+<span id="cb74-25"><a href="#cb74-25" aria-hidden="true" tabindex="-1"></a><span class="at">PhD in Mathematics | Sept 2011 - June 2015</span></span>
+<span id="cb74-26"><a href="#cb74-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-27"><a href="#cb74-27" aria-hidden="true" tabindex="-1"></a><span class="at">Macalester College | St. Paul MA</span></span>
+<span id="cb74-28"><a href="#cb74-28" aria-hidden="true" tabindex="-1"></a><span class="at">B.A in Economics | Sept 2007 - June 2011</span></span>
+<span id="cb74-29"><a href="#cb74-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-30"><a href="#cb74-30" aria-hidden="true" tabindex="-1"></a><span class="co">## Experience</span></span>
+<span id="cb74-31"><a href="#cb74-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-32"><a href="#cb74-32" aria-hidden="true" tabindex="-1"></a><span class="at">Wengo Analytics | Head Data Scientist | April 2018 - present</span></span>
+<span id="cb74-33"><a href="#cb74-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-34"><a href="#cb74-34" aria-hidden="true" tabindex="-1"></a><span class="at">GeoScynce | Chief Analyst | Sept 2012 - April 2018</span></span>
+<span id="cb74-35"><a href="#cb74-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-36"><a href="#cb74-36" aria-hidden="true" tabindex="-1"></a><span class="at">:</span><span class="fu">:</span><span class="kw">:</span></span>
+<span id="cb74-37"><a href="#cb74-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-38"><a href="#cb74-38" aria-hidden="true" tabindex="-1"></a><span class="co">### This content appears below the formatted about page content.</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="списки-документов" class="level1">
+<h1>Списки документов</h1>
+<section id="обзор-5" class="level2">
+<h2 class="anchored" data-anchor-id="обзор-5">Обзор</h2>
+<p>Списки позволяют автоматически генерировать содержимое страницы (или области страницы) на основе списка документов Quarto или других пользовательских данных.</p>
+<p>Списки полезны для создания блогов, обеспечения навигации по большому количеству документов или в любом другом сценарии, когда вы хотите, чтобы содержимое страницы автоматически обновлялось по мере добавления, обновления и удаления документов.</p>
+<p>Вы можете включить списки на странице, используя <code>listing</code> опцию во фронтальной части документа. Это проинструктирует Quarto генерировать дополнительный контент (‘списки’) при визуализации страницы. Например, следующий YAML в начале документа:</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Наверх</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Скопировано");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Скопировано");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2023, Eduard Soldatkin</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Edy888">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
