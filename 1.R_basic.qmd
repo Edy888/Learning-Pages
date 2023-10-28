@@ -1,0 +1,1452 @@
+---
+title: "PART 1 : Data Science R_basic"
+toc: true
+toc_float:
+  collapsed: false
+  smooth_scroll: false
+  
+format: 
+  html:
+    code-fold: true
+---
+
+# Section 1: R Basics, Functions, and Data Types
+
+## 1. Функция `table`
+
+Принимает вектор в качестве входных данных и возвращает частоту каждого уникального элемента в векторе.
+
+-   Используйте функцию `table` в одной строке кода для создания таблицы, показывающей количество штатов в каждом регионе.
+
+```{r library}
+#|echo: false
+
+
+library(dslabs)
+data(murders)
+summary(murders)
+nrow(murders) # количество строк в DF
+head(murders, 8) # отображает первые 20 строк DF
+```
+
+```{r table ()}
+table(murders$region) # количество уникальных значений в каждом уровне факторной переменной
+```
+
+## 2. Квадратное уравнение (через функцию)
+
+Чтобы найти решения уравнения такого формата , используйте квадратное уравнение:
+
+$a * x^2 + b*x + c = 0$ .
+Для чего существуют эти два решения?
+Используйте квадратное уравнение.
+
+$\frac{-b +- \sqrt{b^2 - 4ac}}{/2a}$
+
+Посчитать корни для : $2x^2 - x - 4 = 0$
+
+```{r sqrt}
+a <- 2
+b <- -1
+c = -4
+
+x1 <- (-b + sqrt(b^2 - 4*a*c))/(2*a)
+x2 <- (-b - sqrt(b^2 - 4*a*c))/(2*a)
+print(paste('x1 =', round(x1, 2)))
+print(paste('x2 =', round(x2, 2)))
+
+y1 = a*x1^2 + b*x1 + c
+y2 = a*x2^2 + b*x2 + c
+print(paste('y1 =', round(y1, 2)))
+print(paste('y2 =', round(y2, 2)))
+```
+
+```{r creation of function}
+a <- 33
+b <- -1
+c <- -4
+
+eval_sqrt <- function(a,b,c){
+  x1 <- (-b + sqrt(b^2 - 4*a*c))/(2*a)
+x2 <- (-b - sqrt(b^2 - 4*a*c))/(2*a)
+print(paste('x1 =', round(x1, 2)))
+print(paste('x2 =', round(x2, 2)))
+
+y1 = a*x1^2 + b*x1 + c
+y2 = a*x2^2 + b*x2 + c
+print(paste('y1 =', round(y1, 2)))
+print(paste('y2 =', round(y2, 2)))
+}
+
+eval_sqrt(a,b,c)
+```
+
+## 3. `levels()` and `nlevels()`
+
+Мы уже знаем, что можем использовать функцию `levels()` для определения уровней фактора.
+Для определения количества уровней коэффициента может использоваться другая функция, `levels()`.
+
+```{r levels()}
+levels(murders$region)
+nlevels(murders$region)
+```
+
+# Section 2: Vectors, Sorting
+
+## 1. `names()`
+
+Используем для присвоения чисовым значениям имен :
+
+```{r names ()}
+cost <- c(50, 75, 90, 100, 150)
+food <- c("pizza", "burgers", "salads", "cheese", "pasta")
+names(cost) <- food
+cost
+```
+
+## 2. `sort ()` , `order ()` , `rank ()`
+
+```{r}
+x <- c(2, 43, 27, 96, 18)
+sorts <- sort(x)
+ranks <- rank(x)
+orders <- order(x)
+df <- data.frame(x,sorts,orders,ranks)
+df
+```
+
+**sort()** : используется для сортировки вектора от наименьшего к наибольшему
+
+**order()** : возвращает вектор индекса, необходимый для сортировки вектора. 
+Это означает, что `sort(x)` и `x[order(x)]` дают тот же результат.
+
+**rank ()** : Позиция элемента от наименьшего к наибольшему значению
+
+```{r order ()}
+data("murders")
+pop <- murders$population
+ord <- order(pop) # сохраняем отсортированные по возрастанию численности изначальные индексы
+ord[1] # узнаем какой индекс меньший по численности (т.е штат с наименьшей численностью имеет индекс 51)
+
+which.min(murders$population) # аналогичен предыдущему коду
+
+i <- which.min(murders$population) # Define the variable i to be the index of the smallest state
+states <- murders$state # Define variable states to hold the states
+states[i] # Use the index you just defined to find the state with the smallest population
+
+```
+
+```{r rank for DF}
+states <- murders$state # Define a variable states to be the state names 
+ranks <- rank(murders$population) # Define a variable ranks to determine the population size ranks 
+my_df <- data.frame(states, ranks) # Create a data frame my_df with the state name and its rank
+head(my_df, 8)
+```
+
+## 3. Задача с использованием `order ()` , `rank ()`:
+
+-   Создайте переменные states и ranks для хранения названий штатов и рангов по численности населения соответственно.
+
+-   Создайте объект, в котором хранятся индексы, необходимые для упорядочивания значений совокупности, используя команду order.
+
+-   Создайте фрейм данных с обеими переменными в правильном порядке.
+
+-   Используйте оператор скобок `\[`, чтобы изменить порядок каждого столбца во фрейме данных.
+
+-   Столбцы фрейма данных должны располагаться в определенном порядке и иметь определенные названия.
+
+```{r }
+states <- murders$state # Определите переменную states как имена state из фрейма данных murders
+ranks <- rank(murders$population) # Определите переменный ранг для определения рангов численности населения 
+ind <- order(murders$population) # Определите переменную ind для хранения индексов, необходимых для упорядочивания (order) population
+my_df <- data.frame(states[ind], ranks[ind]) # Создайте фрейм данных my_df с названием штата и его рангом, упорядоченный от наименее густонаселенного к наиболее
+
+head(my_df, 8)
+```
+
+```{r is.na}
+data("na_example")
+ind <- is.na(na_example)
+sum(ind)
+```
+
+## 4. Расчет числа Эйлера:
+
+$Euler = \pi^2/6$
+
+```{r}
+x <- seq(1:100)
+euler <- sum(1/x^2)
+euler
+```
+
+# Section 3: Indexing, Data Wrangling, Plots
+
+## 1. indexing Assesement
+
+Какая строка кода успешно отфильтрует набор данных об убийствах, чтобы показать только Массачусетс?
+Примечание: Предположим, что все названия штатов в наборе данных написаны не с заглавной буквы.
+Какая строка кода успешно отфильтрует набор данных об убийствах, чтобы показать только Массачусетс?
+Примечание: Предположим, что все названия штатов в наборе данных написаны не с заглавной буквы.
+
+```{r}
+which(murders$state == 'massachusetts')
+c('massachusetts') %in% murders$state
+```
+
+**Объяснение**
+
+which(), match() и %in% - все это может быть использовано для подмножества данных.
+Однако в этом случае параметр match() использует заглавные буквы, которых нет в нашем наборе данных, а одна из функций which() использует = вместо ==, что неверно.
+
+**Задачи на DataCamp:**
+
+```{r}
+murder_rate <- murders$total / murders$population * 100000
+low <- murder_rate < 1
+low
+```
+
+### `1.1 which()`
+
+Функция which() помогает нам напрямую узнать, какие значения являются низкими или высокими и т.д.
+Давайте используем это в этом вопросе.
+
+*Используйте результаты предыдущего упражнения и функцию which для определения индексов murder_rate, связанных со значениями ниже 1.*
+
+```{r}
+which(low)
+```
+
+Обратите внимание, что если мы хотим знать, какие элементы вектора меньше определенного значения, мы можем использовать код, подобный этому:
+
+```{r}
+small <- murders$population < 1000000
+murders$state[small]
+```
+
+Приведенный выше код показывает нам штаты с населением менее миллиона человек.
+
+*Используйте результаты предыдущего упражнения, чтобы сообщить названия штатов с уровнем убийств ниже 1, используя квадратные скобки для извлечения названий штатов из набора данных.*
+
+```{r}
+murders$state[low]
+```
+
+### 1.2 **Filtering**
+
+Теперь мы расширим код из предыдущих упражнений, чтобы сообщить о штатах на северо-востоке с уровнем убийств ниже 1.
+
+-   Определите низкий уровень, как и раньше.
+
+-   Используйте оператор & для создания нового объекта, и это верно, когда значение low равно true и состояние находится на северо-востоке
+
+-   Используйте квадратные скобки `\[` и ind, чтобы показать названия состояний, удовлетворяющих этому условию
+
+```{r}
+index <- murders$region == 'Northeast' & low
+murders$state[index]
+```
+
+В предыдущем упражнении мы вычислили уровень убийств для каждого штата и среднее значение этих цифр.
+
+-   Сколько штатов находятся ниже среднего уровня?
+
+```{r}
+murder_rate <- murders$total/murders$population*100000
+avg <- mean(murder_rate)
+sum(murder_rate < avg)
+```
+
+### `1.3 match()`
+
+В этом упражнении мы используем функцию `match` для идентификации состояний с аббревиатурами AK, MI и IA.
+
+-   Определите символьный вектор с помощью аббревиатур.
+
+-   Начните с определения индекса записей `murders$abb`, которые соответствуют трем аббревиатурам.
+
+-   Используйте оператор `[`для извлечения состояний.
+
+```{r}
+abbs <- c('AK', 'MI', 'IA')
+ind1 <- match(abbs,murders$abb)
+murders$state[ind1]
+```
+
+### 1.4 `%in%`
+
+Если вместо индекса нам нужен логический, который сообщает нам, находится ли каждый элемент первого вектора во втором, мы можем использовать функцию `%in%`.
+
+*Какие из приведенных ниже сокращений являются действительными: MA, ME, MI, MO, MU?*
+
+-   Определите вектор символов с аббревиатурами `MA, ME, MI, MO, MU`.
+
+-   Используйте оператор `%in%` для создания логического вектора, который имеет значение TRUE, когда аббревиатура находится в `$$abb`.
+
+```{r}
+abbs <- c('MA', 'ME', 'MI', 'MO', 'MU')
+abbs %in% murders$abb
+```
+
+Мы снова работаем с символами `abbs <- c('MA', 'ME', 'MI', 'MO', 'MU')`.
+
+-   В предыдущем упражнении мы вычислили индекс `abbs%in%murders$abb`.
+
+-   Основываясь на этом и используя функцию `which` и `!`оператор, получите индекс записей аббревиатур, которые не являются аббревиатурами.
+
+-   Покажите записи аббревиатур, которые на самом деле не являются аббревиатурами.
+
+```{r}
+# Используйте команду "which" и оператор "!", чтобы выяснить, какие индексные сокращения на самом деле не являются частью набора данных и сохраните в "ind".
+abbs <- c('MA', 'ME', 'MI', 'MO', 'MU')
+ind2 <- which(!abbs%in%murders$abb)
+abbs[ind2]
+```
+
+## 2. dplyr
+
+```{r}
+library(dplyr)
+library(dslabs)
+data(murders)
+```
+
+Вы можете добавлять столбцы, используя функцию `dplyr` `mutate`.
+Эта функция знает имена столбцов, и внутри функции вы можете вызывать их без кавычек.
+Подобный этому:
+
+```         
+murders <- mutate(murders, population_in_millions = population / 10^6)
+```
+
+### 2.1 `mutate ()`
+
+Обратите внимание, что мы можем написать `population`, а не `murders$population`.
+Функция `mutate` знает, что мы берем столбцы из `murders`.
+
+-   Используйте функцию `mutate`, чтобы добавить столбец убийств с именем `rate` с показателем убийств на 100 000 человек.
+
+-   Убедитесь, что вы переопределили убийства, как это сделано в примере кода выше.
+
+-   Помните, что уровень убийств определяется как общее количество убийств, деленное на численность населения, умноженную на 100 000 человек.
+
+```{r mutate}
+murders <- murders %>% mutate(rate = total/population * 100000)
+head(murders)
+```
+
+Обратите внимание, что если `rank(x)` дает вам ранги x от самого низкого до самого высокого, то `rank(-x)` дает вам ранги от самого высокого до самого низкого.
+
+-   Используйте функцию `mutate`, чтобы добавить столбец `rank`, содержащий ранг, от самого высокого до самого низкого уровня убийств.
+
+```{r mutate + rank}
+murders <- murders %>% mutate(rank = rank(-rate))
+head(murders)
+```
+
+### 2.2 `select ()`
+
+С помощью `dplyr` мы можем использовать `select` для отображения только определенных столбцов.
+Например, с помощью этого кода мы бы показывали только штаты и численность населения:
+
+```         
+head(select(murders, state, population))
+```
+
+Используйте `select()`, чтобы отобразить названия штатов и аббревиатуры в "Убийствах".
+Просто покажите это, не определяйте новый объект.
+
+```{r}
+head(murders %>% select(state, abb))
+```
+
+### 2.3 `filter`
+
+Фильтр функции `dplyr` используется для выбора определенных строк фрейма данных для сохранения.
+В отличие от `select`, который предназначен для столбцов, `filter` предназначен для строк.
+Например, вы можете показать только строку `New York` следующим образом:
+
+```         
+filter(murders, state == "New York")
+```
+
+Вы можете использовать другие логические векторы для фильтрации строк.
+
+Используйте `filter`, чтобы показать топ-5 штатов с самым высоким уровнем убийств.
+После того, как мы добавим количество убийств и ранг, не меняйте набор данных об убийствах, просто покажите результат.
+Обратите внимание, что вы можете выполнять фильтрацию на основе столбца `rank`.
+
+```{r}
+murders <- mutate(murders, rate = total/population * 100000, rank = rank(-rate))
+head(murders)
+```
+
+### 2.4 `filter` `!=`
+
+Мы можем удалить строки с помощью оператора `!=`.
+Например, чтобы удалить Флориду, мы бы сделали это:
+
+```         
+no_florida <- filter(murders, state != "Florida")
+```
+
+-   Создайте новый фрейм данных с именем `no_south`, который удаляет штаты из Южного региона.
+
+-   Сколько штатов относится к этой категории?
+    Теперь вы можете использовать эту функцию для этого.
+
+```{r filter}
+no_south <- filter(murders, region != "South")
+nrow(no_south)
+```
+
+### 2.5 `filter` `%in%`
+
+```         
+filter(murders, state %in% c("New York", "Texas"))
+```
+
+-   Создайте новый фрейм данных под названием `murders_nw`, содержащий только штаты с северо-востока и Запада.
+
+-   Сколько штатов относится к этой категории?
+
+```{r filter  %in%}
+murders_nw <- filter(murders, region%in%c("Northeast", "West"))
+nrow(murders_nw)
+```
+
+### 2.6 `filtering 2 conditions`
+
+Предположим, вы хотите жить на северо-востоке или Западе и хотите, чтобы уровень убийств был меньше 1.
+Мы хотим увидеть данные по штатам, удовлетворяющим этим параметрам.
+Обратите внимание, что вы можете использовать логические операторы с фильтром:
+
+```         
+filter(murders, population < 5000000 & region == "Northeast")
+```
+
+-   Добавьте столбец "Уровень убийств" и столбец "ранг", как это было сделано ранее
+
+-   Создайте таблицу, назовем ее `my_states`, которая удовлетворяет обоим условиям: она находится на северо-востоке или Западе, а уровень убийств меньше 1.
+
+-   Используйте `select`, чтобы отобразить только название штата, скорость и ранг
+
+```{r}
+murders <- mutate(murders, rate = total/population * 100000, rank = rank(-rate))
+my_states <- filter(murders, region %in% c("Northeast", "West") & rate < 1)
+
+```
+
+### 2.7 `Using the pipe %>%`
+
+```{r}
+murders <- mutate(murders, rate =  total / population * 100000, rank = rank(-rate))
+murders %>% 
+  filter(region %in% c("Northeast", "West") & rate < 1) %>% 
+  select(state, rate, rank)
+```
+
+### 2.8 `mutate, filter and select`
+
+Используйте одну строку кода для создания нового фрейма данных, называемого `my_states`, который содержит столбцы `rate` и `rank` (с рангом, упорядоченным от самого высокого к самому низкому), учитывает только штаты на северо-востоке или Западе, в которых уровень убийств ниже 1, и содержит только штат, уровень и ранг колонны.
+Строка должна содержать четыре компонента, разделенных тремя операторами `%>%`:
+
+-   Исходный набор данных об убийствах
+
+-   `mutate`, чтобы добавить `rate` и `rank`.
+
+-   `filter`, чтобы сохранить только штаты с северо-востока или Запада, в которых уровень убийств ниже 1.
+
+-   Вызов `select`, в котором сохраняются только столбцы с названием штата, уровнем убийств и рангом.
+
+```{r}
+my_states1 <- murders %>%
+  mutate(rate =  total / population * 100000, rank = rank(-rate)) %>% 
+  filter(region %in% c("Northeast", "West") & rate < 1) %>%
+  select(state, rate, rank)
+  my_states1
+```
+
+------------------------------------------------------------------------
+
+# Practice Exercise. National Center for Health Statistics
+
+Чтобы попрактиковаться в наших навыках `dplyr`, мы будем работать с данными опроса, собранного Национальным центром статистики здравоохранения США **(NCHS)**.
+Этот центр проводит серию обследований состояния здоровья и питания с 1960-х годов.
+
+Начиная с 1999 года, ежегодно опрашивается около 5000 человек всех возрастов, а затем они проходят медицинский осмотр в рамках обследования.
+Часть этого набора данных доступна через пакет **`NHANES`**, который может быть загружен таким образом:
+
+```{r}
+library(NHANES)
+data(NHANES)
+```
+
+Данные `NHANES` содержат много пропущенных значений.
+Помните, что основная функция суммирования в R вернет значение `NA`, если какой-либо из элементов входного вектора равен `NA`.
+Вот пример:
+
+```{r}
+library(dslabs)
+data(na_example)
+
+mean(na_example)
+sd(na_example)
+```
+
+игнорируйте `NA`, мы можем использовать аргумент na.rm:
+
+```{r}
+library(dslabs)
+data(na_example)
+mean(na_example, na.rm = TRUE)
+sd(na_example, na.rm = TRUE)
+```
+
+## Exercise 1. Blood pressure 1
+
+Давайте изучим данные NHANES.
+Мы будем изучать артериальное давление в этом наборе данных.
+
+Сначала давайте выберем группу для установки стандарта.
+Мы будем использовать женщин в возрасте 20-29 лет.
+Обратите внимание, что категория обозначена цифрами `20-29`, с пробелом перед цифрой `20`!
+`AgeDecade` является `категориальной переменной` для этих возрастов.
+
+Чтобы узнать, является ли кто-то женщиной, вы можете посмотреть на переменную `Gender`.
+
+-   Отфильтруйте набор данных `NHANES` таким образом, чтобы в него были включены только женщины в возрасте 20-29 лет, и назначьте этот новый фрейм данных вкладке `tab`.
+
+-   Используйте `канал`, чтобы применить функциональный фильтр с соответствующей логикой к `NHANES`.
+    Помните, что эта возрастная группа обозначается цифрой `20-29`, которая включает пробел.
+
+-   Вы можете использовать `head` для изучения таблицы `NHANES`, чтобы построить правильный вызов `filter`.
+
+```{r}
+library(dplyr)
+library(NHANES)
+data(NHANES)
+head(NHANES)
+tab <- NHANES %>% filter(Gender == "female" & Age >=20 & Age <= 29)
+tab
+```
+
+## Exercise 2. Blood pressure 2
+
+Теперь мы вычислим среднее значение и стандартное отклонение для подгруппы, которую мы определили в предыдущем упражнении (женщины в возрасте 20-29 лет), которые мы будем использовать в качестве эталонных для того, что является типичным.
+
+Вы определите среднее значение и стандартное отклонение систолического артериального давления, которые хранятся в переменной `BPSysAve` в наборе данных NHANES.
+
+-   Заполните строку кода, чтобы сохранить среднее и стандартное отклонение систолического артериального давления как `average`, а `standard_deviation` - в переменной с именем `ref`.
+
+-   Используйте функцию `summarize` после фильтрации для женщин в возрасте 20-29 лет и соедините результаты, используя канал `%>%`.
+    При выполнении этого помните, что в данных есть `NA`!
+
+```{r}
+ref <- NHANES %>% filter(AgeDecade == " 20-29" & Gender == "female") %>%
+  summarize(mean(BPSysAve,na.rm = TRUE), sd(BPSysAve,na.rm = TRUE))
+ref
+```
+
+## Exercise 3. Summarizing averages
+
+Теперь мы повторим упражнение и рассчитаем только среднее кровяное давление для женщин в возрасте 20-29 лет.
+Для этого упражнения вам следует ознакомиться с тем, как использовать заполнитель `.` в dplyr или функции `pull`.
+
+*Измените строку примера кода, чтобы присвоить среднее значение числовой переменной с именем* `ref_avg`*, используя `.` или* `pull`*.*
+
+```{r}
+ref_avg <- NHANES %>%
+  filter(AgeDecade == " 20-29" & Gender == "female") %>%
+  summarize(average = mean(BPSysAve, na.rm = TRUE)) %>% pull(average)
+ref_avg
+```
+
+Функция **`pull()`** из пакета **`dplyr`** используется для извлечения одного столбца из датафрейма (или tibble) как вектор.
+Это может быть полезно, когда после ряда операций **`dplyr`** вы хотите работать с одним столбцом.
+
+## Exercise 4. Min and max
+
+Давайте продолжим практиковаться, рассчитав две другие сводки данных: минимальную и максимальную.
+
+Снова мы сделаем это для переменной `BPSysAve` и группы женщин в возрасте 20-29 лет.
+
+-   Укажите минимальное и максимальное значения для той же группы, что и в предыдущих упражнениях.
+
+-   Используйте `filter` и `summarize` , подключенные по трубе `%>%`.
+    Функции `min` и `max` можно использовать для получения нужных значений.
+
+-   В `summarize` сохраните минимальное и максимальное значения систолического артериального давления как `minbp` и `maxbp`.
+
+```{r}
+NHANES %>%
+      filter(AgeDecade == " 20-29"  & Gender == "female") %>%
+      summarize(minbp = min(BPSysAve, na.rm = TRUE), maxbp = max(BPSysAve, na.rm = TRUE))
+```
+
+## Exercise 5. group_by
+
+Теперь давайте попрактикуемся в использовании функции `group_by`.
+
+То, что мы собираемся сделать, - это очень распространенная операция в науке о данных: вы разделите таблицу данных на группы, а затем вычислите сводную статистику для каждой группы.
+
+Мы рассчитаем среднее и стандартное отклонение систолического артериального давления у женщин для каждой возрастной группы отдельно.
+Помните, что возрастные группы указаны в возрастной декаде `AgeDecade`.
+
+-   Используйте функции `filter`, `group_by`, `summaryize` и `pipe %>%`, чтобы вычислить среднее и стандартное отклонение систолического артериального давления у женщин для каждой возрастной группы отдельно.
+
+-   В `summarize` сохраните среднее и стандартное отклонение систолического артериального давления `BPSysAve` как `average` и `standart_deviation`.
+
+-   Примечание: игнорируйте предупреждения о не явном `NA`.
+    Это предупреждение не помешает правильному запуску вашего кода.
+
+```{r}
+NHANES %>%
+      filter(Gender == "female") %>%
+      group_by(AgeDecade) %>% 
+      summarize(average = mean(BPSysAve, na.rm = TRUE), 
+                standart_deviation = sd(BPSysAve,na.rm = TRUE))
+```
+
+## Exercise 6. group_by example 2
+
+Теперь давайте еще немного попрактикуемся в использовании `group_by`.
+Мы собираемся повторить предыдущее упражнение по вычислению среднего и стандартного отклонения систолического артериального давления, но для мужчин, а не для женщин.
+
+```{r}
+NHANES %>%
+      filter(Gender == "male") %>%
+      group_by(AgeDecade) %>% 
+      summarize(average = mean(BPSysAve, na.rm = TRUE), 
+                standart_deviation = sd(BPSysAve,na.rm = TRUE))
+```
+
+## Exercise 7. group_by example 3
+
+На самом деле мы можем объединить оба этих резюме в одну строку кода.
+Это связано с тем, что `group_by` позволяет нам группировать более чем по одной переменной.
+
+Мы можем использовать `group_by(AgeDecade, Gender)` для группировки как по возрастным декадам, так и по полу.
+
+-   Создайте единую сводную таблицу для среднего и стандартного отклонения систолического артериального давления, используя `group_by(AgeDecade, Gender)`.
+
+-   Обратите внимание, что нам больше не нужно фильтровать!
+
+-   Ваш код в `summarize` должен оставаться таким же, как и в предыдущих упражнениях.
+
+-   Примечание: игнорируйте предупреждения о неявном `NA`.
+    Это предупреждение не помешает правильному запуску вашего кода или его оценке.
+
+```{r}
+NHANES %>%
+      group_by(AgeDecade, Gender) %>% 
+      summarize(average = mean(BPSysAve, na.rm = TRUE), 
+                standart_deviation = sd(BPSysAve,na.rm = TRUE))
+```
+
+## Exercise 8. Arrange
+
+Теперь мы собираемся изучить различия в систолическом артериальном давлении между расами, как указано в переменной `Race 1`.
+
+Мы научимся использовать функцию упорядочивания `arrange`, чтобы упорядочить результат в соответствии с одной переменной.
+
+Обратите внимание, что эту функцию можно использовать для упорядочивания любой таблицы по заданному результату.
+Вот пример, который упорядочивается по систолическому артериальному давлению.
+
+```         
+NHANES %>% arrange(BPSysAve)
+```
+
+Если мы хотим, чтобы это было в порядке убывания, мы можем использовать функцию `desc` следующим образом:
+
+```         
+NHANES %>% arrange(desc(BPSysAve)) 
+```
+
+В этом примере мы сравним систолическое артериальное давление по значениям переменной `Race 1`для мужчин в возрасте 40-49 лет.
+
+-   Вычислите среднее значение и стандартное отклонение для каждого значения `Race 1` для мужчин в возрасте 40-49 лет.
+
+-   Упорядочьте полученную таблицу от самого низкого к самому высокому среднему систолическому артериальному давлению.
+
+-   Используйте функции `filter`, `group_by`, `summarize`, `arrange` и pipe `%>%`, чтобы сделать это в одной строке кода.
+    В `summarize` сохраните среднее и стандартное отклонение систолического артериального давления как `average` и `standart_deviation`.
+
+    ```{r}
+    NHANES %>%
+      filter(Gender == "male" & Age >= 40 & Age <= 49) %>%
+      group_by(Race1) %>%
+      summarize(
+        average = mean(BPSysAve, na.rm = TRUE),
+        standard_deviation = sd(BPSysAve, na.rm = TRUE)
+      ) %>%
+      arrange(average)
+    ```
+
+    ### 3. data.table
+
+#### 3.1 Introduction to data.table (theory)
+
+Ключевые моменты
+
+-   В этом курсе мы часто используем пакеты `tidyverse` для иллюстрации, потому что эти пакеты, как правило, содержат код, который очень удобочитаем для начинающих.
+
+-   Существуют и другие подходы к обработке и анализу данных в R, которые быстрее и лучше справляются с большими объектами, такими как пакет `data.table`.
+
+-   При выборе в `data.table` используется обозначение, аналогичное тому, которое используется с матрицами.
+
+-   Чтобы добавить столбец в `data.table`, вы можете использовать функцию `:=`.
+
+-   Поскольку пакет `data.table` разработан таким образом, чтобы избежать пустой траты памяти, когда вы создаете копию таблицы, он не создает новый объект.
+    Функция `:=` изменяется по ссылке.
+
+-   Если вы хотите сделать фактическую копию, вам нужно использовать функцию `copy()`.
+
+-   Примечание: начиная с версии 4.1, в языке R появился новый встроенный оператор pipe: `|>`.
+    Это работает аналогично каналу `%>%`, с которым вы уже знакомы.
+
+```{r}
+# load data.table package
+library(data.table)
+
+# load other packages and datasets
+library(tidyverse)
+library(dplyr)
+library(dslabs)
+data(murders)
+
+# convert the data frame into a data.table object
+murders <- setDT(murders)
+
+# selecting in dplyr
+head(select(murders, state, region))
+
+# selecting in data.table - 2 methods
+murders[, c("state", "region")] |> head()
+murders[, .(state, region)] |> head()
+
+# adding or changing a column in dplyr
+murders <- mutate(murders, rate = total / population * 10^5)
+
+# adding or changing a column in data.table
+murders[, rate := total / population * 100000]
+head(murders)
+murders[, ":="(rate = total / population * 100000, rank = rank(population))]
+
+# y is referring to x and := changes by reference
+x <- data.table(a = 1)
+y <- x
+
+x[,a := 2]
+y
+
+y[,a := 1]
+x
+
+# use copy to make an actual copy
+x <- data.table(a = 1)
+y <- copy(x)
+x[,a := 2]
+y
+```
+
+#### 3.2 Summarizing with data.table
+
+Ключевые моменты
+
+-   В `data.table` мы можем вызывать функции внутри `.()`, и они будут применены к строкам.
+
+-   `group_by`, за которым следует `summarize` в dplyr, выполняется в одной строке в `data.table` с использованием аргумента `by`.
+
+```{r}
+# load packages and prepare the data - heights dataset
+library(tidyverse)
+library(dplyr)
+library(dslabs)
+data(heights)
+heights <- setDT(heights)
+
+# summarizing in dplyr
+s <- heights %>% 
+  summarize(average = mean(height), standard_deviation = sd(height))
+  
+# summarizing in data.table
+s <- heights[, .(average = mean(height), standard_deviation = sd(height))]
+
+# subsetting and then summarizing in dplyr
+s <- heights %>% 
+  filter(sex == "Female") %>%
+  summarize(average = mean(height), standard_deviation = sd(height))
+  
+# subsetting and then summarizing in data.table
+s <- heights[sex == "Female", .(average = mean(height), standard_deviation = sd(height))]
+
+# previously defined function
+median_min_max <- function(x){
+  qs <- quantile(x, c(0.5, 0, 1))
+  data.frame(median = qs[1], minimum = qs[2], maximum = qs[3])
+}
+
+# multiple summaries in data.table
+heights[, .(median_min_max(height))]
+
+# grouping then summarizing in data.table
+heights[, .(average = mean(height), standard_deviation = sd(height)), by = sex]
+```
+
+#### 3.3 Sorting data frames
+
+Ключевые моменты
+
+-   Чтобы упорядочить строки во фрейме данных с помощью `data.table`, мы можем использовать тот же подход, который мы использовали для фильтрации.
+
+-   Сортировка по умолчанию осуществляется в порядке возрастания, но мы также можем сортировать таблицы в порядке убывания.
+
+-   Мы также можем выполнить вложенную сортировку, включив несколько переменных в желаемом порядке сортировки.
+
+```{r}
+# load packages and datasets and prepare the data
+library(tidyverse)
+library(dplyr)
+library(data.table)
+library(dslabs)
+data(murders)
+murders <- setDT(murders)
+murders[, rate := total / population * 100000]
+
+# order by population
+murders[order(population)] |> head()
+
+# order by population in descending order
+head(murders[order(population, decreasing = TRUE)] )
+
+# order by region and then murder rate
+head(murders[order(region, rate)])
+```
+
+#### 3.4 Tibbles
+
+Ключевые моменты
+
+-   `tbl` (произносится как "тиббл") - это особый вид фрейма данных.
+
+-   `Tibbles` - это фрейм данных по умолчанию в `tidyverse`.
+
+-   `Tibbles` отображаются лучше, чем обычные фреймы данных.
+
+-   Subset `Tibbles` - это `Tibbles`, что полезно, поскольку функции `tidyverse` требуют фреймов данных в качестве входных данных.
+
+-   `Tibbles` предупредит вас, если вы попытаетесь получить доступ к несуществующему столбцу.
+    Записи в `tibbles` могут быть сложными - это могут быть списки или функции.
+    Функция `group_by()` возвращает сгруппированный `tibble`, который является особым видом `tibble`.
+
+```{r}
+# view the dataset
+murders %>% group_by(region)
+
+# see the class
+murders %>% group_by(region) %>% class()
+
+# compare the print output of a regular data frame to a tibble
+head(gapminder)
+as_tibble(gapminder)
+
+# compare subsetting a regular data frame and a tibble
+class(murders[,1])
+class(as_tibble(murders)[,1])
+
+# access a column vector not as a tibble using $
+class(as_tibble(murders)$state)
+
+# compare what happens when accessing a column that doesn't exist in a regular data frame to in a tibble
+murders$State
+as_tibble(murders)$State
+
+# create a tibble
+tibble(id = c(1, 2, 3), func = c(mean, median, sd))
+```
+
+# Assessment 3
+
+## Question 1
+
+Сначала определите среднюю высоту в этом наборе данных.
+Затем создайте логический вектор `ind` с индексами для тех людей, которые выше среднего роста.
+
+Сколько людей в наборе данных имеют рост выше среднего?
+
+```{r}
+library(dslabs)
+data(heights)
+options(digits = 3)
+avg <- mean(heights$height, na.rm = TRUE)
+ind <- heights$height > avg
+length(heights$height[ind])
+```
+
+## Question 2
+
+1.  Сколько человек в наборе данных имеют рост выше среднего и являются женщинами?
+2.  Какую долю лиц в наборе данных составляют женщины?
+
+```{r proportion}
+library(dslabs)
+data(heights)
+options(digits = 3)
+heights_female <- heights %>% filter(sex == "Female")
+length(heights_female$height[ind]) # 1
+nrow(heights_female)/length(heights$height) # 2
+
+```
+
+## Question 4
+
+Этот вопрос проведет вас через три шага, чтобы определить пол человека с минимальным ростом.
+
+Determine the minimum height in the `heights` dataset.
+
+```{r}
+min(heights$height)
+```
+
+Используйте функцию `match()`, чтобы определить индекс первого человека с минимальным ростом.
+
+```{r}
+ind_min <- match(min(heights$height), heights$height)
+ind_min
+```
+
+`subset` столбца `sex` набора данных по индексу в 4b для определения пола индивида.
+
+```{r}
+heights$sex[ind_min]
+```
+
+## Question 5
+
+Этот вопрос проведет вас через три шага, чтобы определить, сколько из целочисленных значений высоты между минимальной и максимальной высотами не являются фактическими высотами отдельных лиц в наборе данных heights.
+
+1.  Determine the maximum height
+
+```{r}
+max <- max(heights$height)
+ind_max <- match(max(heights$height), heights$height)
+max
+ind_max
+```
+
+Using the `heights` dataset, create a new column of heights in centimeters named `ht_cm`.
+Recall that 1 inch = 2.54 centimeters.
+Save the resulting dataset as `heights2`.
+
+What is the height in centimeters of the 18th individual (index 18)?
+
+What is the mean height in centimeters?
+
+How many females are in the `heights2` dataset?
+
+```{r}
+heights2 <- heights %>% mutate(ht_cm = height * 2.54)
+head(heights2)
+heights2$ht_cm[18]
+mean(heights2$ht_cm)
+heights2_female <- heights2 %>% filter(sex == "Female")
+mean_fem_cm <- mean(heights2_female$ht_cm, na.rm = TRUE)
+```
+
+## Question 8
+
+Набор данных об оливках `olive` в `dslabs` содержит процентный состав восьми жирных кислот, содержащихся в липидной фракции 572 итальянских оливковых масел:
+
+1.  Plot the percent palmitic acid versus palmitoleic acid in a scatterplot.
+    What relationship do you see?
+
+2.  Create a histogram of the percentage of eicosenoic acid in `olive`.
+    Which of the following is true?
+
+3.  Make a boxplot of palmitic acid percentage in `olive` with separate distributions for each region.
+    Which region has the highest median palmitic acid percentage?
+
+```{r}
+   library(dslabs)
+data(olive)
+head(olive)
+plot(palmitic~palmitoleic, olive) # 1
+hist(olive$eicosenoic) # 2
+boxplot(palmitic~region, olive)
+```
+
+# Section 4 Overview
+
+Раздел 4 знакомит вас с общими функциями программирования, такими как команды `if-else` и `for loop`, чтобы вы могли писать свои собственные функции для выполнения различных операций с наборами данных.
+
+В разделе 4.1 вы узнаете:
+
+-   Разобраться в некоторых возможностях программирования R.
+
+В разделе 4.2 вы узнаете:
+
+-   Используйте базовые условные выражения для выполнения различных операций.
+
+-   Проверьте, являются ли какие-либо или все элементы логического вектора истинными.
+
+В разделе 4.3 вы узнаете:
+
+-   Определяйте и вызывайте функции для выполнения различных операций.
+
+-   Передавайте аргументы функциям и возвращайте переменные/объекты из функций.
+
+В разделе 4.4 вы узнаете:
+
+Используйте `for`-циклы для выполнения повторяющихся операций.
+Сформулируйте встроенные функции R, которые вы могли бы попробовать сами.
+Существует одна оценка `DataCamp` и одна итоговая оценка, чтобы вы могли попрактиковаться в своих навыках программирования.
+
+## 1. Basic Conditionals
+
+Ключевые моменты
+
+-   Наиболее распространенным условным выражением в программировании является оператор `if-else`, который имеет вид `if` \[условие\], выполните \[выражение\], `else` выполните \[альтернативное выражение\]".
+
+-   Функция `ifelse()` работает аналогично оператору `if-else`, но она особенно полезна, поскольку работает с векторами, исследуя каждый элемент вектора и возвращая соответствующий ответ соответствующим образом.
+    Функция `any()` принимает вектор логических значений и возвращает `true`, если какая-либо из записей истинна.
+    Функция `all()` принимает вектор логических значений и возвращает значение `true`, если все записи являются истинными.
+
+```{r}
+# an example showing the general structure of an if-else statement
+a <- 0
+if(a!=0){
+  print(1/a)
+} else{
+  print("No reciprocal for 0.")
+}
+
+# an example that tells us which states, if any, have a murder rate less than 0.5
+library(dslabs)
+data(murders)
+murder_rate <- murders$total / murders$population*100000
+ind <- which.min(murder_rate)
+if(murder_rate[ind] < 0.5){
+  print(murders$state[ind]) 
+} else{
+  print("No state has murder rate that low")
+}
+
+# changing the condition to < 0.25 changes the result
+if(murder_rate[ind] < 0.25){
+  print(murders$state[ind]) 
+} else{
+  print("No state has a murder rate that low.")
+}
+
+# the ifelse() function works similarly to an if-else conditional
+a <- 0
+ifelse(a > 0, 1/a, NA)
+
+# the ifelse() function is particularly useful on vectors
+a <- c(0,1,2,-4,5)
+result <- ifelse(a > 0, 1/a, NA)
+
+# the ifelse() function is also helpful for replacing missing values
+data(na_example)
+no_nas <- ifelse(is.na(na_example), 0, na_example) 
+sum(is.na(no_nas))
+
+# the any() and all() functions evaluate logical vectors
+z <- c(TRUE, TRUE, FALSE)
+any(z)
+all(z)
+```
+
+## 2. Functions
+
+Ключевые моменты
+
+-   Функция R, называемая `function()`, сообщает R, что вы собираетесь определить новую функцию.
+
+-   Функции являются объектами, поэтому им должно быть присвоено имя переменной с помощью оператора `arrow`.
+
+-   Общий способ определения функций таков: (1) определите имя функции, которое будет объектом, (2) введите `function()` с аргументами вашей функции в круглых скобках, (3) запишите все операции внутри квадратных скобок.
+    Переменные, определенные внутри функции, не сохраняются в рабочей области.
+
+```{r}
+# example of defining a function to compute the average of a vector x
+avg <- function(x){
+  s <- sum(x)
+  n <- length(x)
+  s/n
+}
+
+# we see that the above function and the pre-built R mean() function are identical
+x <- 1:100
+identical(mean(x), avg(x))
+
+# variables inside a function are not defined in the workspace
+s <- 3
+avg(1:10)
+s
+
+
+# functions can have multiple arguments as well as default values
+avg <- function(x, arithmetic = TRUE){
+  n <- length(x)
+  ifelse(arithmetic, sum(x)/n, prod(x)^(1/n))
+}
+```
+
+## 3. For Loops
+
+Ключевые моменты
+
+-   Циклы `For` выполняют одну и ту же задачу снова и снова при изменении переменной.
+    Они позволяют нам определить диапазон, который принимает наша переменная, а затем изменять значение в каждом цикле и вычислять выражение каждый раз внутри цикла.
+
+-   Общая форма цикла for такова: "Для `i` в \[некотором диапазоне\] выполните операции".
+    Это значение `i` изменяется во всем диапазоне значений, и операции предполагают, что `i` - это значение, которое вы хотите вычислить.
+
+-   В конце цикла значение `i` является последним значением диапазона.
+
+```{r}
+# создаем функцию, которая вычисляет сумму целых чисел от 1 до n
+compute_s_n <- function(n){
+  x <- 1:n
+  sum(x)
+}
+
+# a very simple for-loop
+for(i in 1:5){
+  print(i)
+}
+
+# a for-loop for our summation
+m <- 25
+s_n <- vector(length = m) # создайте пустой вектор
+for(n in 1:m){
+  s_n[n] <- compute_s_n(n)
+}
+
+# создаем график для нашей функции суммирования
+n <- 1:m
+plot(n, s_n)
+
+# таблица значений, сравнивающих нашу функцию с формулой суммирования
+head(data.frame(s_n = s_n, formula = n*(n+1)/2))
+
+# overlaying our function with the summation formula
+plot(n, s_n)
+lines(n, n*(n+1)/2)
+```
+
+# DataCamp Assessment 4.0 Programming Basics
+
+Функция `nchar` сообщает вам, сколько символов имеет длина символьного вектора.
+Например:
+
+```{r}
+char_len <- nchar(murders$state)
+head(char_len, 15)
+```
+
+Функция `ifelse` полезна, потому что вы преобразуете вектор логических элементов во что-то другое.
+Например, в некоторых наборах данных используется число `-999`для обозначения `NA`.
+Плохая практика!
+Вы можете преобразовать значение `-999` в векторе в `NA`, используя следующий вызов `if else`:
+
+```{r}
+x <- c(2, 3, -999, 1, 4, 5, -999, 3, 2, 9)
+ifelse(x == -999, NA, x)
+```
+
+Для этого упражнения мы объединим ряд функций.
+
+-   Используйте функцию `ifelse` для написания одной строки кода, которая присваивает объекту `new_names` аббревиатуру штата, когда название штата длиннее 8 символов, и присваивает название штата, когда имя не длиннее 8 символов.
+
+Например, если в исходном векторе есть `Массачусетс` (13 символов), то в новом векторе должно быть `MA`.
+Но там, где в исходном векторе есть `Нью-Йорк` (8 символов), в новом векторе также должен быть `Нью-Йорк`.
+
+```{r}
+new_names <- ifelse (nchar(murders$state) > 8, murders$abb, murders$state)
+head(new_names, 10)
+```
+
+## 2. Defining functions
+
+Вы столкнетесь с ситуациями, в которых нужная вам функция еще не существует.
+R позволяет вам писать свои собственные.
+Давайте попрактикуемся в одной такой ситуации, в которой вам сначала нужно определить используемую функцию.
+Определяемые вами функции могут иметь несколько аргументов, а также значения по умолчанию.
+
+Для определения функций мы используем `function`.
+Например, следующая функция добавляет 1 к числу, которое она получает в качестве аргумента:
+
+```{r}
+my_func <- function(x){
+    y <- x + 1
+    y
+}
+```
+
+Возвращается последнее значение в функции, в данном случае сохраненное в `y`.
+
+Если вы запустите приведенный выше код, R ничего не покажет.
+Это означает, что вы определили функцию.
+Вы можете протестировать это следующим образом:
+
+```{r}
+my_func(5)
+```
+
+Мы определим функцию `sum_n` для этого упражнения.
+
+-   Создайте функцию `sum_n`, которая для любого заданного значения, скажем, `n`,
+
+-   создает вектор `1:n`, а затем вычисляет сумму целых чисел `от 1 до n`.
+    Используйте функцию, которую вы только что определили, чтобы определить сумму целых чисел от `1 до 5000`.
+
+```{r}
+sum_n <- function(n){
+  x <- 1:n
+  sum(x)
+}
+
+n <- 10
+sum_n(n)
+```
+
+## 3. Defining functions continued\...
+
+Мы создадим еще одну функцию для этого упражнения.
+Мы определим функцию `altman_plot`, которая принимает два аргумента `x` и `y` и строит график разности `y-x` по оси y относительно суммы `x+y` по оси `x`.
+
+Вы можете определять функции с таким количеством переменных, сколько захотите.
+Например, здесь нам нужны как минимум два, x и y.
+Следующая функция отображает преобразованные значения в `plot`:
+
+```{r}
+log_plot <- function(x, y){
+    plot(log10(x), log10(y))
+}
+```
+
+Эта функция ничего не возвращает.
+Это просто создает `plot`.
+
+Мы создадим еще одну функцию для этого упражнения.
+
+-   Создайте функцию `altman_plot`, которая принимает два аргумента `x` и `y` и строит график `y-x` (по оси y) против `x+y` (по оси x).
+
+-   Примечание: не используйте круглые скобки вокруг аргументов в функции `plot`, потому что вы введете `R` в заблуждение.
+
+```{r}
+altman_plot <- function(x,y){
+  plot(x+y, y-x)
+}
+
+x <- 1:100
+y <-(1:100)^log(10)
+
+altman_plot(x,y)
+
+```
+
+## 4. Lexical scope
+
+Лексическое определение области видимости - это соглашение, используемое многими языками, которое определяет, когда объект доступен по его имени.
+Когда вы запустите приведенный ниже код, вы увидите, какой x доступен в разных точках кода.
+
+```{r}
+x <- 8
+my_func <- function(y){
+    x <- 9
+    print(x)
+    y + x
+}
+my_func(x)
+print(x)
+```
+
+Обратите внимание, что когда мы определяем `x` как 9, это происходит внутри функции, но после запуска функции оно равно 8.
+Символ x изменился внутри функции, но не снаружи.
+
+После выполнения приведенного ниже кода, каково значение x?
+
+```{r}
+x <- 3
+my_func <- function(y){
+    x <- 5
+    y
+    print(x)
+}
+my_func(x)
+```
+
+## 5. For loops
+
+В следующем упражнении мы собираемся написать цикл `for`.
+В этом цикле `for` мы собираемся вызвать функцию.
+Мы определяем эту функцию здесь.
+
+-   Напишите функцию `compute_s_n`, которая для любого заданного значения `n` вычисляет сумму `sumn = 12 + 2^2 + ….`
+
+-   Сообщите значение суммы, когда n=10.
+
+```{r}
+compute_s_n <- function(n){
+  Sn <- 1:n
+  sumn <- sum(Sn^2)
+  sumn
+}
+n <- 10
+compute_s_n(n)
+```
+
+## 6. For loops continued\...
+
+Теперь мы собираемся вычислить сумму квадратов для нескольких значений .
+Для этого мы будем использовать цикл `for`.
+Вот пример цикла `for`:
+
+```{r}
+results <- vector("numeric", 10)
+n <- 10
+for(i in 1:n){
+    x <- 1:i
+    results[i] <- sum(x)
+}
+```
+
+Обратите внимание, что мы начинаем с вызова `vector`, который создает пустой вектор, который мы будем заполнять во время выполнения цикла.
+
+-   Определите пустой числовой вектор `s_n` размера 25, используя `s_n <- vector("numeric", 25)`.
+
+-   Вычислите сумму, когда `n` равно каждому целому числу от `1 до 25`, используя функцию, которую мы определили в предыдущем упражнении: `compute_s_n`Сохраните результаты в `s_n`
+
+    ```{r}
+    results <- vector("numeric", 25)
+    n = 25
+    compute_s_n <- function(n){
+      x <- 1:n
+      sum(x^2)
+    }
+
+        for (i in 1:n){
+          s_n[i] <- compute_s_n(i)
+          s_n
+    }
+    compute_s_n(25)
+    ```
+
+## 7. Checking our math
+
+Если мы произведем математические расчеты, то сможем показать, что
+
+`Sn = 12   + 22   + ….n^2 = n(n+1)(2n+1)/6`
+
+Мы уже вычислили значения от 1 до 25, используя цикл for.
+
+Если формула верна, то график versus должен выглядеть кубическим.
+
+Давайте составим этот сюжет.
+
+-   Определите `n <- 1:25`.
+    Обратите внимание, что при этом мы можем использовать `for(i in n`)
+
+-   Используйте цикл `for` для сохранения сумм в вектор `s_n <- vector("numeric", 25)`.
+
+-   Постройте график `s_n (по оси y) против n (по оси x`).
+
+```{r}
+results <- vector("numeric", 25)
+n = 1:25
+compute_s_n <- function(n){
+  x <- 1:n
+  sum(x^2)
+}
+
+    for (i in 1:n){
+      s_n[i] <- compute_s_n(i)
+      s_n
+}
+compute_s_n(25)
+plot(n, s_n)
+```
+
+Теперь давайте на самом деле проверим, получим ли мы точно такой же ответ.
+
+```{r}
+identical(s_n, n*(n+1)*(2*n+1)/6)
+```
+
+# Section 4 Assessment
+
+## Question 1
+
+Load the**`heights`** `dataset` from `dslabs`:
+
+Напишите оператор `ifelse()`, который возвращает 1, если пол женский, и 2, если пол мужской.
+
+Какова сумма результирующего вектора?
+
+```{r}
+library(dslabs)
+data(heights)
+
+sex_12 <- ifelse(heights$sex == "Female",1,2)
+sum(sex_12)
+
+```
+
+## Question 2
+
+Напишите оператор `if else()`, который принимает столбец `height` и возвращает высоту, если она больше `72 дюймов`, и возвращает `0` в противном случае.
+
+Каково среднее значение результирующего вектора?
+
+```{r}
+sex_13 <- ifelse(heights$height > 72, heights$height, 0)
+mean(sex_13)
+```
+
+## Question 3
+
+Напишите функцию `inches_to_ft`, которая принимает количество дюймов `x` и возвращает количество футов.
+Один фут равен `12` дюймам.
+
+Что такое `inches_to_ft(144)`?
+
+Сколько людей в наборе данных о росте имеют рост менее 5 футов?
+
+```{r}
+inches_to_ft <- function(x){
+  y <- x/12
+  y
+}
+
+fut_heights <- inches_to_ft(heights$height)
+s_f <- ifelse(fut_heights < 5, 1, 0)
+sum(s_f)
+
+```
+
+## Question 5
+
+Учитывая целое число `x`, факториал от `x` называется `x!` и является произведением всех целых чисел до `x` включительно.
+Функция `factorial()` вычисляет факториалы в R.
+Например, функция `factorial(4)` возвращает `4! = 4 × 3 × 2 × 1 = 24`.
+
+Выполните приведенный выше код, чтобы сгенерировать вектор длины `m`, где первая запись равна `1!`, вторая запись равна `2!` и так далее до `m!`.
+
+```{r}
+# define a vector of length m
+m <- 10
+f_n <- vector(length = m)
+
+# make a vector of factorials
+{
+f_n[n] <- factorial(n)
+}
+
+# inspect f_n
+f_n
+```

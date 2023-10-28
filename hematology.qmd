@@ -1,0 +1,431 @@
+---
+title: "Mindray BC-6800. August"
+toc: true
+toc_float:
+  collapsed: false
+  smooth_scroll: false
+---
+
+## 1. Загрузка необходимых библиотек.
+
+```{r lib, warning=FALSE,message=FALSE}
+library(tidyverse)
+library (data.table)
+library(readxl)
+library(ggthemes)
+library(gt)
+library(zoo)
+```
+
+## 2. Загрузка таблиц с данными.
+
+```{r data loading, warning=FALSE, message=FALSE}
+
+
+ august <- read_excel("C:/Users/user/Desktop/DB/3. CAL8000/Hematology/august.xlsx")
+ august
+```
+
+## 3. Подготовка, преобразование данных
+
+### 3.1 Преобразование столбца с датой/временем в формат даты/времени.
+
+При загрузке данных в этом случае формат **chr**.
+После преобразования - **S3: POSIXct** (2023-08-01 00:49:01)
+
+```{r as.date_time}
+august$date_time <- dmy_hms(august$date_time)
+head(august,10)
+```
+
+### 3.2 Создание отдельных столбцов: time, date. Перемещение столбцов в удобное место расположения.
+
+```{r separated date and time}
+
+august <- august |> 
+  mutate(time = format(date_time, "%H:%M:%S"), 
+         date = format(date_time, "%Y-%m-%d")) |> 
+  relocate(time, .after = date_time) |> 
+  relocate(date, .after = time) |> 
+  select(id, mode, tests_panel, date_time, date, time,sex, age, units, department)
+
+head(august, 5)
+```
+
+### 3.3 Округление столбца time (chr) до 8 минут и добавление столбца rounded_time.
+
+В дальнейшем это даст возможность сгруппировать данные для оценки пиковой нагрузки.
+
+```{r roundet time}
+
+august <- august |> 
+  mutate(rounded_time = format(round_date(date_time, unit = "8 minutes"), "%H:%M:%S")) |> 
+  relocate(rounded_time, .after = time) |> 
+  mutate(num = 1) |> 
+  relocate(num, .before = id)
+
+head(august, 5)
+```
+
+## 4. Построение графиков, оценка результатов.
+
+### 4.1 Группировка по дате (для подсчета количества тестов в день)
+
+-   Добавление столбца день недели
+
+-   Преобразование date из chr в date
+
+-   создание date_num с номером дня (0-30)
+
+```{r visualisation}
+# общее количество тестов в день (август)
+august_total <- august |>
+  group_by(date) |> 
+  summarise(count = n()) |> 
+  filter(date < '2023-09-01')
+
+august_total$date_ymd <- ymd(august_total$date)
+august_total$date_num <- as.numeric(difftime(august_total$date, min(august_total$date), units = "days"))
+
+august_total <- august_total |> 
+  mutate(day_of_week = weekdays(date_ymd, abbreviate = TRUE)) |> 
+  relocate(day_of_week, .before = date)
+august_total
+```
+
+### 4.2 Создание точечного графика : "Среднее количество тестов в день (Август)"
+
+```{r satterplot august_total, message=FALSE}
+
+mean_total <- round(mean(august_total$count),1)
+
+august_total |> ggplot(aes(x = date, y = count))+
+  geom_point(size = 3, col = "darkgreen", alpha = 0.5)+
+  geom_smooth(aes(x = date, y = count, group = 1), method = "lm", se = FALSE, col = "darkgray", linetype = "dashed")+
+  geom_hline(yintercept = mean_total, linetype = "dotted", linewidth = 1) +
+  annotate("text", x = min(august_total$date), y = mean_total + 100, label = round(mean_total, 1), hjust = 0) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  ggtitle("Среднее количество тестов в день (Август)")+
+  xlab("Дата")+
+  ylab("Количество исследований")
+```
+
+Чтобы добавить формулу линейной регрессии и подсчитать прирост за месяц (наклон линии), вы можете использовать функции из пакета **`lm`** (линейная модель) и **`ggplot2`**.
+
+#### **4.2.1 Расчет прироста за месяц**:
+
+1.  Сначала вы можете создать линейную модель с **`lm()`** для **`count`** по **`date`**. Затем извлечь коэффициенты модели, чтобы определить прирост за день. Умножение этого значения на 30 : даст приблизительный прирост за месяц.
+
+```{r}
+
+# Создаем линейную модель
+model <- lm(count ~ date_num, data = august_total)
+
+# Получаем коэффициенты
+coef_vals <- coef(model)
+
+# Прирост за день
+daily_growth <- coef_vals["date_num"]
+daily_growth
+# Прирост за месяц
+monthly_growth <- daily_growth * 30
+monthly_growth
+
+```
+
+#### **4.2.2 Добавить формулу на график**:
+
+Вы можете использовать **`annotate()`** для добавления формулы на график.
+
+```{r total 2, message=FALSE}
+library(ggplot2)
+
+formula_text <- paste0("y = ", round(coef_vals[1], 2), " + ", round(daily_growth, 2), "x")
+
+august_total |> 
+  ggplot(aes(x = date, y = count)) +
+  geom_point(size = 3, col = "darkgreen", alpha = 0.5) +
+  geom_hline(yintercept = mean_total, linetype = "dotted", size= 1) +
+  annotate("text", x = min(august_total$date), y = mean_total + 100, label = round(mean_total, 1), hjust = 0)+
+  geom_smooth(aes(x = date, y = count, group = 1), method = "lm", se = FALSE, col = "darkgray", linetype = "dashed") +
+  annotate("text", x = min(august_total$date), y = max(august_total$count), label = formula_text, hjust = 0, col = "darkgray") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+  ggtitle("Среднее количество тестов в день (Август)")+
+  xlab("Дата")+
+  ylab("Количество исследований")
+
+```
+
+#### 4.2.3 Процентный прирост
+
+Чтобы вычислить процентное изменение или прирост в процентах за месяц на основе вашей линейной модели, выполните следующие шаги:
+
+##### **1. Определите начальное и конечное значения на основе вашей линейной модели**:
+
+Используйте линейную модель, чтобы предсказать начальное значение (на начало месяца) и конечное значение (на конец месяца).
+
+```{r}
+predicted_start <- coef_vals[1] + coef_vals["date_num"] * min(august_total$date_num)
+predicted_end <- coef_vals[1] + coef_vals["date_num"] * max(august_total$date_num)
+```
+
+##### 2. Вычислите процентное изменение:
+
+Процентное изменение можно вычислить с помощью следующей формулы:
+
+$$
+Процентное \ изменение=\frac{(Начальное \ значение - Конечное \ значение)}{Начальное \ значение} ×100
+$$
+
+```{r}
+percent_growth <-  ((predicted_end - predicted_start) / predicted_start) * 100
+percent_growth
+```
+
+Теперь переменная **`percent_growth`** содержит прирост в процентах за месяц на основе вашей линейной модели.
+
+Если вам интересен среднемесячный процентный прирост, учитывая начальное значение каждого дня и предсказанное значение на следующий день, этот процесс будет сложнее и потребует дополнительных вычислений.
+Но приведенный выше метод предоставляет общую оценку процентного изменения на основе линейной модели для всего месяца.
+
+##### 3. Среднемесячный процентный прирост, учитывая начальное значение каждого дня и предсказанное значение на следующий день
+
+Для вычисления среднемесячного процентного прироста, учитывая начальное значение каждого дня и предсказанное значение на следующий день, вам понадобится выполнить следующие шаги:
+
+-   Вычислить процентное изменение для каждой пары дней (день N и день N+1).
+
+-   Найти среднее значение этих процентных изменений.
+
+Давайте приступим к реализации:
+
+1.  Создайте новый столбец в вашем фрейме данных, который представляет собой смещенное значение столбца **`count`**, чтобы можно было легко вычислить процентное изменение:
+
+```{r}
+august_total$next_day_count <- dplyr::lead(august_total$count, 1)
+august_total$next_day_count
+```
+
+2.  Вычислите процентное изменение для каждой пары дней:
+
+```{r}
+august_total$percent_change <- ((august_total$next_day_count - august_total$count) / august_total$count) * 100
+august_total$percent_change
+```
+
+Вычислите среднее процентное изменение:
+
+```{r}
+average_percent_change <- round(mean(august_total$percent_change, na.rm = TRUE),2)
+average_percent_change
+```
+
+Теперь **`average_percent_change`** содержит среднее процентное изменение от дня к дню на протяжении всего месяца.
+
+::: {.callout-note appearance="simple"}
+Обратите внимание, что последнее значение в столбце **`percent_change`** будет **`NA`**, так как для последнего дня нет следующего дня для сравнения.
+Это также учитывается при вычислении среднего значения с помощью аргумента **`na.rm = TRUE`**.
+:::
+
+#### 4.2.4 Скользящее среднее
+
+Скользящее среднее, иногда называемое "перемещающимся средним", вычисляет среднее значение для определенного числа последних наблюдений.
+Это используется для сглаживания временных рядов и исключения короткосрочных флуктуаций или шума из данных.
+
+В R и **`tidyverse`** вы можете вычислить скользящее среднее с помощью функции **`rollmean`** из пакета **`zoo`** или функции **`slide`** из пакета **`slider`**.
+
+Вот пример использования **`rollmean`** для вычисления 7-дневного скользящего среднего для вашего набора данных:
+
+```{r}
+library(tidyverse)
+library(zoo)
+
+august_total <- august_total %>%
+  arrange(date) %>%
+  mutate(rolling_mean = rollmean(count, 4, fill = NA, align = "center")) |> 
+  relocate(rolling_mean, .before = count)
+august_total
+```
+
+Теперь вы можете добавить это скользящее среднее к вашему графику:
+
+```{r total 3}
+august_total %>%
+  ggplot(aes(x = date, y = count)) +
+  geom_point(size = 3, col = "darkgreen", alpha = 0.5) +
+  geom_line(aes(y = rolling_mean), col = "darkblue", na.rm = TRUE, group = 1) +
+  geom_smooth(aes(x = date, y = count, group = 1), method = "lm", se = FALSE, col = "darkgray", linetype = "dashed") +
+  annotate("text", x = min(august_total$date), y = max(august_total$count), label = formula_text, hjust = 0, col = "darkgray") +
+  annotate("text", x = max(august_total$date), y = min(august_total$count), label = paste0("Среднее процентное изменение: ", round(average_percent_change, 2), "%"), hjust = 1)+
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Среднее количество тестов в день (Август)") +
+  xlab("Дата") +
+  ylab("Количество исследований")
+
+```
+
+### 4.3 Расчет почасовой загрузки
+
+```{r}
+head(august,5)
+```
+
+1.  Создание `august_time`
+
+```{r august_time, warning=FALSE, message=FALSE}
+august_time <- august |> 
+  group_by(rounded_time, date) |> 
+  summarise(count_per_day = n()) |>
+  group_by(rounded_time) |>
+  summarise(average_count = round(mean(count_per_day),1))
+
+
+august_time$rounded_time <- hms(august_time$rounded_time)
+august_time
+```
+
+#### 4.3.1 Skatterplot : "00:00 - 23:59"
+
+```{r}
+median_time <- median(period_to_seconds(august_time$rounded_time))
+
+august_time |> ggplot(aes(x = rounded_time, y = average_count)) +
+  geom_point(size = 2, color = "darkgreen", alpha = 0.5) +
+  scale_x_time(breaks = scales::pretty_breaks(n = 24)) +
+  geom_smooth(method = "loess", se = FALSE,span = 0.3 ) +
+  geom_vline(xintercept = as.numeric(lubridate::hours(16)), linetype = "dashed", color = "red")+
+  geom_vline(xintercept = as.numeric(lubridate::hours(8)), linetype = "dashed", color = "red")+ 
+  annotate("text", x = seconds_to_period(median_time), y = max(august_time$average_count)/2, label = "24%", hjust = 0.5) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+
+  ggtitle("Среднесуточная загрузка за август")+
+  xlab("Часы")+
+  ylab("Количество тестов (интервал = 15 мин)")
+
+```
+
+#### 4.3.2 Процент исследований с 16:00 до 08:00
+
+```{r}
+plan <- august_time |> 
+  filter(rounded_time >= hours(8) & rounded_time<=hours(16)) |> 
+  summarise(plan = sum(average_count))
+
+duty <- august_time |> 
+  filter(rounded_time < hours(8) | rounded_time>hours(16)) |> 
+  summarise(duty = sum(average_count))
+
+round(duty$duty/(duty$duty+plan$plan)*100,0)
+```
+
+#### 4.3.3 Skatterplot : "08:00 - 08:00 следущего дня"
+
+```{r}
+august$date <- ymd(august$date)
+august$time <- hms(august$rounded_time)
+
+august_analyzed_24h <- august |> 
+  mutate(time = hms::hms(time)) |>
+  relocate(date, time, .before = num) |> 
+  group_by(date) |>
+  arrange(date,time) |> 
+  select(date, time) 
+
+august_analyzed_24h <- august_analyzed_24h |> 
+  group_by(time) |> 
+  summarise (count = n()/33)
+
+august_analyzed_24h$count <- round(august_analyzed_24h$count, 1)
+
+august_analyzed_24h
+```
+
+```{r}
+# Переводим время в POSIXct, чтобы можно было выполнить смещение
+base_date <- as.Date("2023-10-24")
+august_analyzed_24h <- august_analyzed_24h %>%
+  mutate(datetime = as.POSIXct(paste(base_date, time), format = "%Y-%m-%d %H:%M:%S", tz = "UTC")) %>%
+  mutate(shifted_datetime = if_else(datetime < as.POSIXct("2023-10-24 08:00:00", tz="UTC"), datetime + days(1), datetime))
+
+limits <- as.POSIXct(c("2023-10-24 08:00:00", "2023-10-25 08:00:00"), tz = "UTC")
+breaks <- as.POSIXct(c("2023-10-24 08:00:00", "2023-10-24 12:00:00", "2023-10-24 16:00:00", "2023-10-24 20:00:00", "2023-10-25 00:00:00", "2023-10-25 04:00:00", "2023-10-25 08:00:00"), tz = "UTC")
+
+ggplot(august_analyzed_24h, aes(x = shifted_datetime, y = count)) +
+  geom_point(size = 2, color = "darkgreen", alpha = 0.3) +
+  scale_x_datetime(limits = limits, breaks = breaks, labels = scales::time_format("%H:%M")) +
+  labs(x = "Time", y = "Count", title = "Number of tests over 24 hours starting at 8 AM")+
+  theme_minimal()+
+  geom_smooth(se = FALSE, span  = 0.2, alpha = 0.2)
+```
+
+#### 4.3.4 Загрузка по дням недели
+
+##### 1. Создаем столбец с днями недели : `weekday` и стобец с номером недели : `week_num`. (используется `lubridate`)
+
+```{r}
+library(lubridate)
+
+# Извлекаем числовое значение дня недели с помощью wday()
+august$wday_num <- wday(august$date_time)
+
+# Преобразуем числовые значения в имена дней недели
+august$weekday <- weekdays(as.Date(august$date_time))
+
+# Перемещаем столбец 'weekday' перед столбцом 'id'
+august <- august |> relocate(weekday, .before = id)
+
+# Создаем столбец с номером недели (в году)
+
+august$week_num <- week(august$date)
+august <- august |> relocate(week_num, .before = weekday)
+august
+```
+
+##### 2. Выполняем группировку по дню недели для построения графика
+
+```{r august_wd, warning=FALSE, message=FALSE}
+
+avg_tests_per_weekday <- august |> 
+  group_by(date, weekday) |> 
+  summarise(daily_tests = n()) |> 
+  group_by(weekday) |> 
+  summarise(avg_tests = mean(daily_tests))
+avg_tests_per_weekday
+```
+
+##### 3. Построение графика начиная с понедельника
+
+Чтобы гарантировать, что график начинается с понедельника, нужно сначала преобразовать вашу переменную **`weekday`** в упорядоченный фактор с правильной последовательностью дней.
+Затем вы можете использовать эту упорядоченную переменную для построения графика.
+
+Вот как вы можете сделать это:
+
+```{r}
+# Преобразование 'weekday' в упорядоченный фактор
+ordered_days <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+avg_tests_per_weekday$weekday <- factor(avg_tests_per_weekday$weekday, levels = ordered_days, ordered = TRUE)
+
+mean_wd <- round(mean(avg_tests_per_weekday$avg_tests),2)
+
+# Теперь вы можете построить график
+library(ggplot2)
+ggplot(avg_tests_per_weekday, aes(x=weekday, y=avg_tests)) +
+  geom_point() +
+  geom_line(group=1, col = "gray") +
+  labs(title="Среднее количество тестов по дням недели (Август)", x="День недели", y="Среднее количество тестов")+
+  theme_minimal()+
+  geom_hline(yintercept = mean_wd, linetype = "dashed", color = "darkgreen")
+
+```
+
+::: {.callout-note appearance="simple"}
+В **`ggplot2`**, параметр **`group`** используется для определения, какие точки следует соединить линиями в случае, если несколько наблюдений имеют одно и то же значение по оси X.
+
+В вашем коде у вас есть график, который показывает среднее количество тестов по дням недели.
+Поскольку каждый день недели уникален, вам не нужно было бы использовать параметр **`group`** для соединения точек в определенной последовательности.
+Однако, по умолчанию, **`geom_line()`** пытается группировать линии на основе другой переменной.
+Указав **`group=1`**, вы фактически говорите **`ggplot2`**: "Считай все эти точки одной группой и соедини их линией".
+
+В общем, **`group=1`** здесь служит инструкцией для **`geom_line()`** обрабатывать все данные как одну группу и соединять их последовательно на основе порядка дней недели.
+Если бы вы убрали **`group=1`**, то **`geom_line()`** не знал бы, как соединять точки, и вы бы не увидели линию на вашем графике.
+:::

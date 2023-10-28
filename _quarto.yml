@@ -1,0 +1,88 @@
+project: 
+  type: website
+  output-dir: docs
+  title: "Conspect"
+lang: ru
+
+website:
+
+  title: Edy888
+  page-navigation: true
+  back-to-top-navigation: true
+  reader-mode: true
+  open-graph: true
+    
+
+  sidebar:
+    style: "floating"
+    background: light
+    alignment: left
+    collapse-level: 1
+    pinned: true
+    
+    contents: 
+      - section: "Data Base"
+        contents:
+          - hematology.qmd
+          
+      - section: "Моё обучение"
+        contents:
+          - 1.R_basic.qmd
+          - 2.Visualization.qmd
+
+  
+  page-footer: 
+    left: "Copyright 2023, Eduard Soldatkin"
+    right: 
+      - icon: github
+        href: https://github.com/Edy888
+    border: false
+    background: dark
+  
+  navbar:
+    pinned: false
+    search: true
+    collapse-below: "sm"
+    left:          
+    
+      - text: "Home"
+        file: home.qmd
+            
+      - text: "Data Base"
+        menu: 
+          - text: "Гематология. Август 2023"
+            file: hematology.qmd
+          
+      
+      - text: "Моё обучение"
+        menu:
+          - text: "PART 1 : R Basic"
+            file: 1.R_basic.qmd
+          - text: "PART 2 : Visualization"
+            file: 2.Visualization.qmd
+    
+    right:
+    
+      - text: "Shiny"
+        file: shiny.qmd
+      - text: "GPT"
+        menu: 
+          - text: GPT
+            file: gpt.qmd
+
+    tools:
+          - icon: github
+            menu:
+              - text: Source Code
+                url:  https://github.com/Edy888
+
+format:
+  html:
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px
+      gutter-width: 1.5rem
+    theme: sketchy
+    light: flatly
+    dark: darkly
