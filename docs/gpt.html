@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -219,7 +253,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Содержание</h2>
+   
+  <ul>
+  <li><a href="#как-автоматизировать-работу-с-базой-данных" id="toc-как-автоматизировать-работу-с-базой-данных" class="nav-link active" data-scroll-target="#как-автоматизировать-работу-с-базой-данных">1. Как автоматизировать работу с базой данных</a></li>
+  <li><a href="#создание-ssh-ключа-в-rstudio" id="toc-создание-ssh-ключа-в-rstudio" class="nav-link" data-scroll-target="#создание-ssh-ключа-в-rstudio">2. Создание SSH-ключа в RSTUDIO</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -243,6 +284,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="как-автоматизировать-работу-с-базой-данных" class="level2">
+<h2 class="anchored" data-anchor-id="как-автоматизировать-работу-с-базой-данных">1. Как автоматизировать работу с базой данных</h2>
 <p><em>Подскажи, как правильно построить работу в таком случае: у меня есть отчет по тестам за каждый месяц с информацией о времени и дате выполнения теста. Мне нужно максимально полезно оценить эти данные. Плюс каждый месяц будет новый отчет, при котором я буду делать отчет по нему плюс отчет за 2 месяца и так далее. Как правильно построить работу? может написать функции ? Какой алгоритм действий ты можешь предложить?</em></p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
@@ -295,8 +338,65 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="создание-ssh-ключа-в-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="создание-ssh-ключа-в-rstudio">2. Создание SSH-ключа в RSTUDIO</h2>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<ol type="1">
+<li><strong>Проверьте наличие SSH-ключа:</strong></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat ~/.ssh/id_rsa.pub</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Если вы видите SSH-ключ, это означает, что у вас есть ключ. Если его нет, вам нужно его создать.</p>
+<ol start="2" type="1">
+<li><strong>Создайте SSH-ключ (пропустите этот шаг, если у вас уже есть ключ):</strong></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh-keygen <span class="at">-t</span> rsa <span class="at">-b</span> 4096 <span class="at">-C</span> <span class="st">"your_email@example.com"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Вам будут заданы вопросы о местоположении и пароле. Просто нажимайте Enter на каждом шаге, чтобы принять значения по умолчанию.</p>
+<ol start="3" type="1">
+<li><strong>Добавьте ваш SSH-ключ к ssh-agent:</strong></li>
+</ol>
+<p>Запустите ssh-agent в фоновом режиме:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> eval <span class="st">"</span><span class="va">$(</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="va">)</span><span class="st">"</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li><strong>Добавьте SSH-ключ в ваш аккаунт на GitHub:</strong></li>
+</ol>
+<ul>
+<li>Сначала скопируйте ваш публичный ключ в буфер обмена:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat ~/.ssh/id_rsa.pub <span class="kw">|</span> <span class="ex">clip</span></span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>Затем перейдите в настройки вашего аккаунта на GitHub.</p></li>
+<li><p>Нажмите на “SSH и GPG ключи” в боковом меню.</p></li>
+<li><p>Нажмите кнопку “Добавить новый SSH ключ”.</p></li>
+<li><p>Вставьте ваш ключ в поле и укажите описательное имя.</p></li>
+</ul>
+<p>Чтобы посмотреть и скопировать содержимое вашего публичного ключа, выполните:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat ~/.ssh/id_rsa.pub</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Нажмите “Добавить SSH-ключ”.</li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Проверьте соединение:</strong></li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ssh <span class="at">-T</span> git@github.com</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Вы должны увидеть сообщение вроде “Привет [username]! Вы успешно прошли аутентификацию...”</p>
+<ol start="6" type="1">
+<li><strong>Повторите попытку отправки:</strong></li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push <span class="at">-u</span> origin master</span></code><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Теперь это должно работать.</p>
+<p>Если после выполнения этих шагов у вас все равно возникают проблемы, удостоверьтесь, что репозиторий существует на GitHub, и что удаленный URL вашего локального репозитория корректен (вы можете проверить его с помощью команды <strong><code>git remote -v</code></strong>).</p>
+</div>
+</div>
+</div>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Наверх</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
