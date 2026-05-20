@@ -5,8 +5,6 @@ project:
 lang: ru
 
 website:
-
-  title: Edy888
   page-navigation: true
   back-to-top-navigation: true
   reader-mode: true
@@ -20,19 +18,29 @@ website:
     collapse-level: 1
     pinned: true
     
-    contents: 
-      - section: "Data Base"
-        contents:
-          - hematology.qmd
-          
+    contents:
+      - section: "Quarto"
+        contents: 
+          - Quarto_1.4.qmd
+          - Dashboards_1.4.qmd
+    
       - section: "Моё обучение"
         contents:
           - 1.R_basic.qmd
           - 2.Visualization.qmd
+          - 3.Probability.qmd
+          - 4.Inference.qmd
+          - 5. Data Science Productivity Tools.qmd
+          - DataCamp_Foundation to probability.qmd
+      
+      - section: Python
+        contents: 
+          - Jupiter_Notebook.qmd
 
-  
+
+
   page-footer: 
-    left: "Copyright 2023, Eduard Soldatkin"
+    left: "Copyright 2024, Eduard Soldatkin"
     right: 
       - icon: github
         href: https://github.com/Edy888
@@ -43,32 +51,50 @@ website:
     pinned: false
     search: true
     collapse-below: "sm"
-    left:          
+    left:
+      - text: "Quarto"
+        menu: 
+          - text: "Quarto 1.4"
+            file: Quarto_1.4.qmd
+          - text: "Dashboards_1.4"
+            file: Dashboards_1.4.qmd
     
       - text: "Home"
         file: home.qmd
             
-      - text: "Data Base"
-        menu: 
-          - text: "Гематология. Август 2023"
-            file: hematology.qmd
-          
-      
       - text: "Моё обучение"
         menu:
           - text: "PART 1 : R Basic"
             file: 1.R_basic.qmd
           - text: "PART 2 : Visualization"
             file: 2.Visualization.qmd
+          - text: "PART 3: Probability"
+            file: 3.Probability.qmd
+          - text: "PART 4: Inference and Modeling"
+            file: 4.Inference.qmd
+          - text: "PART 5 : Productivity Tools"
+            file: 5. Data Science Productivity Tools.qmd
+          - text: "Foundations of Probability in R_DataCamp"
+            file: DataCamp_Foundation to probability.qmd
+            
+      - text: "Python"
+        menu: 
+          - text: "Jupyter NoteBook"
+            file: Jupiter_Notebook.qmd
+ 
     
     right:
     
+
       - text: "Shiny"
         file: shiny.qmd
-      - text: "GPT"
+      - text: "CLSI"
         menu: 
-          - text: GPT
-            file: gpt.qmd
+          - text: verification
+            file: CLSI.qmd
+      - text: "Python"
+        menu: 
+          - Jupiter_Notebook.qmd
 
     tools:
           - icon: github
@@ -79,10 +105,8 @@ website:
 format:
   html:
     grid:
-      sidebar-width: 300px
-      body-width: 900px
-      margin-width: 300px
+      sidebar-width: 340px
+      body-width: 940px
+      margin-width: 340px
       gutter-width: 1.5rem
-    theme: sketchy
-    light: flatly
-    dark: darkly
+    theme: flatly
