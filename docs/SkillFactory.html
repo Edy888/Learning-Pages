@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>SkillFactory – Conspect</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./DataCamp_Foundation to probability.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-abf048ab67da21b239848c920e504bec.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Поиск не дал результатов",
+    "search-matching-documents-text": "Результаты поиска",
+    "search-copy-link-title": "Скопировать ссылку",
+    "search-hide-matches-text": "Скрыть дополнительные результаты",
+    "search-more-match-text": "дополнительный результат в этом документе",
+    "search-more-matches-text": "дополнительных результата(-ов) в этом документе",
+    "search-clear-button-title": "Очистить",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Отменить",
+    "search-submit-button-title": "Найти",
+    "search-label": "Поиск"
+  }
+}</script>
+
+
+<meta property="og:title" content="SkillFactory – Conspect">
+<meta property="og:site_name" content="Conspect">
+</head>
+
+<body class="nav-sidebar floating nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-sm " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Conspect</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Поиск"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Переключить навигацию" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-harvardx-data-science" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">HarvardX: Data Science</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-harvardx-data-science">    
+        <li>
+    <a class="dropdown-item" href="./1.R_basic.html">
+ <span class="dropdown-text">PART 1: R Basic</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./2.Visualization.html">
+ <span class="dropdown-text">PART 2: Visualization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./3.Probability.html">
+ <span class="dropdown-text">PART 3: Probability</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./4.Inference.html">
+ <span class="dropdown-text">PART 4: Inference and Modeling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./5. Data Science Productivity Tools.html">
+ <span class="dropdown-text">PART 5: Productivity Tools</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./6. Wrangling.html">
+ <span class="dropdown-text">PART 6: Wrangling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./7. Linear Regression.html">
+ <span class="dropdown-text">PART 7: Linear Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./8. Machine Learning.html">
+ <span class="dropdown-text">PART 8: Machine Learning</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="./DataCamp_Foundation to probability.html" aria-current="page"> 
+<span class="menu-text">DataCamp</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./SkillFactory.html"> 
+<span class="menu-text">SkillFactory</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/Edy888">
+            Source Code
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Переключить режим чтения">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SkillFactory.html">SkillFactory</a></li><li class="breadcrumb-item"><a href="./SkillFactory.html">SkillFactory</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">HarvardX: Data Science</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1.R_basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PART 1 : Data Science R_basic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2.Visualization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PART 2: Visualization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3.Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PART 3: Data Science. Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4.Inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PART 4: Inference and Modeling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5. Data Science Productivity Tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PART 5 : Productivity Tools</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6. Wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PART 6 : Wrangling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7. Linear Regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8. Machine Learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Machine Learning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">DataCamp</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DataCamp_Foundation to probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. DataCamp_Foundation to probability</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">SkillFactory</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./SkillFactory.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">SkillFactory</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./SkillFactory.html">SkillFactory</a></li><li class="breadcrumb-item"><a href="./SkillFactory.html">SkillFactory</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">SkillFactory</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="python-1.-основы-python" class="level1">
+<h1><u><strong>PYTHON-1. Основы Python</strong></u></h1>
+<section id="иерархия-типов-данных" class="level2">
+<h2 class="anchored" data-anchor-id="иерархия-типов-данных">Иерархия типов данных:</h2>
+<p>Давайте посмотрим на иерархию встроенных типов&nbsp;Python:</p>
+<p><img src="https://lms.skillfactory.ru/asset-v1:Skillfactory+DSMED+2023+type@asset+block@dst3-u1-md1_6_1.png" class="img-fluid"></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 42%">
+<col style="width: 21%">
+<col style="width: 34%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Данные</strong></td>
+<td style="text-align: left;"><strong>Тип</strong></td>
+<td style="text-align: left;"><strong>Примеры</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Целые числа</strong></td>
+<td style="text-align: left;"><strong>int</strong></td>
+<td style="text-align: left;"><strong>73<br>
+0</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Числа с плавающей точкой</strong></td>
+<td style="text-align: left;"><strong>float</strong></td>
+<td style="text-align: left;"><strong>3.14<br>
+-2.79</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Строки</strong></td>
+<td style="text-align: left;"><strong>str</strong></td>
+<td style="text-align: left;"><strong>“Hello, world!”<br>
+“5”</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Логические переменные</strong></td>
+<td style="text-align: left;"><strong>bool</strong></td>
+<td style="text-align: left;"><strong>True<br>
+False</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Списки</strong></td>
+<td style="text-align: left;"><strong>list</strong></td>
+<td style="text-align: left;"><strong>[1,2,3,4]</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Кортежи</strong></td>
+<td style="text-align: left;"><strong>tuple</strong></td>
+<td style="text-align: left;"><strong>(‘a’,’b’,’c’)</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Словари</strong></td>
+<td style="text-align: left;"><strong>dict</strong></td>
+<td style="text-align: left;"><strong>{‘a’ : 1, ‘b’ : 2}</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Множества</strong></td>
+<td style="text-align: left;"><strong>set</strong></td>
+<td style="text-align: left;"><strong>{‘a’, 1, ‘b’, 2}</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong><em>Python</em></strong> <strong>— язык с неявной сильной динамической типизацией. Разберём это определение по частям.</strong></p>
+<ul>
+<li><p>Динамическая типизация означает, что тип переменной определяется во время выполнения программы, а не во время компиляции. Поэтому справедливо говорить, что переменная — это контейнер. Во время выполнения программы в него можно положить данные одного типа, после чего заменить данными другого типа.</p>
+<p>Возьмём аналогию из прошлого юнита, что переменная —&nbsp;это коробка. В <code>Python</code> мы можем положить в эту коробку всё что угодно, затем вытащить это и положить что-то другое, коробка может принять любое содержимое.</p></li>
+<li><p>Сильная типизация говорит нам о том, что мы не можем совершать операции над объектами разного типа без приведения их к одному типу.</p>
+<p>Например, Python вызовет ошибку, если мы попытаемся сложить число и строку.&nbsp; Однако, мы можем складывать между собой целые числа&nbsp;int и числа с плавающей точкой <code>float</code>. Это не вызовет ошибки благодаря тому, что в языке существует неявное приведение типов. Этот механизм автоматически приводит целые числа в числа с плавающей точкой в ситуациях, когда это необходимо.</p></li>
+<li><p>И, наконец, неявная типизация говорит о том, что тип переменной при её объявлении не нужно указывать.</p>
+<p>Такой подход при грамотном использовании открывает большое количество возможностей, о которых мы постепенно узнаем.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Возможности языка&nbsp;Python&nbsp;позволяют узнавать тип переменной, используя встроенную функцию<code>type()</code><strong>.</strong></p>
+<p>Рассмотрим, как работает динамическая типизация и функция&nbsp;<code>type()</code>, на примере. Сначала присвоим переменной&nbsp;<code>a</code>&nbsp;значение&nbsp;<code>3.14</code>&nbsp;и выведем её тип на экран:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">3.14</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(a))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'float'&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># &lt;class 'float'&gt;</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Дополнительно:</p>
+<p><a href="https://docs.python.org/3.3/reference/datamodel.html"><strong>Справочник по языку&nbsp;<em>Python</em>.</strong></a></p>
+</div>
+</div>
+</div>
+</section>
+<section id="классификация-типов-данных" class="level2">
+<h2 class="anchored" data-anchor-id="классификация-типов-данных">Классификация типов данных</h2>
+<p>Все типы данных можно разделить на две группы:&nbsp;изменяемые/мутабельные&nbsp;и&nbsp;неизменяемые/иммутабельные.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><strong>НЕИЗМЕНЯЕМЫЕ ТИПЫ</strong></td>
+<td><strong>ИЗМЕНЯЕМЫЕ ТИПЫ</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Целые числа (int)</strong></td>
+<td><strong>Списки (list)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Числа с плавающей точкой (float)</strong></td>
+<td><strong>Словари (dict)</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Строки (str)</strong></td>
+<td><strong>Множества (set)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Логические переменные (bool)</strong></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><strong>Кортежи (tuple)</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Особенность неизменяемых типов (immutable)&nbsp; заключается в том, что такие объекты не могут быть изменены «на лету». Иными словами, если вы захотите произвести операцию, например, со строкой, то будет создана новая строка с теми изменениями, которые вы собираетесь внести.</p>
+<div class="line-block">Что такое идентификатор? В общем случае&nbsp;идентификатором&nbsp;называют уникальный признак объекта, который позволяет отличать его от других объектов, то есть идентифицировать.<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<strong>В&nbsp;<em>Python</em> идентификатором объекта является уникальное число.</strong></div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">id</span>(a), a) <span class="co">#проверяем идентификатор переменной a</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>140726899984952 5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 93869227535744 5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">id</span>(b), b) <span class="co">#проверяем идентификатор переменной b</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>140726899985112 10</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 93869227535904 10</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> a <span class="op">+</span> b</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">id</span>(a), a) <span class="co">#проверяем идентификатор переменной a</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>140726899985272 15</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 93869227536064 15</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Как мы видим, идентификатор переменной&nbsp;<code>a</code>&nbsp;после модификации изменился. Это означает, что переменная больше не указывает на старое значение 5, а вместо этого переменная&nbsp;<code>a</code>&nbsp;указывает теперь на значение 15.</p>
+<hr>
+</section>
+<section id="числовые-типы-данных" class="level2">
+<h2 class="anchored" data-anchor-id="числовые-типы-данных">Числовые типы данных</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Данные</strong></td>
+<td style="text-align: left;"><strong>Тип</strong></td>
+<td style="text-align: left;"><strong>Примеры</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Целые числа</strong></td>
+<td style="text-align: left;"><strong>int</strong></td>
+<td style="text-align: left;"><strong>73<br>
+0</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Числа с плавающей точкой</strong></td>
+<td style="text-align: left;"><strong>float</strong></td>
+<td style="text-align: left;"><strong>3.14<br>
+-2.79</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Логические значения</strong></td>
+<td style="text-align: left;"><strong>bool</strong></td>
+<td style="text-align: left;"><strong>True<br>
+False</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="арифметические-операции-с-целыми-числами" class="level3">
+<h3 class="anchored" data-anchor-id="арифметические-операции-с-целыми-числами">Арифметические операции с целыми числами</h3>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Операция</strong></td>
+<td style="text-align: left;"><strong>Обозначение</strong></td>
+<td style="text-align: left;"><strong>Пример</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Сложение</strong></td>
+<td style="text-align: left;"><strong>+</strong></td>
+<td style="text-align: left;"><strong>7+5 = 12</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Вычитание</strong></td>
+<td style="text-align: left;"><strong>–</strong></td>
+<td style="text-align: left;"><strong>7-5 = 2</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Умножение</strong></td>
+<td style="text-align: left;"><strong>*</strong></td>
+<td style="text-align: left;"><strong>7*5 = 35</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Возведение в степень</strong></td>
+<td style="text-align: left;"><strong>**</strong></td>
+<td style="text-align: left;"><strong>7**5 = 16807</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Деление</strong></td>
+<td style="text-align: left;"><strong>/</strong></td>
+<td style="text-align: left;"><strong>5/2 = 2.5</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Целочисленное деление</strong></td>
+<td style="text-align: left;"><strong>//</strong></td>
+<td style="text-align: left;"><strong>7//5 = 1</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Остаток от деления</strong></td>
+<td style="text-align: left;"><strong>%</strong></td>
+<td style="text-align: left;"><strong>7%5 = 2</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span><span class="op">/</span><span class="dv">2</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.5</code></pre>
+</div>
+</div>
+</section>
+<section id="порядок-выполнения-арифметических-операций" class="level3">
+<h3 class="anchored" data-anchor-id="порядок-выполнения-арифметических-операций">Порядок выполнения арифметических операций</h3>
+<p>Если приоритеты не регулируются скобками, то арифметические операции будут выполняться в следующем порядке:</p>
+<p><img src="https://lms.skillfactory.ru/asset-v1:Skillfactory+DSMED+2023+type@asset+block@DSPR_PY-1_operations.svg" class="img-fluid"></p>
+</section>
+<section id="деление-отрицательных-чисел" class="level3">
+<h3 class="anchored" data-anchor-id="деление-отрицательных-чисел">Деление отрицательных чисел</h3>
+<p>Отдельно отметим особенность операций целочисленного деления и нахождения остатка от деления в случае отрицательных чисел.</p>
+<p>Общее правило, по которому находятся частное и остаток, можно представить следующим образом:</p>
+<p><img src="https://lms.skillfactory.ru/asset-v1:Skillfactory+DSMED+2023+type@asset+block@DSPR_PY-1_rule_1.svg" class="img-fluid"></p>
+<p>Иными словами, если мы делим, скажем, на 4, то остаток может быть равен 0, 1, 2 или 3.</p>
+<p>Давайте посмотрим на это правило на примере. В случае положительных чисел:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> a <span class="op">//</span> b  </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(q)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> a <span class="op">%</span> b</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (r)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1</code></pre>
+</div>
+</div>
+<p>Получили результат, согласующийся с формулой: максимально близкое число, на которое можно разделить нацело — это 2, и остаток в таком случае равен 1.</p>
+<p>Посмотрим на несколько другую ситуацию:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">5</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> a <span class="op">//</span> b <span class="co"># хочется получить 2, как и в прошлый раз, но q = -3</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(q)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> a <span class="op">%</span> b<span class="co"># а остаток остался тот же, r = 1</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1</code></pre>
+</div>
+</div>
+<p>Дело в том, что максимальное число, которое можно нацело разделить на число при условии, что остаток будет положительным — это -6. При его делении на 2 получаем -3 и соответствующий остаток, равный 1.</p>
+</section>
+<section id="числа-с-плавающей-точкой" class="level3">
+<h3 class="anchored" data-anchor-id="числа-с-плавающей-точкой">Числа с плавающей точкой</h3>
+<p>С числами с плавающей точкой мы тоже уже познакомились. Это термин из <em>Computer Science</em>, который относится к вещественным числам, а «плавающая точка» происходит из-за особенностей представления таких чисел в памяти компьютера. В силу этих особенностей общеприняты две записи чисел с плавающей точкой — в десятичной форме и в экспоненциальной.</p>
+<p>Десятичная форма нам привычна — сначала записывается целая часть, десятичный разделитель и за ним дробная часть:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">5.4321</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5.4321</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(a))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'float'&gt;</code></pre>
+</div>
+</div>
+<p>В результате некоторых операций может случиться так, что число становится очень большим (или очень маленьким), и его трудно представить в десятичном виде.</p>
+<p>В таком случае на помощь приходит экспоненциальная форма записи числа:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">**</span><span class="dv">100</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.138886636534116e+73</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Такую запись можно интерпретировать следующим образом.</p>
+<p>Слева от буквы <em>e</em> находится <strong>мантисса</strong>. Это обычное дробное число, для которого есть соглашение о том, что оно больше или равно&nbsp;1&nbsp;и меньше 10. Справа от буквы <em><code>e</code></em> записан порядок числа. Иными словами, это степень числа 10. В таком случае это число можно прочитать как: «<strong>3.138886636534116 умножить на 10 в степени 73</strong>».</p>
+<p>А в общем случае число с плавающей точкой записывается так:</p>
+<p><strong>[мантисса]e[показатель_степени_числа 10]</strong></p>
+</div>
+</div>
+</div>
+<p>Чтобы до конца разобраться с тем, почему же всё-таки точка плавающая и куда она может плавать, попробуем умножать и делить полученное число на степени числа 10 (100, 1000):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">5.4321</span><span class="op">**</span><span class="dv">100</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.138886636534116e+73</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">*</span><span class="dv">100</span>) <span class="co"># мантисса осталась прежней, а степень увеличилась на 2</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.138886636534116e+75</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" "</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">*</span><span class="dv">1000</span>) <span class="co"># аналогично, только степень увеличилась уже на 3</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.138886636534116e+76</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.138886636534116e+76</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">/</span><span class="dv">100</span>) <span class="co"># снова мантисса не меняется, а степень уже уменьшилась</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.138886636534116e+71</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.138886636534116e+71</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a<span class="op">/</span><span class="dv">1000</span>) <span class="co"># как, наверное, уже ожидаемо, степень снова уменьшилась</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.138886636534116e+70</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.138886636534116e+70</span></span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Дело в том, что в памяти компьютера мантисса («само» число, его значащие цифры) хранится отдельно, а показатель степени числа — отдельно. Благодаря этому умножение на степени числа 10 никак не влияет на мантиссу, прибавляя (или вычитая, в случае деления) соответствующую степень десятки к показателю степени множителя.</p>
+<p>Если записать получившиеся числа, приводя их все к одной степени изначального числа — 73, то становится ясным, куда плавает точка:</p>
+<p>Обратимся также к арифметическим операциям, которые можно применять к числам с плавающей точкой. В целом они аналогичны операциям над целыми числами, за исключением того, что в результате всех операций всегда получаются объекты типа данных&nbsp;float:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Операция</strong></td>
+<td style="text-align: left;"><strong>Обозначение</strong></td>
+<td style="text-align: left;"><strong>Пример</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Сложение</strong></td>
+<td style="text-align: left;"><strong>+</strong></td>
+<td style="text-align: left;"><strong>3.14 + 1 = 4.14</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Вычитание</strong></td>
+<td style="text-align: left;"><strong>-</strong></td>
+<td style="text-align: left;"><strong>3.14 - 1 = 2.14</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Умножение</strong></td>
+<td style="text-align: left;"><strong>*</strong></td>
+<td style="text-align: left;"><strong>3.14 * 2 = 6.28</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Возведение в степень</strong></td>
+<td style="text-align: left;"><strong>**</strong></td>
+<td style="text-align: left;"><strong>3.14**2 = 9.8596</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Деление</strong></td>
+<td style="text-align: left;"><strong>/</strong></td>
+<td style="text-align: left;"><strong>3.14/2 = 1.57</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Казалось бы, всё хорошо, как и ожидалось. В результате такого деления мы получаем десятичную дробь с бесконечным количеством цифр 3 после запятой. Попросим&nbsp;<em>Python</em>&nbsp;вычислить другое выражение:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">1.3</span> <span class="op">+</span> <span class="fl">2.3</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3.5999999999999996</code></pre>
+</div>
+</div>
+<p>И здесь мы ясно видим, что после 16 знака после запятой вычисления дают сбой, который является естественным для <em>Python</em>.</p>
+<p>Ответ кроется в том, что для хранения числа используется ограниченное количество памяти (в байтах), которых хватает только на то, чтобы корректно вычислить 16 знаков.</p>
+<p>Для обхода этой проблемы, если необходимо использовать более точные вычисления, могут использоваться классы <code>Fraction</code> и <code>Decimal</code>. Их рассмотрение выходит за пределы этого модуля, но подробно можно с ними ознакомиться самостоятельно в источниках, указанных ниже.</p>
+</section>
+<section id="округление-чисел" class="level3">
+<h3 class="anchored" data-anchor-id="округление-чисел">Округление чисел</h3>
+<p>Итак,&nbsp;нам нужно что-то предпринять для исправления такой ситуации:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="fl">1.00</span><span class="op">+</span><span class="fl">0.01</span><span class="op">-</span><span class="fl">3.01</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-1.9999999999999998</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="fl">1.00</span><span class="op">+</span><span class="fl">0.01</span><span class="op">-</span><span class="fl">3.01</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-2.0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="dv">13</span> <span class="op">%</span> <span class="op">-</span><span class="dv">3</span> <span class="op">*</span> <span class="dv">3</span> <span class="op">-</span> <span class="dv">3</span><span class="op">**</span><span class="dv">2</span>)</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>-15</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(<span class="dv">11</span> <span class="op">*</span> <span class="fl">2.5</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">2</span>))</span></code></pre></div><button title="Скопировать текст" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>9.17</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="таблица-функции-и-методы-строк" class="level2">
+<h2 class="anchored" data-anchor-id="таблица-функции-и-методы-строк"><strong>Таблица “Функции и методы строк”</strong></h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Функция или метод</strong></th>
+<th><strong>Назначение</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>S = ‘str’; S = “str”; S = ’‘’str’’’; S = “““str”““</strong></td>
+<td><a href="https://pythonworld.ru/tipy-dannyx-v-python/stroki-literaly-strok.html">Литералы строк</a></td>
+</tr>
+<tr class="even">
+<td><strong>S = “s\np\ta\nbbb”</strong></td>
+<td>Экранированные последовательности</td>
+</tr>
+<tr class="odd">
+<td><strong>S = r”C:\temp\new”</strong></td>
+<td>Неформатированные строки (подавляют экранирование)</td>
+</tr>
+<tr class="even">
+<td><strong>S = b”byte”</strong></td>
+<td>Строка <a href="https://pythonworld.ru/tipy-dannyx-v-python/bajty-bytes-i-bytearray.html">байтов</a></td>
+</tr>
+<tr class="odd">
+<td><strong>S1 + S2</strong></td>
+<td>Конкатенация (сложение строк)</td>
+</tr>
+<tr class="even">
+<td><strong>S1 * 3</strong></td>
+<td>Повторение строки</td>
+</tr>
+<tr class="odd">
+<td><strong>S[i]</strong></td>
+<td>Обращение по индексу</td>
+</tr>
+<tr class="even">
+<td><strong>S[i:j:step]</strong></td>
+<td>Извлечение среза</td>
+</tr>
+<tr class="odd">
+<td><strong>len</strong>(S)</td>
+<td>Длина строки</td>
+</tr>
+<tr class="even">
+<td><strong>S.find</strong>(str, [start],[end])</td>
+<td>Поиск подстроки в строке. Возвращает номер первого вхождения или -1</td>
+</tr>
+<tr class="odd">
+<td><strong>S.rfind</strong>(str, [start],[end])</td>
+<td>Поиск подстроки в строке. Возвращает номер последнего вхождения или -1</td>
+</tr>
+<tr class="even">
+<td><strong>S.index</strong>(str, [start],[end])</td>
+<td>Поиск подстроки в строке. Возвращает номер первого вхождения или вызывает ValueError</td>
+</tr>
+<tr class="odd">
+<td><strong>S.rindex</strong>(str, [start],[end])</td>
+<td>Поиск подстроки в строке. Возвращает номер последнего вхождения или вызывает ValueError</td>
+</tr>
+<tr class="even">
+<td><strong>S.replace</strong>(шаблон, замена[, maxcount])</td>
+<td>Замена шаблона на замену. maxcount ограничивает количество замен</td>
+</tr>
+<tr class="odd">
+<td><strong>S.split</strong>(символ)</td>
+<td>Разбиение строки по разделителю</td>
+</tr>
+<tr class="even">
+<td><strong>S.isdigit</strong>()</td>
+<td>Состоит ли строка из цифр</td>
+</tr>
+<tr class="odd">
+<td><strong>S.isalpha</strong>()</td>
+<td>Состоит ли строка из букв</td>
+</tr>
+<tr class="even">
+<td><strong>S.isalnum</strong>()</td>
+<td>Состоит ли строка из цифр или букв</td>
+</tr>
+<tr class="odd">
+<td><strong>S.islower</strong>()</td>
+<td>Состоит ли строка из символов в нижнем регистре</td>
+</tr>
+<tr class="even">
+<td><strong>S.isupper</strong>()</td>
+<td>Состоит ли строка из символов в верхнем регистре</td>
+</tr>
+<tr class="odd">
+<td><strong>S.isspace</strong>()</td>
+<td>Состоит ли строка из неотображаемых символов (пробел, символ перевода страницы (‘\f’), “новая строка” (‘\n’), “перевод каретки” (‘\r’), “горизонтальная табуляция” (‘\t’) и “вертикальная табуляция” (‘\v’))</td>
+</tr>
+<tr class="even">
+<td><strong>S.istitle</strong>()</td>
+<td>Начинаются ли слова в строке с заглавной буквы</td>
+</tr>
+<tr class="odd">
+<td><strong>S.upper</strong>()</td>
+<td>Преобразование строки к верхнему регистру</td>
+</tr>
+<tr class="even">
+<td><strong>S.lower</strong>()</td>
+<td>Преобразование строки к нижнему регистру</td>
+</tr>
+<tr class="odd">
+<td><strong>S.startswith</strong>(str)</td>
+<td>Начинается ли строка S с шаблона str</td>
+</tr>
+<tr class="even">
+<td><strong>S.endswith</strong>(str)</td>
+<td>Заканчивается ли строка S шаблоном str</td>
+</tr>
+<tr class="odd">
+<td><strong>S.join</strong>(список)</td>
+<td>Сборка строки из списка с разделителем S</td>
+</tr>
+<tr class="even">
+<td><strong>ord</strong>(символ)</td>
+<td>Символ в его код ASCII</td>
+</tr>
+<tr class="odd">
+<td><strong>chr</strong>(число)</td>
+<td>Код ASCII в символ</td>
+</tr>
+<tr class="even">
+<td><strong>S.capitalize</strong>()</td>
+<td>Переводит первый символ строки в верхний регистр, а все остальные в нижний</td>
+</tr>
+<tr class="odd">
+<td><strong>S.center</strong>(width, [fill])</td>
+<td>Возвращает отцентрованную строку, по краям которой стоит символ fill (пробел по умолчанию)</td>
+</tr>
+<tr class="even">
+<td><strong>S.count</strong>(str, [start],[end])</td>
+<td>Возвращает количество непересекающихся вхождений подстроки в диапазоне [начало, конец] (0 и длина строки по умолчанию)</td>
+</tr>
+<tr class="odd">
+<td><strong>S.expandtabs</strong>([tabsize])</td>
+<td>Возвращает копию строки, в которой все символы табуляции заменяются одним или несколькими пробелами, в зависимости от текущего столбца. Если TabSize не указан, размер табуляции полагается равным 8 пробелам</td>
+</tr>
+<tr class="even">
+<td><strong>S.lstrip</strong>([chars])</td>
+<td>Удаление пробельных символов в начале строки</td>
+</tr>
+<tr class="odd">
+<td><strong>S.rstrip</strong>([chars])</td>
+<td>Удаление пробельных символов в конце строки</td>
+</tr>
+<tr class="even">
+<td><strong>S.strip</strong>([chars])</td>
+<td>Удаление пробельных символов в начале и в конце строки</td>
+</tr>
+<tr class="odd">
+<td><strong>S.partition</strong>(шаблон)</td>
+<td>Возвращает кортеж, содержащий часть перед первым шаблоном, сам шаблон, и часть после шаблона. Если шаблон не найден, возвращается кортеж, содержащий саму строку, а затем две пустых строки</td>
+</tr>
+<tr class="even">
+<td><strong>S.rpartition</strong>(sep)</td>
+<td>Возвращает кортеж, содержащий часть перед последним шаблоном, сам шаблон, и часть после шаблона. Если шаблон не найден, возвращается кортеж, содержащий две пустых строки, а затем саму строку</td>
+</tr>
+<tr class="odd">
+<td><strong>S.swapcase</strong>()</td>
+<td>Переводит символы нижнего регистра в верхний, а верхнего – в нижний</td>
+</tr>
+<tr class="even">
+<td><strong>S.title</strong>()</td>
+<td>Первую букву каждого слова переводит в верхний регистр, а все остальные в нижний</td>
+</tr>
+<tr class="odd">
+<td><strong>S.zfill</strong>(width)</td>
+<td>Делает длину строки не меньшей width, по необходимости заполняя первые символы нулями</td>
+</tr>
+<tr class="even">
+<td><strong>S.ljust</strong>(width, fillchar=“&nbsp;”)</td>
+<td>Делает длину строки не меньшей width, по необходимости заполняя последние символы символом fillchar</td>
+</tr>
+<tr class="odd">
+<td><strong>S.rjust</strong>(width, fillchar=“&nbsp;”)</td>
+<td>Делает длину строки не меньшей width, по необходимости заполняя первые символы символом fillchar</td>
+</tr>
+<tr class="even">
+<td><strong>S.format</strong>(*args, **kwargs)</td>
+<td><a href="https://pythonworld.ru/osnovy/formatirovanie-strok-metod-format.html">Форматирование строки</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="экранированные-последовательности---служебные-символы" class="level2">
+<h2 class="anchored" data-anchor-id="экранированные-последовательности---служебные-символы"><strong>Экранированные последовательности - служебные символы</strong></h2>
+<p>Экранированные последовательности позволяют вставить символы, которые сложно ввести с клавиатуры.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Экранированная последовательность</strong></th>
+<th><strong>Назначение</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>\n</td>
+<td>Перевод строки</td>
+</tr>
+<tr class="even">
+<td>\a</td>
+<td>Звонок</td>
+</tr>
+<tr class="odd">
+<td>\b</td>
+<td>Забой</td>
+</tr>
+<tr class="even">
+<td>\f</td>
+<td>Перевод страницы</td>
+</tr>
+<tr class="odd">
+<td>\r</td>
+<td>Возврат каретки</td>
+</tr>
+<tr class="even">
+<td>\t</td>
+<td>Горизонтальная табуляция</td>
+</tr>
+<tr class="odd">
+<td>\v</td>
+<td>Вертикальная табуляция</td>
+</tr>
+<tr class="even">
+<td>\N{id}</td>
+<td>Идентификатор ID базы данных Юникода</td>
+</tr>
+<tr class="odd">
+<td>\uhhhh</td>
+<td>16-битовый символ Юникода в 16-ричном представлении</td>
+</tr>
+<tr class="even">
+<td>\Uhhhh…</td>
+<td>32-битовый символ Юникода в 32-ричном представлении</td>
+</tr>
+<tr class="odd">
+<td>\xhh</td>
+<td>16-ричное значение символа</td>
+</tr>
+<tr class="even">
+<td>\ooo</td>
+<td>8-ричное значение символа</td>
+</tr>
+<tr class="odd">
+<td>\0</td>
+<td>Символ Null (не является признаком конца строки)</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Наверх</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопировано");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопировано");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./DataCamp_Foundation to probability.html" class="pagination-link" aria-label="4. DataCamp_Foundation to probability">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">4. DataCamp_Foundation to probability</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Eduard Soldatkin</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Edy888">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

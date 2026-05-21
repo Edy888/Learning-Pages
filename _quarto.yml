@@ -1,7 +1,10 @@
-project: 
+project:
   type: website
   output-dir: docs
   title: "Conspect"
+  render:
+    - "*.qmd"
+    - "!iee_typst/Edy.qmd"
 lang: ru
 
 website:
@@ -9,7 +12,6 @@ website:
   back-to-top-navigation: true
   reader-mode: true
   open-graph: true
-    
 
   sidebar:
     style: "floating"
@@ -17,90 +19,80 @@ website:
     alignment: left
     collapse-level: 1
     pinned: true
-    
+
     contents:
-      - section: "Quarto"
-        contents: 
-          - Quarto_1.4.qmd
-          - Dashboards_1.4.qmd
-    
-      - section: "Моё обучение"
+      - section: "EDX"
         contents:
-          - 1.R_basic.qmd
-          - 2.Visualization.qmd
-          - 3.Probability.qmd
-          - 4.Inference.qmd
-          - 5. Data Science Productivity Tools.qmd
-          - DataCamp_Foundation to probability.qmd
-      
-      - section: Python
-        contents: 
-          - Jupiter_Notebook.qmd
+          - text: "PART 1: R Basic"
+            file: 1.R_basic.qmd
+          - text: "PART 2: Visualization"
+            file: 2.Visualization.qmd
+          - text: "PART 3: Probability"
+            file: 3.Probability.qmd
+          - text: "PART 4: Inference"
+            file: 4.Inference.qmd
+          - text: "PART 5: Productivity Tools"
+            file: 5. Data Science Productivity Tools.qmd
+          - text: "PART 6: Wrangling"
+            file: 6.Wrangling.qmd
+          - text: "PART 7: Linear Regression"
+            file: 7. Linear Regression.qmd
+          - text: "PART 8: Machine Learning"
+            file: 8. Machine Learning.qmd
 
+      - section: "DataCamp"
+        contents:
+          - text: "Foundation to Probability"
+            file: DataCamp_Foundation to probability.qmd
 
+      - section: "SkillFactory"
+        contents:
+          - text: "SkillFactory"
+            file: SkillFactory.qmd
 
-  page-footer: 
-    left: "Copyright 2024, Eduard Soldatkin"
-    right: 
-      - icon: github
-        href: https://github.com/Edy888
-    border: false
-    background: dark
-  
   navbar:
     pinned: false
     search: true
     collapse-below: "sm"
     left:
-      - text: "Quarto"
-        menu: 
-          - text: "Quarto 1.4"
-            file: Quarto_1.4.qmd
-          - text: "Dashboards_1.4"
-            file: Dashboards_1.4.qmd
-    
-      - text: "Home"
-        file: home.qmd
-            
-      - text: "Моё обучение"
+      - text: "EDX"
         menu:
-          - text: "PART 1 : R Basic"
+          - text: "PART 1: R Basic"
             file: 1.R_basic.qmd
-          - text: "PART 2 : Visualization"
+          - text: "PART 2: Visualization"
             file: 2.Visualization.qmd
           - text: "PART 3: Probability"
             file: 3.Probability.qmd
-          - text: "PART 4: Inference and Modeling"
+          - text: "PART 4: Inference"
             file: 4.Inference.qmd
-          - text: "PART 5 : Productivity Tools"
+          - text: "PART 5: Productivity Tools"
             file: 5. Data Science Productivity Tools.qmd
-          - text: "Foundations of Probability in R_DataCamp"
-            file: DataCamp_Foundation to probability.qmd
-            
-      - text: "Python"
-        menu: 
-          - text: "Jupyter NoteBook"
-            file: Jupiter_Notebook.qmd
- 
-    
-    right:
-    
+          - text: "PART 6: Wrangling"
+            file: 6.Wrangling.qmd
+          - text: "PART 7: Linear Regression"
+            file: 7. Linear Regression.qmd
+          - text: "PART 8: Machine Learning"
+            file: 8. Machine Learning.qmd
 
-      - text: "Shiny"
-        file: shiny.qmd
-      - text: "CLSI"
-        menu: 
-          - text: verification
-            file: CLSI.qmd
-      - text: "Python"
-        menu: 
-          - Jupiter_Notebook.qmd
+      - text: "DataCamp"
+        file: DataCamp_Foundation to probability.qmd
+
+      - text: "SkillFactory"
+        file: SkillFactory.qmd
 
     tools:
-          - icon: github
-            menu:
-              - text: Source Code
-                url:  https://github.com/Edy888
+      - icon: github
+        menu:
+          - text: Source Code
+            url: https://github.com/Edy888
+
+  page-footer:
+    left: "Copyright 2024, Eduard Soldatkin"
+    right:
+      - icon: github
+        href: https://github.com/Edy888
+    border: false
+    background: dark
 
 format:
   html:

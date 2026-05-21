@@ -4,3 +4,21 @@
 .Ruserdata
 
 /.quarto/
+/.vscode/
+/_site/
+/index_files/
+/myenv/
+/venv/
+/.venv/
+/renv/library/
+/*_files/
+/EDX_video/
+/dc_video/
+/docs/EDX_video/
+/docs/dc_video/
+*.mp4
+*.mkv
+*.avi
+
+**/*.quarto_ipynb
+*.rmarkdown

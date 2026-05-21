@@ -5,7 +5,7 @@ toc_float:
   smooth_scroll: false
 ---
 
-# PART 2 Visualization
+# PART 2: Visualization
 
 ------------------------------------------------------------------------
 
@@ -290,7 +290,7 @@ hist(heights$height, breaks = 30, xlab = "Height", ylab = "Count", main = "Histo
     Так, например, гистограмма не различает между 64, 64,1 и 64,2 дюймами.
     Учитывая, что эти различия почти незаметны глазу, в данном конкретном случае практические последствия незначительны.
 
-#### **1. Cumulative Distribution Function**
+#### 1. Cumulative Distribution Function
 
 Каждое непрерывное распределение имеет функцию кумулятивного распределения (`CDF`).
 `CDF` определяет долю данных ниже заданного значения `a` для всех значений `a`:
@@ -334,7 +334,7 @@ $F(b) - F(a)$
 Обратите внимание, что CDF может помочь вычислить вероятности.
 Вероятность наблюдения случайно выбранного значения между `a` и `b` равна доле значений между `a` и `b` , которую мы вычисляем с помощью CDF.
 
-#### **2. Smooth Density Plots**
+#### 2. Smooth Density Plots
 
 Ключевые моменты
 
@@ -530,15 +530,15 @@ mean(abs(z) < 2)
 В противном случае вам следует произвести вычисления вручную.
 Для этой серии курсов предположим, что вам следует использовать функцию `sd()`, если только вам не скажут этого не делать.
 
-#### **Transcript**
+#### Transcript
 
-> | **РАФАЭЛЬ ИРИЗАРРИ:**
+> | РАФАЭЛЬ ИРИЗАРРИ:
 >
 > Гистограммы и графики плотности дают отличное представление о распределении, но можем ли мы обобщить еще больше?
 > Мы часто видим, что среднее значение и стандартное отклонение используются в качестве сводной статистики для списка чисел - сводки из двух чисел.
 > Чтобы понять, что представляют собой эти сводки и почему они так широко используются, нам нужно понять нормальное распределение.
 >
-> **Нормальное распределение**, также известное как колоколообразная кривая и как распределение Гаусса, является одним из самых известных математических понятий в истории.
+> Нормальное распределение, также известное как колоколообразная кривая и как распределение Гаусса, является одним из самых известных математических понятий в истории.
 > Причина этого заключается в том, что приблизительно нормальные распределения возникают во многих ситуациях.
 > Примерами могут служить выигрыши в азартных играх, рост, вес, кровяное давление, результаты стандартизированных тестов и погрешность экспериментальных измерений.
 > Этому есть объяснения, но мы объясним это позже.
@@ -563,7 +563,7 @@ mean(abs(z) < 2)
 > Давайте вычислим среднее значение и стандартное отклонение для роста мужчин, которые мы сохраним в объекте с именем x, используя этот код.
 > Здесь можно использовать готовые функции mean и SD.
 
-#### **Normal Distribution: Standard Units and Z-scores**
+#### Normal Distribution: Standard Units and Z-scores
 
 Стандартные единицы измерения
 
@@ -2869,7 +2869,7 @@ levels(fac)
 
 # reorder factor by the category means
 value <- c(10, 11, 12, 6, 4)
-fac <- reorder(fac, value, FUN = mean)
+fac <- reorder(fac, value, FUN = median)
 levels(fac)
 ```
 
@@ -2893,591 +2893,662 @@ p + scale_y_continuous(trans = "log2")
 p + scale_y_continuous(trans = "log2") + geom_point(show.legend = FALSE)
 ```
 
-#### 7. Comparing Distributions
-
-# BOOK
-
-### 10.7.3 Example: 1970 versus 2010 income distributions
-
-------------------------------------------------------------------------
-
-Исследование данных ясно показывает, что в 1970 году существовала дихотомия "запад против остальных". 
-Но сохраняется ли эта дихотомия? 
-Давайте воспользуемся `facet_grid` и посмотрим, как изменились распределения. 
-Для начала мы сосредоточимся на двух группах: западе и остальных. 
-Мы составляем четыре гистограммы.
-
-```{r case_when}
-gapminder <- gapminder |> 
-  mutate(group = case_when(
-    region %in% c("Western Europe", "Northern Europe","Southern Europe", 
-                    "Northern America", 
-                  "Australia and New Zealand") ~ "West",
-    region %in% c("Eastern Asia", "South-Eastern Asia") ~ "East Asia",
-    region %in% c("Caribbean", "Central America", 
-                  "South America") ~ "Latin America",
-    continent == "Africa" & 
-      region != "Northern Africa" ~ "Sub-Saharan",
-    TRUE ~ "Others"))
-str(gapminder)
-```
-
-Мы превращаем эту `group` переменную в фактор для управления порядком уровней:
-
-```{r}
-gapminder <- gapminder |> 
-  mutate(group = factor(group, levels = c("Others", "Latin America", 
-                                          "East Asia", "Sub-Saharan",
-                                          "West")))
-```
-
-```{r histogram_west_develop}
-past_year <- 1970
-present_year <- 2010
-years <- c(past_year, present_year)
-gapminder |> 
-  filter(year %in% years & !is.na(gdp)) |>
-  mutate(west = ifelse(group == "West", "West", "Developing")) |>
-  ggplot(aes(dollars_per_day)) +
-  geom_histogram(binwidth = 1, color = "black") +
-  scale_x_continuous(trans = "log2") + 
-  facet_grid(year ~ west)
-```
-
-Прежде чем мы интерпретируем результаты этого графика, отметим, что на гистограммах 2010 года представлено больше стран, чем в 1970 году: общее количество больше.
-Одной из причин этого является то, что несколько стран были основаны после 1970 года.
-Например, Советский Союз разделился на несколько стран в 1990-х годах.
-Другая причина заключается в том, что в 2010 году были доступны данные по большему количеству стран.
-
-Мы переделываем графики, используя только страны, по которым доступны данные за оба года.
-В части этой книги, посвященной анализу данных, мы познакомимся с инструментами **tidyverse**, которые позволяют нам писать эффективный код для этого, но здесь мы можем использовать простой код с помощью `intersect` функции:
-
-```{r}
-country_list_1 <- gapminder |> 
-  filter(year == past_year & !is.na(dollars_per_day)) |> 
-  pull(country)
-
-country_list_2 <- gapminder |> 
-  filter(year == present_year & !is.na(dollars_per_day)) |> 
-  pull(country)
-      
-country_list <- intersect(country_list_1, country_list_2)
-country_list
-```
-
-На эти 108 приходится 86% населения мира, поэтому это подмножество должно быть репрезентативным.
-Давайте переделаем график, но только для этого подмножества, просто добавив `country %in% country_list` к `filter` функции:
-
-```{r}
-past_year <- 1970
-present_year <- 2010
-years <- c(past_year, present_year)
-gapminder |> 
-  filter(year %in% years & !is.na(gdp) & country %in% country_list) |>
-  mutate(west = ifelse(group == "West", "West", "Developing")) |>
-  ggplot(aes(dollars_per_day)) +
-  geom_histogram(binwidth = 1, color = "black") +
-  scale_x_continuous(trans = "log2") + 
-  facet_grid(year ~ west)
-```
-
-Теперь мы видим, что богатые страны стали немного богаче, но в процентном отношении положение бедных стран, по-видимому, улучшилось больше.
-В частности, мы видим, что доля *`развивающихся`* стран, зарабатывающих более 16 долларов в день, существенно возросла.
-
-Чтобы увидеть, какие конкретные регионы улучшились больше всего, мы можем переделать диаграммы, сделанные выше, но теперь добавив 2010 год, а затем используя `facet` для сравнения `двух лет`.
-
-```{r}
-gapminder |> 
-  filter(year %in% years & country %in% country_list) |>
-  ggplot(aes(group, dollars_per_day)) +
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  scale_y_continuous(trans = "log2") +
-  xlab("") +
-  facet_grid(. ~ year)
-```
-
-Здесь мы сделаем паузу, чтобы представить еще одну мощную функцию **ggplot2**.
-Поскольку мы хотим сравнить каждый регион до и после, было бы удобно иметь диаграмму 1970 года рядом с диаграммой 2010 года для каждого региона.
-В целом, сравнивать проще, когда данные нанесены рядом друг с другом.
-
-Итак, вместо фасетирования мы объединяем данные за каждый год и просим раскрасить (или залить) их в зависимости от года.
-Обратите внимание, что группы автоматически разделяются по годам и каждая пара прямоугольных графиков рисуется рядом друг с другом.
-Поскольку год - это число, мы превращаем его в коэффициент, поскольку **ggplot2** автоматически присваивает цвет каждой категории фактора.
-Обратите внимание, что мы должны преобразовать столбцы года из числовых в факторные.
-
-```{r}
-gapminder |> 
-  filter(year %in% years & country %in% country_list) |>
-  mutate(year = factor(year)) |>
-  ggplot(aes(group, dollars_per_day, fill = year)) +
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  scale_y_continuous(trans = "log2") +
-  xlab("") 
-```
-
-Наконец, мы отмечаем, что если нас больше всего интересует сравнение значений до и после, возможно, имеет смысл построить график процентного увеличения. 
-Мы все еще не готовы научиться программировать это, но вот как будет выглядеть график:
-
-![](http://rafalab.dfci.harvard.edu/dsbook/book_files/figure-html/income-west-v-devel-before-after-ratio-1.png)
-
-Предыдущий анализ данных показал, что разрыв в доходах между богатыми и бедными странами значительно сократился за последние 40 лет.
-Чтобы увидеть это, мы использовали серию гистограмм и прямоугольных графиков.
-Мы предлагаем краткий способ передать это сообщение с помощью всего лишь одного графика.
-
-Давайте начнем с того, что графики плотности распределения доходов в 1970 и 2010 годах показывают, что разрыв сокращается:
-
-```{r}
-gapminder |> 
-  filter(year %in% years & country %in% country_list) |>
-  ggplot(aes(dollars_per_day)) +
-  geom_density(fill = "grey") + 
-  scale_x_continuous(trans = "log2") + 
-  facet_grid(. ~ year)
-```
-
-На графике 1970 года мы видим два четких режима: бедные и богатые страны.
-В 2010 году, похоже, некоторые из бедных стран сместились вправо, сокращая разрыв.
-
-Следующее сообщение, которое мы должны донести, заключается в том, что причина такого изменения в распределении заключается в том, что несколько бедных стран стали богаче, а не некоторые богатые страны стали беднее.
-Для этого мы можем присвоить цвет группам, которые мы определили во время исследования данных.
-
-Однако сначала нам нужно научиться получать эти сглаженные плотности таким образом, чтобы сохранить информацию о количестве стран в каждой группе.
-Чтобы понять, зачем нам это нужно, обратите внимание на несоответствие в размере каждой группы:
-
-| Developing countries | **West** |
-|---------------------:|---------:|
-|                   87 |       21 |
-
-Но когда мы накладываем две плотности, по умолчанию площадь, представленная каждым распределением, складывается в 1, независимо от размера каждой группы:
-
-```{r density_west_develop}
-gapminder |> 
-  filter(year %in% years & country %in% country_list) |>
-  mutate(group = ifelse(group == "West", "West", "Developing")) |>
-  ggplot(aes(dollars_per_day, fill = group)) +
-  scale_x_continuous(trans = "log2") +
-  geom_density(alpha = 0.2) + 
-  facet_grid(year ~ .)
-```
-
-Это создает впечатление, что в каждой группе одинаковое количество стран. 
-Чтобы изменить это, нам нужно научиться обращаться к вычисляемым переменным с помощью `geom_density` функции.
-
-### 10.7.4 Доступ к вычисляемым переменным
-
-Чтобы области этих плотностей были пропорциональны размеру групп, мы можем просто умножить значения по оси `y` на размер группы.
-Из `geom_density` файла справки мы видим, что функции вычисляют переменную с именем`count`, которая выполняет именно это.
-Мы хотим, чтобы эта переменная располагалась по оси `y`, а не по плотности.
-
-В **ggplot2** мы получаем доступ к этим переменным, обводя имя двумя точками.
-Поэтому мы будем использовать следующее отображение:
-
-```{r ..count..}
-aes(x = dollars_per_day, y = after_stat(count))
-```
-
-Теперь мы можем создать желаемый график, просто изменив отображение в предыдущем фрагменте кода. 
-Мы также расширим границы оси `x`.
-
-```{r}
-p <- gapminder |> 
-  filter(year %in% years & country %in% country_list) |>
-  mutate(group = ifelse(group == "West", "West", "Developing")) |>
-  ggplot(aes(dollars_per_day, y = after_stat(count), fill = group)) +
-  scale_x_continuous(trans = "log2", limit = c(0.125, 300))
-
-p + geom_density(alpha = 0.2) + 
-  facet_grid(year ~ .)
-```
-
-Если мы хотим, чтобы плотности были более плавными, мы используем аргумент `bw`, чтобы для каждой плотности использовалась одинаковая полоса пропускания. 
-Мы выбрали `0,75` после тестирования нескольких значений.
-
-```{r}
-p + geom_density(alpha = 0.2, bw = 0.75) + facet_grid(year ~ .)
-```
-
-Теперь этот график очень четко показывает, что происходит.
-Распределение развивающихся стран меняется.
-Появляется третий режим, состоящий из стран, которые в наибольшей степени сократили разрыв.
-
-Чтобы визуализировать, управляет ли этим какая-либо из групп, определенных выше, мы можем быстро построить график гребня:
-
-```{r}
-gapminder |> 
-  filter(year %in% years & !is.na(dollars_per_day)) |>
-  ggplot(aes(dollars_per_day, group)) + 
-  scale_x_continuous(trans = "log2") + 
-  geom_density_ridges(bandwidth = 1.5) +
-  facet_grid(. ~ year)
-```
-
-Еще один способ добиться этого - наложить плотности друг на друга:
-
-```{r}
-gapminder |> 
-    filter(year %in% years & country %in% country_list) |>
-  group_by(year) |>
-  mutate(weight = population/sum(population)*2) |>
-  ungroup() |>
-  ggplot(aes(dollars_per_day, fill = group)) +
-  scale_x_continuous(trans = "log2", limit = c(0.125, 300)) + 
-  geom_density(alpha = 0.2, bw = 0.75, position = "stack") + 
-  facet_grid(year ~ .) 
-```
-
-Здесь мы можем ясно видеть, как распределения для Восточной Азии, Латинской Америки и других стран заметно смещаются вправо.
-В то время как в странах Африки к югу от Сахары сохраняется стагнация.
-
-Обратите внимание, что мы упорядочиваем уровни группы таким образом, чтобы сначала была нанесена плотность населения Запада, затем Африки к югу от Сахары.
-Нанесение сначала двух крайних значений позволяет нам лучше видеть оставшуюся бимодальность.
-
-### 10.7.5 Weighted densities
-
-В заключение отметим, что эти распределения оцениваются во всех странах одинаково. 
-Таким образом, если состояние большей части населения улучшается, но оно живет в очень большой стране, такой как Китай, мы можем этого не оценить. 
-На самом деле мы можем взвесить гладкие плотности, используя `weight` аргумент отображения. 
-Тогда график выглядит следующим образом:
-
-![](http://rafalab.dfci.harvard.edu/dsbook/book_files/figure-html/income-smooth-density-counts-by-region-year-weighted-1.png)Этот конкретный рисунок очень четко показывает, как сокращается разрыв в распределении доходов: большинство бедных остается в странах Африки к югу от Сахары.
-
-------------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-# **`case when()`**
+# Section 4
 
 ::: {.callout-note appearance="simple"}
-Описание
+В разделе 4 рассматриваются некоторые общие принципы, которые могут служить руководством для эффективной визуализации данных.
 
-Эта функция позволяет вам векторизовать несколько инструкций `if_else()`.
-Каждый случай оценивается последовательно, и первое совпадение для каждого элемента определяет соответствующее значение в выходном векторе.
-Если ни один из вариантов не совпадает, значение `.default` используется в качестве окончательного утверждения "`else`".
+После завершения раздела 4 вы научитесь:
 
-`case_when()` является R-эквивалентом **SQL-инструкции** `"searched"` `CASE WHEN`.
+-   понимать основные принципы эффективной визуализации данных.
 
-Случай использования `case_when(…, .default = NULL, .ptype = NULL, .size = NULL)`
+-   поймите, как важно помнить о своей цели при выборе подхода к визуализации.
 
-Аргументы:\
+-   научитесь понимать принципы кодирования данных, включая положение, выровненные длины, углы, площадь, яркость и цветовой оттенок.
 
--   `dynamic-dots` Последовательность двусторонних формул.
-    Левая сторона (`LHS`) определяет, какие значения соответствуют данному случаю.
-    В правой части (`RHS`) указано значение замены.
-    Входные данные `LHS` должны быть преобразованы в логические векторы.
-    Входные данные `RHS` будут приведены к их общему типу.
-    Все исходные материалы будут переработаны до их общего размера.
-    Тем не менее, мы рекомендуем, чтобы все входные данные `LHS` были одинакового размера.
-    Переработка в основном полезна для входов `RHS`, где вы можете указать вход размером 1, который будет переработан до размера входов `LHS`.
-    `NULL` входные данные игнорируются.
+-   научитесь использовать методы, облегчающие сравнение, такие как использование общих осей, размещение визуальных подсказок для сравнения рядом друг с другом и эффективное использование цвета.
 
--   `.default`\
-    Значение, используемое, когда все входные данные `LHS` возвращают либо `FALSE`, либо `NA`.
-
-    `.default` должен быть размер 1 или тот же размер, что и общий размер, вычисленный по ....
-
-    `.default`по умолчанию участвует в вычислении общего типа с входными данными `RHS`.
-    Значения `NA` в условиях `LHS` обрабатываются как `FALSE`, что означает, что результату в этих местоположениях будет присвоено значение `.default`.
-    Чтобы обработать пропущенные значения в условиях по-другому, вы должны явно перехватить их с помощью другого условия, прежде чем они перейдут в `.default`.
-    Обычно это включает в себя некоторые вариации `is.na (x)` `~` `value`, адаптированное к вашему использованию `case_when()`.
-    Если значение по умолчанию равно `NULL`, то будет использовано отсутствующее значение.
-
--   `.ptype` Необязательный прототип, объявляющий желаемый тип вывода.
-    Если указано, это переопределяет общий тип входов RHS.
-
--   `.size` Необязательный размер, указывающий желаемый размер вывода.
-    Если указано, это переопределяет общий размер, вычисленный по ....
-
-Ценность
-
-Вектор с тем же размером, что и общий размер, вычисленный по входным данным в ... и тот же тип , что и общий тип входных данных RHS ....
-
-Пример:
-
-`case_when()` вычисляет все выражения RHS, а затем создает свое.
-Результат путем извлечения выбранных (с помощью выражений LHS) частей.
-В частности, в этом случае образуются "NaN":
+Есть 3 задания, в которых используется платформа DataCamp, чтобы вы могли попрактиковаться в своих навыках программирования.
+На платформе edX также есть 1 задание, которое позволит вам попрактиковаться в предварительном анализе данных.
 :::
 
-```{r}
-y <- seq(-2, 2, by = .5)
-case_when(
-  y >= 0 ~ sqrt(y),
-  .default = y
-)
-```
+## 4.1 Data Visualization Principles, Part 1
 
-------------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-```{r}
-past_year <- 1970
-present_year <- 2010
-years <- c(past_year, present_year)
-gapminder |> 
-  filter(year %in% years & !is.na(gdp)) |>
-  mutate(west = ifelse(group == "West", "West", "Developing")) |>
-  ggplot(aes(dollars_per_day)) +
-  geom_histogram(binwidth = 1, color = "black") +
-  scale_x_continuous(trans = "log2") + 
-  facet_grid(year ~ west)
-str(gapminder)
-
-```
-
-#### **7. EDX_Comparing distribution_continues**
-
-**Ключевые моменты:**
-
--   Используйте функцию `intersect()`, чтобы найти перекрытие между двумя векторами. Чтобы прямоугольные диаграммы были сгруппированы так, чтобы переменные были смежными, раскрасьте прямоугольную диаграмму по коэффициенту вместо огранки по этому коэффициенту. Это способ облегчить сравнение. Данные свидетельствуют о том, что разрыв в доходах между богатыми и бедными странами сократился, а не увеличился.
-
-#### 8. Density Plot
-
-Ключевые моменты:
-
--   Измените ось y графиков плотности на переменные значения, используя `..count..` пока они спорят.
-
--   Функция `case_when()` определяет коэффициент, уровни которого определяются различными логическими операциями для группировки данных.
-
--   Постройте графики плотности штабелирования, используя `position="stack"`.
-
--   Определите весовое эстетическое отображение, чтобы изменить относительные веса графиков плотности - например, это позволяет взвешивать графики по населению, а не по количеству стран.
-
-#### 9. Ecological Fallacy
+### Introduction to Data Visualization Principles
 
 Ключевые моменты
 
--   Аргумент `breaks` позволяет нам задать расположение меток оси и галочек.
+-   Мы стремимся предоставить некоторые общие рекомендации по эффективной визуализации данных.
 
--   Логистическое или логит-преобразование определяется как логарифм коэффициентов.
+-   Мы показываем примеры стилей построения, которых следует избегать, обсуждаем, как их улучшить, и используем эти примеры для объяснения основанных на исследованиях принципов эффективной визуализации.
 
-    +--------------------------+
-    | ```                      |
-    | f(p) = \log\frac{p}{1-p} |
-    | ```                      |
-    +--------------------------+
+-   Выбирая подход к визуализации, помните о своей цели и аудитории.
 
-    Эта шкала полезна для выделения различий вблизи 0 или около 1 и преобразует кратные изменения в постоянное увеличение.
+### Encoding Data Using Visual Cues (визуальных подсказок)
 
--   Экологическая ошибка заключается в предположении, что выводы, сделанные на основе среднего показателя по группе, применимы ко всем членам этой группы.
+Ключевые моменты
 
-## Assessment: Exploring the gapminder dataset
+-   Визуальные подсказки для кодирования данных включают положение, длину, угол, площадь, яркость и цветовой оттенок.
 
-#### **Exercise 1. Life expectancy vs fertility - part 1**
+-   Предпочтительным способом отображения величин являются положение и длина, за которыми следуют углы, которые предпочтительнее площади.
 
-Фонд Gapminder (www.gapminder.org ) - некоммерческая организация, базирующаяся в Швеции, которая содействует глобальному развитию посредством использования статистических данных, которые могут помочь уменьшить неправильные представления о глобальном развитии.
+-   Яркость и цвет еще труднее поддаются количественной оценке, но иногда могут быть полезны.
+
+-   Круговые диаграммы (`Pie charts`) представляют визуальные сигналы как в виде углов, так и в виде площади, в то время как в виде пончиков используется только площадь.
+    Люди не очень хороши в визуальной количественной оценке углов и еще хуже в количественной оценке площади.
+    Поэтому следует избегать круговых и `Donut charts` - вместо них используйте `Pie charts`.
+    Если вам необходимо создать круговую диаграмму, укажите проценты в качестве `lables`.
+
+-   `Bar plots` представляют визуальные сигналы в виде положения и длины.
+    Люди хороши в визуальной количественной оценке линейных показателей, что делает `Bar plots` хорошей альтернативой круговым или пончиковым диаграммам.
+
+### Know When to Include Zero
+
+Ключевые моменты
+
+-   При использовании линейчатых графиков всегда начинайте с 0.
+    Ввод в заблуждение, если не начинать с 0, потому что `bar plots` подразумевают, что длина пропорциональна отображаемому количеству.
+
+-   Отсечение оси y может привести к тому, что различия будут выглядеть больше, чем они есть на самом деле.
+    При использовании позиции, а не длины, необязательно указывать 0 (scatter plot, dot plot, boxplot).
+
+### Не искажайте величины
+
+Ключевые моменты
+
+-   Убедитесь, что в ваших визуализациях указаны правильные величины.
+
+-   Например, если вы используете график, основанный на площади окружности, убедитесь, что площадь (а не радиус) пропорциональна величинам.
+
+## 4.2 Data Visualization Principles, Part 2
+
+Ключевые моменты
+
+-   `dynamite plot` - гистограмма средних значений по группам с полосами ошибок, обозначающими стандартные ошибки, - практически не дает информации о распределении.
+
+-   Показывая данные, вы предоставляете зрителям дополнительную информацию о распределениях.
+
+-   `Jitter` Дрожание - это добавление небольшого случайного сдвига к каждой точке, чтобы свести к минимуму количество перекрывающихся точек.
+    Чтобы добавить дрожание, используйте геометрию `geom_jitter()` вместо `geom_point()`.
+    (Смотрите пример ниже.)
+
+```{r jitter, message=FALSE, warning=FALSE}
+library(tidyverse)
+# dot plot showing the data
+heights %>% ggplot(aes(sex, height)) + geom_point()
+
+# jittered, alpha blended point plot
+heights %>% ggplot(aes(sex, height)) + geom_jitter(width = 0.05, alpha = 0.2)
+```
+
+### Ease Comparisons: Compared Visual Cues Should Be Adjacent
+
+Ключевые моменты
+
+-   Когда необходимо сравнить две группы, оптимально разместить их рядом на графике.
+
+-   Используйте цвет для кодирования сравниваемых групп.
+
+-   Подумайте о том, чтобы использовать палитру, подходящую для дальтоников, подобную той, что показана в этом видео.
+
+```{r}
+color_blind_friendly_cols <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+p1 <- data.frame(x = 1:8, y = 1:8, col = as.character(1:8)) %>%
+    ggplot(aes(x, y, color = col)) +
+    geom_point(size = 5)
+p1 + scale_color_manual(values = color_blind_friendly_cols)
+```
+
+### Assessment: Data Visualization Principles, Part 2
+
+#### Exercise 1: Customizing plots - watch and learn
+
+Чтобы построить график справа в упражнении из последнего набора оценок, нам пришлось изменить порядок уровней переменных состояний.
 
 ::: {.callout-note appearance="simple"}
--   Используя `ggplot` и слой точек, создайте точечную диаграмму зависимости ожидаемой продолжительности жизни от рождаемости для Африканского континента в 2012 году.
+-   Переопределите `state` таким образом, чтобы уровни были переупорядочены по `rate`.
 
--   Помните, что вы можете использовать консоль R для изучения набора данных gapminder, чтобы выяснить имена столбцов во фрейме данных.
-
--   В этом упражнении мы приводим фрагменты кода, которые помогут вам в работе.
-    Вам нужно заполнить то, чего не хватает.
-    Но обратите внимание, что в дальнейшем, в следующих упражнениях, от вас потребуется написать большую часть кода.
+    Выведите `state` и его уровни (используя `levels`), чтобы вы могли видеть, что вектор теперь переупорядочен по уровням.
 :::
 
 ```{r}
 library(dplyr)
 library(ggplot2)
 library(dslabs)
-data(gapminder)
-## fill out the missing parts in filter and aes
-gapminder %>% filter(year == "2012" & continent == "Africa") %>%
-  ggplot(aes( fertility,life_expectancy, color = region )) +
-  geom_point()
+dat <- us_contagious_diseases %>%
+filter(year == 1967 & disease=="Measles" & !is.na(population)) %>% mutate(rate = count / population * 10000 * 52 / weeks_reporting)
+state <- dat$state 
+rate <- dat$count/(dat$population/10000)*(52/dat$weeks_reporting)
+
+head(levels(reorder(state,  rate)),10)
+
 ```
 
-#### **Exercise 3. Life expectancy vs fertility - part 3 - selecting country and region**
+#### Exercise 2: Customizing plots - redefining
 
-Хотя многие страны, входящие в кластер с высокой ожидаемой продолжительностью жизни и низкой рождаемостью, относятся к Северной Африке, три страны таковыми не являются.
+Теперь мы собираемся еще немного настроить этот график, создав переменную скорости и изменив порядок по этой переменной.
 
 ::: {.callout-note appearance="simple"}
--   Создайте таблицу, показывающую страну и регион для африканских стран (используйте select), в которых в 2012 году коэффициент рождаемости составлял 3 или менее, а ожидаемая продолжительность жизни составляла не менее 70 лет.
+-   Add a single line of code to the definition of the `dat` table that uses `mutate` to reorder the states by the rate variable.
 
--   Присвойте свой результат фрейму данных с именем df.
-:::
-
-```{r}
-df <- gapminder |> 
-    filter(continent == "Africa" & year == "2012" & fertility <= 3 & life_expectancy >= 70) |> 
-    select(country, region)
-df
-```
-
-#### **Exercise 4. Life expectancy and the Vietnam War - part 1**
-
-Война во Вьетнаме продолжалась с 1955 по 1975 год.
-Подтверждают ли данные, что война оказывает негативное влияние на ожидаемую продолжительность жизни?
-Мы создадим график временного ряда, который охватывает период с 1960 по 2010 год ожидаемой продолжительности жизни во Вьетнаме и Соединенных Штатах, используя цвет для различения двух стран.
-В этом разделе мы начинаем анализ с создания таблицы.
-
-::: {.callout-note appearance="simple"}
--   Use `filter` to create a table with data for the years from 1960 to 2010 in Vietnam and the United States.
-
--   Save the table in an object called `tab`.
-:::
-
-```{r}
-library(dplyr)
-library(dslabs)
-data(gapminder)
-
-tab <- gapminder |> 
-  filter(year >= 1960 & year <= 2010 & country %in% c("Vietnam", "United States"))
-tab
-```
-
-#### **Exercise 5. Life expectancy and the Vietnam War - part 2**
-
-Теперь, когда вы создали таблицу данных в упражнении 4, пришло время построить график данных для двух стран.
-
-::: {.callout-note appearance="simple"}
--   Use `geom_line` to plot life expectancy vs year for Vietnam and the United States and save the plot as `p`.
-    The data table is stored in `tab`.
-
--   Use color to distinguish the two countries.
-
--   Print the object `p`.
-:::
-
-```{r}
-p <- ggplot(tab, aes(x = year, y = life_expectancy, color = country)) + geom_line()
-p
-```
-
-#### **Exercise 7. Dollars per day - part 1**
-
-Теперь мы собираемся рассчитать и построить график в долларах в день для африканских стран в 2010 году, используя данные о ВВП (GDP).
-
-В первой части этого анализа мы создадим переменную "доллары в день".
-
-::: {.callout-note appearance="simple"}
--   Use `mutate` to create a `dollars_per_day` variable, which is defined as gdp/population/365.
-
--   Create the `dollars_per_day` variable for African countries for the year 2010.
-
--   Remove any `NA` values.
-
--   Save the mutated dataset as `daydollars`.
-:::
-
-```{r}
-daydollars <- gapminder |> 
-  mutate(dollars_per_day = gdp/population/365) |> 
-  filter(year == "2010" & continent == "Africa" & !is.na(dollars_per_day))
-daydollars
-```
-
-#### **Exercise 8. Dollars per day - part 2**
-
-Теперь мы собираемся рассчитать и построить график в долларах в день для африканских стран в 2010 году, используя данные о ВВП.
-
-Во второй части этого анализа мы построим график плавной плотности, используя логарифмическую ось x (основание 2).
-
-::: {.callout-tip appearance="simple"}
--   The dataset including the `dollars_per_day` variable is preloaded as `daydollars`.
-
--   Create a smooth density plot of dollars per day from `daydollars`.
-
--   Use `scale_x_continuous` to change the x-axis to a log (base 2) scale.
-:::
-
-```{r}
-daydollars |> 
-  ggplot(aes(dollars_per_day)) +
-  geom_density()+
-  scale_x_continuous(trans = 'log2')
-```
-
-#### **Exercise 9. Dollars per day - part 3 - multiple density plots**
-
-Теперь мы собираемся объединить инструменты построения графиков, которые мы использовали в предыдущих двух упражнениях, для создания графиков плотности за несколько лет.
-
-::: {.callout-tip appearance="simple"}
--   Create the `dollars_per_day` variable as in Exercise 7, but for African countries in the years 1970 and 2010 this time.
-
-    -   Make sure you remove any `NA` values.
-
--   Create a smooth density plot of dollars per day for 1970 and 2010 using a log (base 2) scale for the x axis.
-
--   Use `facet_grid` to show a different density plot for 1970 and 2010.
+-   The sample code provided will then create a bar plot using the newly defined `dat`.
 :::
 
 ```{r}
 library(dplyr)
 library(ggplot2)
 library(dslabs)
+data(us_contagious_diseases)
+dat <- us_contagious_diseases %>% filter(year == 1967 & disease=="Measles" & count>0 & !is.na(population)) %>%
+mutate(rate = count / population * 10000 * 52 / weeks_reporting) %>%
+mutate(state = reorder(state, rate))
+
+dat %>% ggplot(aes(state, rate)) +
+  geom_bar(stat="identity") +
+  coord_flip()
+```
+
+#### Exercise 4: Making a box plot
+
+Чтобы дополнительно выяснить, является ли переезд в западный регион мудрым решением, давайте составим сводную таблицу показателей убийств по регионам, показав все пункты.
+
+::: {.callout-note appearance="simple"}
+-   Order the `regions` by their median murder rate by using `mutate` and `reorder`.
+
+-   Make a box plot of the murder rates by region.
+
+-   Show all of the points on the box plot.
+:::
+
+```{r Making a box plot}
+library(dplyr)
+library(ggplot2)
+library(dslabs)
+data("murders")
+murders %>% mutate(rate = total/population*100000) %>% 
+  mutate(region = reorder(region,rate))%>%
+ggplot(aes(region, rate, fill = region)) +
+geom_boxplot() + 
+geom_point()
+
+```
+
+## 4.3 Data Visualization Principles, Part 3
+
+#### Slope Charts
+
+Ключевые моменты
+
+-   Рассмотрите возможность использования `Slope Chart` диаграммы наклона или графика Бланда-Альтмана при сравнении одной переменной в два разных момента времени, особенно для небольшого числа наблюдений.
+
+-   Диаграммы наклона используют угол для кодирования изменений.
+
+-   Используйте `geom_line()` для создания `Slope Chart`.
+    Это полезно при сравнении небольшого числа наблюдений.
+
+-   График Бланда-Альтмана (график средней разности Тьюки, график МА) отображает разницу между условиями по оси y и среднее значение между условиями по оси x.
+    Это более подходит для большого количества наблюдений, чем диаграммы наклона.
+
+**Code: Slope chart**
+
+```{r slope chart, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(dslabs)
 data(gapminder)
 
-daydollars <- gapminder %>% 
-  mutate(dollars_per_day = gdp/population/365) %>% 
-  filter(year %in% c("1970", "2010") & continent == "Africa" & !is.na(dollars_per_day))
+west <- c("Western Europe", "Northern Europe", "Southern Europe", "Northern America", "Australia and New Zealand")
 
-daydollars |> 
-  ggplot(aes(dollars_per_day))+
+dat <- gapminder %>%
+    filter(year %in% c(2010, 2015) & region %in% west & !is.na(life_expectancy) & population > 10^7)
+
+dat %>%
+    mutate(location = ifelse(year == 2010, 1, 2),
+           location = ifelse(year == 2015 & country %in% c("United Kingdom", "Portugal"),location + 0.22, location),hjust = ifelse(year == 2010, 1, 0)) %>%
+    mutate(year = as.factor(year)) %>%
+    ggplot(aes(year, life_expectancy, group = country)) +
+    geom_line(aes(color = country), show.legend = FALSE) +
+    geom_text(aes(x = location, label = country, hjust = hjust), show.legend = FALSE) +
+    xlab("") +
+    ylab("Life Expectancy") 
+```
+
+**Code: Bland-Altman plot**
+
+```{r Bland-Altman plot}
+library(ggrepel)
+dat %>%
+    mutate(year = paste0("life_expectancy_", year)) %>%
+    select(country, year, life_expectancy) %>% 
+    spread(year, life_expectancy) %>%
+    mutate(average = (life_expectancy_2015 + life_expectancy_2010)/2,
+           difference = life_expectancy_2015 - life_expectancy_2010) %>%
+    ggplot(aes(average, difference, label = country)) +
+    geom_point() +
+    geom_text_repel() +
+    geom_abline(lty = 2) +
+    xlab("Average of 2010 and 2015") +
+    ylab("Difference between 2015 and 2010")
+```
+
+#### Case Study: Vaccines
+
+Ключевые моменты
+
+-   Вакцины спасают миллионы жизней, но дезинформация заставила некоторых усомниться в безопасности вакцин.
+    Полученные данные подтверждают, что вакцины безопасны и эффективны.
+    Мы визуализируем данные о заболеваемости корью, чтобы продемонстрировать влияние программ вакцинации на уровень заболеваемости.
+
+-   Пакет **RColorBrewer** предлагает несколько цветовых палитр.
+    Последовательные цветовые палитры лучше всего подходят для данных, которые охватывают диапазон от высокого до низкого.
+    Расходящиеся цветовые палитры лучше всего подходят для данных, которые расположены по центру и расходятся в сторону высоких или низких значений.
+
+-   Геометрия `geom_tile()` создает сетку из цветных плиток.
+
+-   Положение и длина являются более сильными сигналами для числовых значений, чем цвет, но иногда цвет может быть подходящим.
+
+**Code: Tile plot of measles rate by year and state**
+
+```{r}
+# import data and inspect
+library(tidyverse)
+library(dslabs)
+data(us_contagious_diseases)
+str(us_contagious_diseases)
+
+# assign dat to the per 10,000 rate of measles, removing Alaska and Hawaii and adjusting for weeks reporting
+the_disease <- "Measles"
+dat <- us_contagious_diseases %>%
+    filter(!state %in% c("Hawaii", "Alaska") & disease == the_disease) %>%
+    mutate(rate = count / population * 10000 * 52/weeks_reporting) %>%
+    mutate(state = reorder(state, rate))
+
+# plot disease rates per year in California
+dat %>% filter(state == "California" & !is.na(rate)) %>%
+    ggplot(aes(year, rate)) +
+    geom_line() +
+    ylab("Cases per 10,000") +
+    geom_vline(xintercept=1963, col = "blue")
+
+# tile plot of disease rate by state and year
+dat %>% ggplot(aes(year, state, fill=rate)) +
+    geom_tile(color = "grey50") +
+    scale_x_continuous(expand = c(0,0)) +
+    scale_fill_gradientn(colors = RColorBrewer::brewer.pal(9, "Reds"), trans = "sqrt") +
+    geom_vline(xintercept = 1963, col = "blue") +
+    theme_minimal() + theme(panel.grid = element_blank()) +
+    ggtitle(the_disease) +
+    ylab("") +
+    xlab("")
+```
+
+**Code: Line plot of measles rate by year and state**
+
+```{r Line plot of measles rate, message=FALSE, warning=FALSE}
+# compute US average measles rate by year
+avg <- us_contagious_diseases %>%
+    filter(disease == the_disease) %>% group_by(year) %>%
+    summarize(us_rate = sum(count, na.rm = TRUE)/sum(population, na.rm = TRUE)*10000)
+
+# make line plot of measles rate by year by state
+dat %>%
+    filter(!is.na(rate)) %>%
+    ggplot() +
+    geom_line(aes(year, rate, group = state), color = "grey50", 
+        show.legend = FALSE, alpha = 0.2, size = 1) +
+    geom_line(mapping = aes(year, us_rate), data = avg, size = 1, col = "black") +
+    scale_y_continuous(trans = "sqrt", breaks = c(5, 25, 125, 300)) +
+    ggtitle("Cases per 10,000 by state") +
+    xlab("") +
+    ylab("") +
+    geom_text(data = data.frame(x = 1955, y = 50),
+        mapping = aes(x, y, label = "US average"), color = "black") +
+    geom_vline(xintercept = 1963, col = "blue")
+```
+
+### Assessment: Data Visualization Principles, Part 3
+
+#### Exercise 1: Tile plot - measles and smallpox
+
+Приведенный пример кода создает мозаичный график, показывающий уровень заболеваемости корью на душу населения.
+Мы собираемся изменить график плитки, чтобы вместо этого посмотреть на случаи оспы.
+
+::: {.callout-note appearance="simple"}
+-   Modify the `tile plot` to show the rate of **smallpox** cases instead of **measles** cases.
+
+-   Exclude years in which cases were reported in fewer than 10 weeks from the plot.
+:::
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(RColorBrewer)
+library(dslabs)
+data(us_contagious_diseases)
+
+the_disease = "Smallpox"
+dat <- us_contagious_diseases %>% 
+   filter(!state%in%c("Hawaii","Alaska") & disease == the_disease & weeks_reporting >= 10) %>% 
+   mutate(rate = count / population * 10000) %>% 
+   mutate(state = reorder(state, rate))
+
+dat %>% ggplot(aes(year, state, fill = rate)) + 
+  geom_tile(color = "grey50") + 
+  scale_x_continuous(expand=c(0,0)) + 
+  scale_fill_gradientn(colors = brewer.pal(9, "Reds"), trans = "sqrt") + 
+  theme_minimal() + 
+  theme(panel.grid = element_blank()) + 
+  ggtitle(the_disease) + 
+  ylab("") + 
+  xlab("")
+```
+
+#### Exercise 2. Time series plot - measles and smallpox
+
+Приведенный пример кода создает график временных рядов, показывающий уровень заболеваемости корью на душу населения в разбивке по штатам.
+Мы собираемся снова изменить этот график, чтобы вместо этого рассмотреть случаи натуральной оспы.
+
+::: {.callout-note appearance="simple"}
+Измените пример кода для построения временных рядов, чтобы построить данные для натуральной оспы, а не для кори.
+
+Еще раз, ограничьте график годами, в течение которых случаи были зарегистрированы по крайней мере за 10 недель.
+:::
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(dslabs)
+library(RColorBrewer)
+data(us_contagious_diseases)
+
+the_disease = "Smallpox"
+dat <- us_contagious_diseases %>%
+   filter(!state%in%c("Hawaii","Alaska") & disease == the_disease & weeks_reporting >= 10) %>%
+   mutate(rate = count / population * 10000) %>%
+   mutate(state = reorder(state, rate))
+
+avg <- us_contagious_diseases %>%
+  filter(disease==the_disease) %>% group_by(year) %>%
+  summarize(us_rate = sum(count, na.rm=TRUE)/sum(population, na.rm=TRUE)*10000)
+
+dat %>% ggplot() +
+  geom_line(aes(year, rate, group = state),  color = "grey50", 
+            show.legend = FALSE, alpha = 0.2, size = 1) +
+  geom_line(mapping = aes(year, us_rate),  data = avg, size = 1, color = "black") +
+  scale_y_continuous(trans = "sqrt", breaks = c(5,25,125,300)) + 
+  ggtitle("Cases per 10,000 by state") + 
+  xlab("") + 
+  ylab("") +
+  geom_text(data = data.frame(x=1955, y=50), mapping = aes(x, y, label="US average"), color="black") + 
+  geom_vline(xintercept=1963, col = "blue")
+```
+
+#### Exercise 3: Time series plot - all diseases in California
+
+Теперь мы рассмотрим показатели заболеваемости всеми болезнями в одном штате.
+Опять же, вы будете модифицировать пример кода для получения желаемого графика.
+
+::: {.callout-note appearance="simple"}
+Для штата Калифорния составьте график временных рядов, показывающий показатели по всем заболеваниям.
+
+Включайте только годы с отчетностью в 10 или более недель.
+
+Используйте другой цвет для каждого заболевания.
+
+Включите вашу функцию aes внутри ggplot, а не внутри вашего слоя geom.
+:::
+
+```{r Time series plot, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(dslabs)
+library(RColorBrewer)
+data(us_contagious_diseases)
+
+us_contagious_diseases %>% filter(state=="California" & weeks_reporting>=10) %>% 
+  group_by(year, disease) %>%
+  summarize(rate = sum(count)/sum(population)*10000) %>%
+  ggplot(aes(year, rate, color = disease)) + 
+  geom_line()
+```
+
+#### Exercise 4: Time series plot - all diseases in the United States
+
+Теперь мы собираемся построить график временных рядов для показателей всех заболеваний в Соединенных Штатах.
+Для этого упражнения мы предоставили меньше примеров кода - вы можете ознакомиться с предыдущим упражнением, чтобы начать.
+
+::: callout-note
+-   Вычислите `rate` в США, используя `summary` для суммирования по штатам.
+    Назовите переменную `rate`.
+
+-   Показатель в США по каждому заболеванию будет равен общему числу случаев, деленному на общую численность населения.
+
+-   Не забудьте перевести в количество обращений на 10 000.
+
+-   Вам нужно будет отфильтровать для !i
+    s.na (`population`), чтобы получить все данные.
+    Выделите каждое заболевание другим цветом.
+:::
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(dslabs)
+library(RColorBrewer)
+data(us_contagious_diseases)
+
+us_contagious_diseases %>% filter(!is.na(population)) %>% 
+  group_by(year, disease) %>%
+  summarize(rate = sum(count)/sum(population)*10000) %>%
+  ggplot(aes(year, rate, color = disease)) + 
+  geom_line()
+```
+
+### Assessment: Titanic Survival
+
+"Титаник" был британским океанским лайнером, который столкнулся с айсбергом и затонул во время своего первого рейса в 1912 году из Соединенного Королевства в Нью-Йорк.
+Более 1500 из примерно 2224 пассажиров и членов экипажа погибли в результате аварии, что делает ее одной из крупнейших морских катастроф, когда-либо имевших место за пределами войны.
+На судне перевозился широкий круг пассажиров всех возрастов и обоих полов, от путешественников класса люкс в первом классе до иммигрантов низшего класса.
+Однако не у всех пассажиров были равные шансы выжить в результате аварии.
+Мы используем реальные данные о 891 пассажире, чтобы узнать, кто был на борту "Титаника" и у каких пассажиров было больше шансов выжить.
+
+**Библиотеки, опции и данные**
+
+Прежде чем продолжить, убедитесь, что вы установили пакет titanic.
+
+Определите набор данных titanic, начиная с библиотеки titanic, с помощью следующего кода:
+
+```{r}
+options(digits = 3)    # report 3 significant digits
+library(tidyverse)
+library(titanic)
+
+titanic <- titanic_train %>%
+    select(Survived, Pclass, Sex, Age, SibSp, Parch, Fare) %>%
+    mutate(Survived = factor(Survived),
+           Pclass = factor(Pclass),
+           Sex = factor(Sex))
+str(titanic)
+```
+
+#### Question 2: Demographics of Titanic Passengers
+
+Составьте графики плотности населения по возрасту, сгруппированные по полу.
+Попробуйте поэкспериментировать с комбинациями faceting, alpha blending, stacking and using variable values on the y axis, чтобы ответить на следующие вопросы.
+На некоторые вопросы может быть легче ответить с помощью различных версий графика плотности.
+
+```{r}
+titanic |> 
+  ggplot(aes(Age, fill = Sex, alpha = 0.4)) +
   geom_density()+
-  scale_x_continuous(trans = "log2")+
-  facet_grid(~year)
+  facet_grid(Sex~.)
 
 ```
 
-#### **Exercise 10. Dollars per day - part 4 - stacked density plot**
+#### Question 3: QQ-plot of Age Distribution
 
-Теперь мы собираемся отредактировать код из упражнения 9, чтобы показать график суммарной плотности для каждого региона Африки.
-
-::: {.callout-tip appearance="simple"}
--   Much of the code will be the same as in Exercise 9:
-
-    -   Create the `dollars_per_day` variable as in Exercise 7, but for African countries in the years 1970 and 2010 this time.
-
-    -   Make sure you remove any `NA` values.
-
-    -   Create a smooth density plot of dollars per day for 1970 and 2010 using a log (base 2) scale for the x axis.
-
-    -   Use `facet_grid` to show a different density plot for 1970 and 2010.
-
--   Make sure the densities are smooth by using `bw = 0.5`.
-
--   Use the `fill` and `position` arguments where appropriate to create the stacked density plot of each region.
-:::
+Use `geom_qq()` to make a QQ-plot of passenger age and add an identity line with `geom_abline()`.
+Filter out any individuals with an age of NA first.
+Use the following object as the `dparams` argument in `geom_qq()`:
 
 ```{r}
-daydollars %>% 
-  ggplot(aes(dollars_per_day, fill = region))+
-  geom_density(bw = 0.5, position = "stack", alpha = 0.4)+
-  scale_x_continuous(trans = "log2")+
-  facet_grid(~year)
+params <- titanic %>%
+    filter(!is.na(Age)) %>%
+    summarize(mean = mean(Age), sd = sd(Age))
+params
 ```
 
-#### **Exercise 11. Infant mortality scatter plot - part 1**
+#### Question 4: Survival by Sex
 
-Мы собираемся продолжить изучение закономерностей в наборе данных `gapminder`, построив график соотношения показателей младенческой смертности в долларах в день для африканских стран.
-
-::: {.callout-tip appearance="simple"}
--   Generate `dollars_per_day` using `mutate` and `filter` for the year 2010 for African countries.
-
-    -   Remember to remove `NA` values.
-
--   Store the mutated dataset in `gapminder_Africa_2010`.
-
--   Make a scatter plot of `infant_mortality` versus `dollars_per_day` for countries in the African continent.
-
--   Use color to denote the different regions of Africa.
-:::
+To answer the following questions, make barplots of the `Survived` and `Sex` variables using `geom_bar()`.
+Try plotting one variable and filling by the other variable.
+You may want to try the default plot, then try adding `position = position_dodge()` to `geom_bar()` to make separate bars for each group.
 
 ```{r}
-gapminder_Africa_2010 <- gapminder %>% 
-  mutate(dollars_per_day = gdp/population/365) %>% 
-  filter(year == "2010" & continent == "Africa" & !is.na(dollars_per_day))
-
-gapminder_Africa_2010 |> 
-  ggplot(aes(dollars_per_day, infant_mortality, color = region, label = country)) +
-  geom_point()+
-  scale_x_continuous(trans = "log2") +
-  geom_text()
+          #plot 1 - survival filled by sex
+titanic %>%
+    ggplot(aes(Survived, fill = Sex)) +
+    geom_bar()
+# plot 2 - survival filled by sex with position_dodge
+titanic %>%
+    ggplot(aes(Survived, fill = Sex)) +
+    geom_bar(position = position_dodge())
+#plot 3 - sex filled by survival
+titanic %>%
+    ggplot(aes(Sex, fill = Survived)) +
+    geom_bar()
 ```
 
-### 4. Overview
+::: callout-note
+Explanation and Answer Code
+
+A and B can be clearly seen in the barplot of survival status filled by sex.
+The count of survivors is lower than the count of non-survivors.
+The bar of survivors is more than half filled by females.
+Alternatively, the bars can be split by sex with `position_dodge`, showing the "Female, Survived" bar has a greater height than the "Male, survived" bar.
+C and D are more clearly seen in the barplot of sex filled by survival status, though they can also be determined from the first barplot.
+Most males did not survive, but most females did survive.
+:::
+
+#### Question 5: Survival by Age
+
+Make a density plot of age filled by survival status.
+Change the y-axis to count and set `alpha = 0.2`.
+
+Which age group is the only group more likely to survive than die?
+
+```{r}
+titanic |> 
+  ggplot(aes(Age, y = after_stat(count), fill = Survived))+
+  geom_density(alpha = 0.5)
+```
+
+::: callout-note
+Which age group is the only group more likely to survive than die?
+0-8
+
+Which age group had the most deaths?
+18-30
+
+Which age group had the highest proportion of deaths?
+70-80
+:::
+
+#### Question 6: Survival by Fare
+
+Filter the data to remove individuals who paid a fare of 0.
+Make a boxplot of fare grouped by survival status.
+Try a log2 transformation of fares.
+Add the data points with jitter and alpha blending.
+
+```{r}
+titanic |> 
+  filter(Fare != "0") |> 
+  ggplot(aes(Fare, fill = Survived)) +
+           geom_boxplot()
+```
+
+::: callout-note
+**Which of the following are true?**
+
+**Passengers who survived generally payed higher fares than those who did not survive.**
+
+*The interquartile range for fares was smaller for passengers who survived.*
+
+**The median fare was lower for passengers who did not survive.**
+
+**Only one individual paid a fare around \$500. That individual survived.**
+
+**Most individuals who paid a fare around \$8 did not survive.**
+:::
+
+#### Question 7: Survival by Passenger Class
+
+The `Pclass` variable corresponds to the passenger class.
+Make three barplots.
+For the first, make a basic barplot of passenger class filled by survival.
+For the second, make the same barplot but use the argument `position = position_fill()` to show relative proportions in each group instead of counts.
+For the third, make a barplot of survival filled by passenger class using `position = position_fill()`.
+
+```{r}
+str(titanic)
+
+titanic |> ggplot(aes(Pclass, fill = Survived)) +
+  geom_bar(alpha = 0.4)
+```
+
+```{r}
+titanic |> ggplot(aes(Pclass, fill = Survived)) +
+  geom_bar(alpha = 0.4, position = position_fill())
+```
+
+```{r}
+titanic |> ggplot(aes(Survived, fill = Pclass)) +
+  geom_bar(alpha = 0.4, position = position_fill())
+```
+
+::: callout-note
+**Which of the following are true?**
+
+There were more third class passengers than passengers in the first two classes combined.
+
+*There were the fewest passengers in first class, second-most passengers in second class, and most passengers in third class.*
+
+Survival proportion was highest for first class passengers, followed by second class.
+Third-class had the lowest survival proportion.
+
+Most passengers in first class survived.
+Most passengers in other classes did not survive.
+
+*The majority of survivors were from first class. (Majority means over 50%.)*
+
+The majority of those who did not survive were from third class.
+:::
+
+#### Question 8: Survival by Age, Sex and Passenger Class
+
+Create a grid of density plots for age, filled by survival status, with count on the y-axis, faceted by sex and passenger class.
+
+```{r}
+titanic |> 
+  ggplot(aes(Age, after_stat(count), fill = Survived)) +
+    geom_density(alpha = 0.5) +
+    facet_grid(Sex~Pclass)
+  
+```
+
+::: callout-note
+Which of the following are true?
+
+*The largest group of passengers was third-class males.*
+
+*The age distribution is the same across passenger classes.*
+
+The gender distribution is the same across passenger classes.
+
+Most first-class and second-class females survived.
+
+Almost all second-class males did not survive, with the exception of children.
+:::
+
+# 
